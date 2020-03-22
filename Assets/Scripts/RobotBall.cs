@@ -11,7 +11,7 @@ public class RobotBall : MonoBehaviour
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
     private Rigidbody m_Rigidbody;
 
-    public RobotPlayer.MoveSettings Init
+    public Robot.MoveSettings Init
     {
         set 
         {

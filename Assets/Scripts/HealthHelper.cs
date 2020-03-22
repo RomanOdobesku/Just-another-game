@@ -13,7 +13,7 @@ public class HealthHelper : MonoBehaviour
     [SerializeField] private bool _DynamicHealthBarCreate = true;
     private bool _dead;
 
-    public RobotPlayer.HealthSettings Init
+    public Robot.HealthSettings Init
     {
         set
         {
@@ -53,14 +53,18 @@ public class HealthHelper : MonoBehaviour
     public int Kills { get; private set; }
 
     UIHealthBarHelper _uIHealthBarHelper;
-    // Use this for initialization
+    
+    public UIHealthBarHelper HealthBar
+    {
+        get => _uIHealthBarHelper;
+    }
     void Start()
     {
         if (_DynamicHealthBarCreate)
         {
-            Transform healtBarSlider = transform.GetChild(2);
+            _uIHealthBarHelper = gameObject.GetComponentInChildren<UIHealthBarHelper>() as UIHealthBarHelper;
+            Transform healtBarSlider = _uIHealthBarHelper.gameObject.transform;
             healtBarSlider.SetParent(GameObject.Find("Canvas").transform);
-            _uIHealthBarHelper = healtBarSlider.GetComponent<UIHealthBarHelper>();
             _uIHealthBarHelper.NPC = transform;
             _uIHealthBarHelper.Height = _Height;
         }

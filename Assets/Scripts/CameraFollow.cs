@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private bool LockCursor = true;
 
-    public RobotPlayer.CameraSettings Init
+    public Robot.CameraSettings Init
     {
         set
         {

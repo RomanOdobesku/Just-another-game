@@ -264,6 +264,11 @@ PrefabInstance:
       propertyPath: m_TargetDisplay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8164493407796010527, guid: 8b62e843a4c813c4a949a9c49ab96fa0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 8164493408531312008, guid: 8b62e843a4c813c4a949a9c49ab96fa0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -332,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 8164493408531312011, guid: 8b62e843a4c813c4a949a9c49ab96fa0,
         type: 3}
       propertyPath: m_TagString
-      value: Player Camera
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b62e843a4c813c4a949a9c49ab96fa0, type: 3}

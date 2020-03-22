@@ -26,6 +26,15 @@ public class UIHealthBarHelper : MonoBehaviour
         set => _Height = value;
     }
 
+    public Camera InitCam
+    {
+        set
+        {
+            if (Cam == null)
+                Cam = value;
+        }
+    }
+
     private Slider _Slider;
     private HealthHelper _HealthHelper;
     // Use this for initialization
@@ -41,6 +50,7 @@ public class UIHealthBarHelper : MonoBehaviour
             return;
         Vector3 position = NPC.position;
         position.y += _Height;
+        
         GetComponent<RectTransform>().position = Cam.WorldToScreenPoint(position);
         if (_Slider)
             _Slider.value = _HealthHelper.Health;

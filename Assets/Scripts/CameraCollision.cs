@@ -12,7 +12,7 @@ public class CameraCollision : MonoBehaviour
     public Vector3 DollyDirectionAdjusted;
     [SerializeField] private float Distance;
 
-    public RobotPlayer.CameraSettings Init
+    public Robot.CameraSettings Init
     {
         set
         {
