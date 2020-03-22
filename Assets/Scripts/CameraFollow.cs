@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float CameraMoveSpeed = 100.0f;
+    [SerializeField] private float CameraMoveSpeed = 100.0f;
     public GameObject CameraFollowObject;
-    private Vector3 followPos;
-    public float clampAngle = 80.0f;
-    public float inputSensivityHorizontal = 150.0f;
-    public float inputSensivityVertical = 150.0f;
-    public float inputSensivityScrollWheel = 150.0f;
-    public GameObject CameraObject;
-    public GameObject playerObject;
-    public float camDistanceXToPlayer;
-    public float camDistanceYToPlayer;
-    public float camDistanceZToPlayer;
-    public float mouseX;
-    public float mouseY;
-    public float mouseWheel;
-    public float finalInputX;
-    public float finalInputZ;
-    public float smoothX;
-    public float smoothY;
-    private float rotY = 0.0f;
-    private float rotX = 0.0f;
+    [SerializeField] private float MaxAngleY = 90;
+    [SerializeField] private float MinAngleY = -90;
+    [SerializeField] private float HorizontalSensivity = 150;
+    [SerializeField] private float VerticalSensivity = 150;
+    [SerializeField] private float MouseWheelSensivity = 1500;
+    [SerializeField] private float MouseX;
+    [SerializeField] private float MouseY;
+    [SerializeField] private float MouseWheel;
+    [SerializeField] private float RotationY;
+    [SerializeField] private float RotationX;
 
-    public bool lockCursor = true;
+    [SerializeField] private bool LockCursor = true;
+
+    public RobotPlayer.CameraSettings Init
+    {
+        set
+        {
+            CameraMoveSpeed = value.MoveSpeed;
+            MaxAngleY = value.MaxAngleY;
+            MinAngleY = value.MinAngleY;
+            HorizontalSensivity = value.HorizontalSensivity;
+            VerticalSensivity = value.VerticalSensivity;
+            MouseWheelSensivity = value.MouseWheelSensivity;
+            LockCursor = value.LockCursor;
+        }
+    }
+
     private bool m_cursorIsLocked = true;
 
     private CameraCollision cameraCollision;
@@ -34,42 +40,31 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         Vector3 rotation = transform.localRotation.eulerAngles;
-        rotY = rotation.y;
-        rotX = rotation.x;
+        RotationY = rotation.y;
+        RotationX = rotation.x;
         cameraCollision = gameObject.GetComponentInChildren<CameraCollision>() as CameraCollision;
     }
 
     private void Update()
     {
-        //float inputX = Input.GetAxis("Horizontal");
-        //float inputZ = Input.GetAxis("Vertical");
-        float inputX = 0;
-        float inputZ = 0;
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
-        finalInputX = inputX + mouseX;
-        finalInputZ = inputZ + mouseY;
+        MouseX = Input.GetAxis("Mouse X");
+        MouseY = Input.GetAxis("Mouse Y");
 
-        rotY += finalInputX * inputSensivityHorizontal * Time.deltaTime;
-        rotX -= finalInputZ * inputSensivityVertical * Time.deltaTime;
+        RotationY += MouseX * HorizontalSensivity * Time.deltaTime;
+        RotationX -= MouseY * VerticalSensivity * Time.deltaTime;
 
-        rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
+        RotationX = Mathf.Clamp(RotationX, MinAngleY, MaxAngleY);
 
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
+        Quaternion localRotation = Quaternion.Euler(RotationX, RotationY, 0.0f);
         transform.rotation = localRotation;
 
-        mouseWheel = Input.GetAxis("Mouse ScrollWheel");
-        cameraCollision.AddMaxDistance = -mouseWheel * inputSensivityScrollWheel * Time.deltaTime;
+        MouseWheel = Input.GetAxis("Mouse ScrollWheel");
+        cameraCollision.AddMaxDistance = -MouseWheel * MouseWheelSensivity * Time.deltaTime;
 
         UpdateCursorLock();
     }
 
     private void LateUpdate()
-    {
-        CameraUpdater();
-    }
-
-    void CameraUpdater()
     {
         Transform target = CameraFollowObject.transform;
         float step = CameraMoveSpeed * Time.deltaTime;
@@ -79,7 +74,7 @@ public class CameraFollow : MonoBehaviour
     public void UpdateCursorLock()
     {
         //if the user set "lockCursor" we check & properly lock the cursos
-        if (lockCursor)
+        if (LockCursor)
             InternalLockUpdate();
     }
 

@@ -11,12 +11,23 @@ public class RobotBall : MonoBehaviour
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
     private Rigidbody m_Rigidbody;
 
-
+    public RobotPlayer.MoveSettings Init
+    {
+        set 
+        {
+            m_MovePower = value.MovePower;
+            m_UseTorque = value.UseTorque;
+            m_MaxAngularVelocity = value.MaxAngularVelocity;
+            m_JumpPower = value.JumpPower;
+            if (m_Rigidbody)
+                m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocity;
+        }
+    }
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         // Set the maximum angular velocity.
-        GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
+        m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocity;
     }
 
 

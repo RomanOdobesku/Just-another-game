@@ -5,14 +5,42 @@ using System;
 public class HealthHelper : MonoBehaviour
 {
 
-    public int MaxHealth = 100;
-    public float Health = 100;
-    public int Group = 0;
-    public float Height = 3;
-    public float speedDying = 10;
-
-    public bool isDynamicHealthBarCreate = true;
+    [SerializeField] private float _MaxHealth = 100;
+    [SerializeField] private float _Health = 100;
+    [SerializeField] private int _Group = 0;
+    [SerializeField] private float _Height = 0;
+    [SerializeField] private float _DamagePerSecond = 0.1f;
+    [SerializeField] private bool _DynamicHealthBarCreate = true;
     private bool _dead;
+
+    public RobotPlayer.HealthSettings Init
+    {
+        set
+        {
+            _MaxHealth = value.MaxHealth;
+            _Health = value.Health;
+            _Group = value.Group;
+            _DamagePerSecond = value.DamagePerSecond;
+            _DynamicHealthBarCreate = value.DynamicHealthBarCreate;
+            _Height = value.Height;
+            if (_uIHealthBarHelper != null)
+            {
+                _uIHealthBarHelper.Height = _Height;
+            }
+
+        }
+    }
+
+    public float MaxHealth
+    {
+        get => _MaxHealth;
+    }
+
+    public float Health
+    {
+        get => _Health;
+    }
+
     public bool Dead
     {
         get { return _dead; }
@@ -28,12 +56,13 @@ public class HealthHelper : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (isDynamicHealthBarCreate)
+        if (_DynamicHealthBarCreate)
         {
-            GameObject healtBarSlider = Instantiate(Resources.Load("HealthBarSlider"), Vector3.zero, Quaternion.identity) as GameObject;
-            healtBarSlider.transform.SetParent(GameObject.Find("Canvas").transform);
+            Transform healtBarSlider = transform.GetChild(2);
+            healtBarSlider.SetParent(GameObject.Find("Canvas").transform);
             _uIHealthBarHelper = healtBarSlider.GetComponent<UIHealthBarHelper>();
             _uIHealthBarHelper.NPC = transform;
+            _uIHealthBarHelper.Height = _Height;
         }
     }
 
@@ -49,7 +78,7 @@ public class HealthHelper : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetDamage(speedDying * Time.deltaTime, null);
+        GetDamage(_DamagePerSecond * Time.deltaTime, null);
     }
 
     public void GetDamage(float damage, HealthHelper killer)
@@ -57,8 +86,8 @@ public class HealthHelper : MonoBehaviour
         if (Dead)
             return;
 
-        Health -= damage;
-        if (Health <= 0)
+        _Health -= damage;
+        if (_Health <= 0)
         {
             Dead = true;
             _uIHealthBarHelper.DisableSlider();

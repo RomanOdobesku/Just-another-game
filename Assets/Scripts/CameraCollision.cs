@@ -4,49 +4,59 @@ using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-    public float minDistance = 1.0f;
-    public float maxCurrentDistance = 25.0f;
-    public float maxDistance = 50.0f;
-    public float smooth = 10.0f;
-    Vector3 dollyDirection;
-    public Vector3 dollyDirectionAdjusted;
-    public float distance;
+    [SerializeField] private float MinDistance = 1.0f;
+    [SerializeField] private float TargetDistance = 25.0f;
+    [SerializeField] private float MaxDistance = 50.0f;
+    [SerializeField] private float Smooth = 10.0f;
+    [SerializeField] private Vector3 DollyDirection;
+    public Vector3 DollyDirectionAdjusted;
+    [SerializeField] private float Distance;
+
+    public RobotPlayer.CameraSettings Init
+    {
+        set
+        {
+            MinDistance = value.MinDistance;
+            TargetDistance = value.TargetDistance;
+            MaxDistance = value.MaxDistance;
+            Smooth = value.Smooth;
+        }
+    }
 
     public float AddMaxDistance
     {
         set
         {
-            maxCurrentDistance += value;
-            maxCurrentDistance = Mathf.Clamp(maxCurrentDistance, minDistance, maxDistance);
+            TargetDistance += value;
+            TargetDistance = Mathf.Clamp(TargetDistance, MinDistance, MaxDistance);
         }
 
         get
         {
-            return maxCurrentDistance;
+            return TargetDistance;
         }
     }
 
     private void Awake()
     {
-        dollyDirection = transform.localPosition.normalized;
-        distance = transform.localPosition.magnitude;
+        DollyDirection = transform.localPosition.normalized;
+        Distance = transform.localPosition.magnitude;
     }
 
     private void Update()
     {
-        Vector3 desireCameraPosition = transform.parent.TransformPoint(dollyDirection * maxCurrentDistance);
+        Vector3 desireCameraPosition = transform.parent.TransformPoint(DollyDirection * TargetDistance) + DollyDirectionAdjusted;
         RaycastHit hit;
 
         if (Physics.Linecast(transform.parent.position, desireCameraPosition, out hit))
         {
-            distance = Mathf.Clamp(hit.distance * 0.85f, minDistance, maxCurrentDistance);
-            print("пересечение");
+            Distance = Mathf.Clamp(hit.distance * 0.85f, MinDistance, TargetDistance);
         } else
         {
-            distance = maxCurrentDistance;
+            Distance = TargetDistance;
         }
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDirection * distance, Time.deltaTime * smooth);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, DollyDirection * Distance, Time.deltaTime * Smooth);
             
     }
 }

@@ -5,30 +5,29 @@ using UnityEngine.UI;
 
 public class UIHealthBarHelper : MonoBehaviour
 {
-    Transform _nPC;
+    private Transform _nPC;
     public Transform NPC
     {
         get { return _nPC; }
         set
         {
             _nPC = value;
-            _healthHelper = NPC.GetComponent<HealthHelper>();
-            _slider = GetComponentInChildren<Slider>();
-            _slider.maxValue = _healthHelper.MaxHealth;
+            _HealthHelper = NPC.GetComponent<HealthHelper>();
+            _Slider = GetComponentInChildren<Slider>();
+            _Slider.maxValue = _HealthHelper.MaxHealth;
         }
     }
+
+    private float _Height = 0;
+    public Camera Cam;
 
     public float Height
     {
-        set
-        {
-            _height = value;
-        }
+        set => _Height = value;
     }
 
-    Slider _slider;
-    HealthHelper _healthHelper;
-    public float _height = 1;
+    private Slider _Slider;
+    private HealthHelper _HealthHelper;
     // Use this for initialization
     void Start()
     {
@@ -36,21 +35,20 @@ public class UIHealthBarHelper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!NPC)
             return;
         Vector3 position = NPC.position;
-        position.y += _height;
-        print(position);
-        GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(position);
-        if (_slider)
-            _slider.value = _healthHelper.Health;
+        position.y += _Height;
+        GetComponent<RectTransform>().position = Cam.WorldToScreenPoint(position);
+        if (_Slider)
+            _Slider.value = _HealthHelper.Health;
     }
 
     public void DisableSlider()
     {
-        Destroy(_slider.gameObject);
+        Destroy(_Slider.gameObject);
     }
 }
 

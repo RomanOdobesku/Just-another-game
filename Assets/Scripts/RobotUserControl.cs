@@ -20,19 +20,6 @@ public class RobotUserControl : MonoBehaviour
     {
         // Set up the reference.
         ball = GetComponent<RobotBall>();
-
-
-        // get the transform of the main camera
-        if (Camera.main != null)
-        {
-            cam = Camera.main.transform;
-        }
-        else
-        {
-            Debug.LogWarning(
-                "Warning: no main camera found. Ball needs a Camera tagged \"MainCamera\", for camera-relative controls.");
-            // we use world-relative controls in this case, which may not be what the user wants, but hey, we warned them!
-        }
     }
 
 
@@ -57,9 +44,9 @@ public class RobotUserControl : MonoBehaviour
             move = (v * Vector3.forward + h * Vector3.right).normalized;
         }
 
-        if (Input.GetKeyDown("Fire 3"))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             shift = true;
-        if (Input.GetKeyUp("Fire 3"))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
             shift = false;
     }
 
