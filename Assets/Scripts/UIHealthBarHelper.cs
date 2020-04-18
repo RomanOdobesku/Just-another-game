@@ -46,7 +46,12 @@ public class UIHealthBarHelper : MonoBehaviour
     void Start()
     {
         objCollider = transform.parent.GetComponentInChildren<SphereCollider>() as Collider;
-        print(objCollider);
+        if (Cam == null)
+        {
+            Cam = GameObject.FindGameObjectsWithTag("Player Camera")[0].GetComponent<Camera>();
+            if (Cam == null)
+                Cam = Camera.main;
+        }
     }
 
     // Update is called once per frame

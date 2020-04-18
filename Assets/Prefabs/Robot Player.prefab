@@ -53,9 +53,9 @@ MonoBehaviour:
     DamagePerSecond: 0.1
     DynamicHealthBarCreate: 1
   Move:
-    MovePower: 25
+    MovePower: 50
     MaxAngularVelocity: 25
-    JumpPower: 5
+    JumpPower: 10
     UseTorque: 1
   Camera:
     MoveSpeed: 100
@@ -87,6 +87,7 @@ MonoBehaviour:
   _Height: 0
   _DamagePerSecond: 0.1
   _DynamicHealthBarCreate: 1
+  _DamageSensivity: 0.1
   hit: 0
 --- !u!1001 &1708962379
 PrefabInstance:
@@ -264,6 +265,11 @@ PrefabInstance:
       propertyPath: m_TargetDisplay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8164493407796010525, guid: 8b62e843a4c813c4a949a9c49ab96fa0,
+        type: 3}
+      propertyPath: far clip plane
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 8164493407796010527, guid: 8b62e843a4c813c4a949a9c49ab96fa0,
         type: 3}
       propertyPath: m_TagString
@@ -424,6 +430,11 @@ PrefabInstance:
     - target: {fileID: 1245752813848140762, guid: 3187e870239bdf54e88beb01bfd9cfad,
         type: 3}
       propertyPath: m_Name
+      value: Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245752813848140762, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_TagString
       value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 7101533755119802874, guid: 3187e870239bdf54e88beb01bfd9cfad,

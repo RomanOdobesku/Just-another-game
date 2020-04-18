@@ -70,7 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9f709c28723e94a938314673fe67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points: []
+  Points:
+  - {fileID: 0}
+  - {fileID: 0}
   TimeWaiting: 2
   RadiusOfPoint: 2
 --- !u!1001 &118814516682715868
@@ -148,6 +150,11 @@ PrefabInstance:
     - target: {fileID: 1245752813848140762, guid: 3187e870239bdf54e88beb01bfd9cfad,
         type: 3}
       propertyPath: m_Name
+      value: Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245752813848140762, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_TagString
       value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 7101533755119802874, guid: 3187e870239bdf54e88beb01bfd9cfad,
