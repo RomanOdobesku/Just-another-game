@@ -12,6 +12,8 @@ public class HealthHelper : MonoBehaviour
     [SerializeField] private float _DamagePerSecond = 0.1f;
     [SerializeField] private bool _DynamicHealthBarCreate = true;
     private bool _dead;
+    private Rigidbody rigidbody;
+    public float _DamageSensivity = 0.1f;
 
     public Robot.HealthSettings Init
     {
@@ -60,6 +62,7 @@ public class HealthHelper : MonoBehaviour
     }
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>() as Rigidbody;
         if (_DynamicHealthBarCreate)
         {
             _uIHealthBarHelper = gameObject.GetComponentInChildren<UIHealthBarHelper>() as UIHealthBarHelper;
@@ -95,21 +98,21 @@ public class HealthHelper : MonoBehaviour
         {
             Dead = true;
             _uIHealthBarHelper.DisableSlider();
+            Destroy(transform.parent.gameObject);
         }
+    }
 
-        /*
-        if (Health <= 0)
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Robot"))
         {
-            Dead = true;
-            killer.Kills += 1;
-            GetComponentInChildren<PlayerShooting>().Drop();
-            GetComponent<Animator>().SetBool("Dead", true);
-            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-
-            _uIHealthBarHelper.DisableSlider();
+            float me = rigidbody.velocity.magnitude;
+            me *= me;
+            float enemy = collision.rigidbody.velocity.magnitude;
+            enemy *= enemy;
+            float relVel = collision.relativeVelocity.magnitude;
+            GetDamage(enemy / (me + enemy) * relVel * _DamageSensivity, null);
         }
-        */
-
     }
 }
 

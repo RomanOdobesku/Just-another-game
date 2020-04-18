@@ -26,7 +26,7 @@ public class RobotNPC : MonoBehaviour
             if (Cam == null)
                 Cam = Camera.main;
         }
-        UIHealthBarHelper _UIHealthBarHelper = _HealthHelper.HealthBar;
+        UIHealthBarHelper _UIHealthBarHelper = GetComponentInChildren<UIHealthBarHelper>() as UIHealthBarHelper;
         if (_UIHealthBarHelper == null)
             print("_UIHealthBarHelper null");
         _UIHealthBarHelper.InitCam = Cam;
