@@ -6,6 +6,7 @@ using UnityEngine;
 public class RobotMotion : MonoBehaviour
 {
     public float MovePower = 50;
+    public float AddForceCoefficient = 1;
     public float MaxAngularVelocity = 25;
     public float JumpPower = 25;
     public float AccelerationCoefficient = 2.0f;
@@ -63,6 +64,7 @@ public class RobotMotion : MonoBehaviour
             _rigidbody.maxAngularVelocity = _currentMaxAngularVelocity;
 
         _rigidbody.AddTorque(new Vector3(moveDirection.z, 0, -moveDirection.x) * _currentMovePower);
+        _rigidbody.AddForce(new Vector3(moveDirection.x, 0, moveDirection.z) * AddForceCoefficient);
     }
 
     public void Jump()
