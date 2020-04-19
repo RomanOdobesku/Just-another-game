@@ -6,86 +6,97 @@ using UnityEngine.UI;
 
 public class UIHealthBarHelper : MonoBehaviour
 {
-    private Transform _nPC;
+    
+    public Camera Camera;
+
+    private Transform _NPC;
+    private float _heightOffset = 0;
+    private RectTransform _rectTransform;
+
+    private Collider _robotCollider;
+
+    private Slider _slider;
+
     public Transform NPC
     {
-        get { return _nPC; }
-        set
-        {
-            _nPC = value;
-            _HealthHelper = NPC.GetComponent<HealthHelper>();
-            _Slider = GetComponentInChildren<Slider>();
-            _Slider.maxValue = _HealthHelper.MaxHealth;
-        }
+        get => _NPC;
+        set => _NPC = value;
     }
 
-    private float _Height = 0;
-    public Camera Cam;
-    private bool _IsActive = true;
-
-    public float Height
+    public float HeightOffset
     {
-        set => _Height = value;
+        set => _heightOffset = value;
     }
 
-    public Camera InitCam
+    public float MaxHealth
     {
         set
         {
-            if (Cam == null)
-                Cam = value;
+            if (!_slider)
+            {
+                _slider = GetComponentInChildren<Slider>() as Slider;
+            }
+            _slider.maxValue = value;
         }
     }
 
-    private Slider _Slider;
-    private HealthHelper _HealthHelper;
+    public Camera _Camera
+    {
+        set => Camera = value;
+    }
 
-    Collider objCollider;
-    Plane[] planes;
-    // Use this for initialization
+    public Collider RobotCollider
+    {
+        set => _robotCollider = value;
+    }
+
+    public float Health
+    {
+        set
+        {
+            if (_slider)
+                _slider.value = value;
+        }
+    }
+    
     void Start()
     {
-        objCollider = transform.parent.GetComponentInChildren<SphereCollider>() as Collider;
-        if (Cam == null)
+        if (Camera == null)
         {
-            Cam = GameObject.FindGameObjectsWithTag("Player Camera")[0].GetComponent<Camera>();
-            if (Cam == null)
-                Cam = Camera.main;
+            Camera = Camera.main;
         }
+        _rectTransform = GetComponent<RectTransform>() as RectTransform;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        planes = GeometryUtility.CalculateFrustumPlanes(Cam);
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera);
         if (!NPC)
             return;
         Vector3 position = NPC.position;
-        position.y += _Height;
+        position.y += _heightOffset;
 
-        if ((Cam.transform.position - NPC.position).magnitude > 200 || !GeometryUtility.TestPlanesAABB(planes, objCollider.bounds))
+        if ((Camera.transform.position - NPC.position).magnitude > 200 || !GeometryUtility.TestPlanesAABB(planes, _robotCollider.bounds))
             Hide();
         else
             Show();
         
-        GetComponent<RectTransform>().position = Cam.WorldToScreenPoint(position);
-        if (_Slider)
-            _Slider.value = _HealthHelper.Health;
+        _rectTransform.position = Camera.WorldToScreenPoint(position);
     }
 
     void Hide()
     {
-        _Slider.gameObject.SetActive(false);
+        _slider.gameObject.SetActive(false);
     }
 
     void Show()
     {
-        _Slider.gameObject.SetActive(true);
+        _slider.gameObject.SetActive(true);
     }
 
     public void DisableSlider()
     {
-        Destroy(_Slider.gameObject);
+        Destroy(gameObject);
     }
 }
 

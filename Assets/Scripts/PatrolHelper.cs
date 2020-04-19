@@ -8,18 +8,21 @@ public class PatrolHelper : MonoBehaviour
     public float TimeWaiting = 2;
     public float RadiusOfPoint = 2;
 
-    private bool _MoveForward = true;
-    private bool _Waiting = false;
-    private int _CurrentIndex = 0;
-    private RobotBall _RobotBall;
-    private float Timer = 0;
+    private bool _moveForward = true;
+    private bool _waiting = false;
+    private int _currentIndex = 0;
+    private RobotMotion _robotMotion;
+    private float _timer = 0;
+
+    private Transform _robot;
 
 
 
 
     private void Start()
     {
-        _RobotBall = gameObject.GetComponentInChildren<RobotBall>() as RobotBall;
+        _robotMotion = GetComponent<RobotMotion>() as RobotMotion;
+        _robot = transform.Find("Robot");
     }
 
     private void FixedUpdate()
@@ -27,41 +30,41 @@ public class PatrolHelper : MonoBehaviour
         if (Points.Count <= 0)
             return;
 
-        Transform Target = Points[_CurrentIndex];
-        Vector3 Direction = Target.position - _RobotBall.gameObject.transform.position;
+        Transform Target = Points[_currentIndex];
+        Vector3 Direction = Target.position - _robot.position;
         Direction.y = 0;
         float Distance = Direction.magnitude;
         Direction = Direction.normalized;
         Direction = Vector3.Lerp(Vector3.zero, Direction, Mathf.Min(Distance, 10) / 10);
-        _RobotBall.Move(Direction, false);
+        _robotMotion.Move(Direction, false);
 
-        if (_Waiting)
-            Timer += Time.deltaTime;
+        if (_waiting)
+            _timer += Time.deltaTime;
 
         if (Distance < RadiusOfPoint)
         {
-            if (_Waiting)
+            if (_waiting)
             {
-                if (Timer >= TimeWaiting)
+                if (_timer >= TimeWaiting)
                 {
-                    _CurrentIndex += _MoveForward ? 1 : -1;
-                    if (_CurrentIndex < 0)
+                    _currentIndex += _moveForward ? 1 : -1;
+                    if (_currentIndex < 0)
                     {
-                        _MoveForward = true;
-                        _CurrentIndex = 1;
+                        _moveForward = true;
+                        _currentIndex = 1;
                     }
-                    if (_CurrentIndex >= Points.Count)
+                    if (_currentIndex >= Points.Count)
                     {
-                        _MoveForward = false;
-                        _CurrentIndex = Points.Count - 2;
+                        _moveForward = false;
+                        _currentIndex = Points.Count - 2;
                     }
-                    _Waiting = false;
+                    _waiting = false;
                 }
             }
             else
             {
-                _Waiting = true;
-                Timer = 0;
+                _waiting = true;
+                _timer = 0;
             }
         }
     }

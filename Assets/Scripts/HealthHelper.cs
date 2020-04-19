@@ -5,113 +5,70 @@ using System;
 public class HealthHelper : MonoBehaviour
 {
 
-    [SerializeField] private float _MaxHealth = 100;
-    [SerializeField] private float _Health = 100;
-    [SerializeField] private int _Group = 0;
-    [SerializeField] private float _Height = 0;
-    [SerializeField] private float _DamagePerSecond = 0.1f;
-    [SerializeField] private bool _DynamicHealthBarCreate = true;
-    private bool _dead;
-    private Rigidbody rigidbody;
-    public float _DamageSensivity = 0.1f;
+    public float MaxHealth = 100;
+    public float DamagePerSecond = 0.1f;
+    public float DamageSensivity = 0.1f;
+    public int Group = 0;
+    public float HeightOffset = 3;
+    public Camera Camera;
+    public bool DynamicHealthBarCreate = true;
+    public bool Player = true;
 
-    public Robot.HealthSettings Init
-    {
-        set
-        {
-            _MaxHealth = value.MaxHealth;
-            _Health = value.Health;
-            _Group = value.Group;
-            _DamagePerSecond = value.DamagePerSecond;
-            _DynamicHealthBarCreate = value.DynamicHealthBarCreate;
-            _Height = value.Height;
-            if (_uIHealthBarHelper != null)
-            {
-                _uIHealthBarHelper.Height = _Height;
-            }
+    [SerializeField] private float _health = 0;
 
-        }
-    }
+    private Rigidbody _rigidbody;
+    private UIHealthBarHelper _UIHealthBarHelper;
 
-    public float MaxHealth
-    {
-        get => _MaxHealth;
-    }
+    //private CollisionObserver _collisionObserver;
 
-    public float Health
-    {
-        get => _Health;
-    }
-
-    public bool Dead
-    {
-        get { return _dead; }
-        set { _dead = value; }
-    }
-
-    public bool hit = false;
-
-
-    public int Kills { get; private set; }
-
-    UIHealthBarHelper _uIHealthBarHelper;
-    
-    public UIHealthBarHelper HealthBar
-    {
-        get => _uIHealthBarHelper;
-    }
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>() as Rigidbody;
-        if (_DynamicHealthBarCreate)
-        {
-            _uIHealthBarHelper = gameObject.GetComponentInChildren<UIHealthBarHelper>() as UIHealthBarHelper;
-            Transform healtBarSlider = _uIHealthBarHelper.gameObject.transform;
-            healtBarSlider.SetParent(GameObject.Find("Canvas").transform);
-            _uIHealthBarHelper.NPC = transform;
-            _uIHealthBarHelper.Height = _Height;
-        }
-    }
+        _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
+        _health = MaxHealth;
+        if (!Camera)
+            Camera = Camera.main;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (hit)
+        if (DynamicHealthBarCreate)
         {
-            GetDamage(10, null);
-            hit = false;
+            GameObject healthBar = Instantiate(Resources.Load("HealthBarSlider"), Vector3.zero, Quaternion.identity) as GameObject;
+            _UIHealthBarHelper = healthBar.GetComponent<UIHealthBarHelper>() as UIHealthBarHelper;
+            healthBar.transform.SetParent(GameObject.Find("Canvas").transform);
+            _UIHealthBarHelper.NPC = _rigidbody.transform;
+            _UIHealthBarHelper.HeightOffset = HeightOffset;
+            _UIHealthBarHelper.MaxHealth = MaxHealth;
+            _UIHealthBarHelper.Health = _health;
+            _UIHealthBarHelper.RobotCollider = GetComponentInChildren<SphereCollider>() as Collider;
+            _UIHealthBarHelper._Camera = Camera;
         }
+        //_collisionObserver = GetComponent<CollisionObserver>() as CollisionObserver;
     }
 
     private void FixedUpdate()
     {
-        GetDamage(_DamagePerSecond * Time.deltaTime, null);
+        GetDamage(DamagePerSecond * Time.deltaTime, null);
+    }
+
+    public void GetRobotHit(Collision collision)
+    {
+        float me = _rigidbody.velocity.magnitude;
+        me *= me;
+        float enemy = collision.rigidbody.velocity.magnitude;
+        enemy *= enemy;
+        float relVel = collision.relativeVelocity.magnitude;
+        GetDamage(enemy / (me + enemy) * relVel * DamageSensivity, null);
+        print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageSensivity);
     }
 
     public void GetDamage(float damage, HealthHelper killer)
     {
-        if (Dead)
-            return;
-
-        _Health -= damage;
-        if (_Health <= 0)
+        _health -= damage;
+        _UIHealthBarHelper.Health = _health;
+        if (_health <= 0)
         {
-            Dead = true;
-            _uIHealthBarHelper.DisableSlider();
-            Destroy(transform.parent.gameObject);
-        }
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Robot"))
-        {
-            float me = rigidbody.velocity.magnitude;
-            me *= me;
-            float enemy = collision.rigidbody.velocity.magnitude;
-            enemy *= enemy;
-            float relVel = collision.relativeVelocity.magnitude;
-            GetDamage(enemy / (me + enemy) * relVel * _DamageSensivity, null);
+            _UIHealthBarHelper.DisableSlider();
+            if (Player)
+                Camera.transform.SetParent(null);
+            Destroy(gameObject);
         }
     }
 }
