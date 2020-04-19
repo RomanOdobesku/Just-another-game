@@ -113,7 +113,7 @@ Material:
     - _SrcBlend: 1
     - _Strench: 0.3
     - _Strensh: 2
-    - _TextureChangespeed: 0.2
+    - _TextureChangespeed: 0.05
     - _TextureDistanse: 1
     - _TextureStrench: 1
     - _UVSec: 0

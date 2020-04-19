@@ -71,7 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9f709c28723e94a938314673fe67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points: []
+  Points:
+  - {fileID: 0}
+  - {fileID: 0}
   TimeWaiting: 2
   RadiusOfPoint: 2
 --- !u!114 &1275533565
@@ -104,9 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa074ee7e8d19543b88d31ff34bddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1
+  MaxHealth: 100
   DamagePerSecond: 0.1
-  DamageSensivity: 0.1
+  DamageRobotSensivity: 0.1
+  DamagePerSecondInLava: 10
   Group: 0
   HeightOffset: 5
   Camera: {fileID: 0}

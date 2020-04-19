@@ -7,7 +7,8 @@ public class HealthHelper : MonoBehaviour
 
     public float MaxHealth = 100;
     public float DamagePerSecond = 0.1f;
-    public float DamageSensivity = 0.1f;
+    public float DamageRobotSensivity = 0.1f;
+    public float DamagePerSecondInLava = 0.1f;
     public int Group = 0;
     public float HeightOffset = 3;
     public Camera Camera;
@@ -19,6 +20,14 @@ public class HealthHelper : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private UIHealthBarHelper _UIHealthBarHelper;
+
+    private bool _lava = false;
+
+    public bool Lava
+    {
+        set => _lava = value;
+        get => _lava;
+    }
 
     //private CollisionObserver _collisionObserver;
 
@@ -47,6 +56,8 @@ public class HealthHelper : MonoBehaviour
     private void FixedUpdate()
     {
         GetDamage(DamagePerSecond * Time.deltaTime, null);
+        if (Lava)
+            GetDamage(DamagePerSecondInLava * Time.deltaTime, null);
     }
 
     public void GetRobotHit(Collision collision)
@@ -56,8 +67,8 @@ public class HealthHelper : MonoBehaviour
         float enemy = collision.rigidbody.velocity.magnitude;
         enemy *= enemy;
         float relVel = collision.relativeVelocity.magnitude;
-        GetDamage(enemy / (me + enemy) * relVel * DamageSensivity, null);
-        print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageSensivity);
+        GetDamage(enemy / (me + enemy) * relVel * DamageRobotSensivity, null);
+        print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageRobotSensivity);
     }
 
     public void GetDamage(float damage, HealthHelper killer)
