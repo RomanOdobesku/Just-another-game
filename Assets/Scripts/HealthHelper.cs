@@ -11,6 +11,7 @@ public class HealthHelper : MonoBehaviour
     public int Group = 0;
     public float HeightOffset = 3;
     public Camera Camera;
+    public GameObject Explosion;
     public bool DynamicHealthBarCreate = true;
     public bool Player = true;
 
@@ -65,10 +66,13 @@ public class HealthHelper : MonoBehaviour
         _UIHealthBarHelper.Health = _health;
         if (_health <= 0)
         {
+            GameObject explosion = Instantiate(Explosion, _rigidbody.transform.position, Quaternion.identity);
+            ParticleSystem explosionParticleSystem = explosion.GetComponent<ParticleSystem>() as ParticleSystem;
             _UIHealthBarHelper.DisableSlider();
             if (Player)
                 Camera.transform.SetParent(null);
             Destroy(gameObject);
+            Destroy(explosion, explosionParticleSystem.main.duration);
         }
     }
 }

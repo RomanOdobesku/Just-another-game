@@ -71,9 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9f709c28723e94a938314673fe67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 0}
-  - {fileID: 0}
+  Points: []
   TimeWaiting: 2
   RadiusOfPoint: 2
 --- !u!114 &1275533565
@@ -106,12 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa074ee7e8d19543b88d31ff34bddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 1
   DamagePerSecond: 0.1
   DamageSensivity: 0.1
   Group: 0
-  HeightOffset: 3
+  HeightOffset: 5
   Camera: {fileID: 0}
+  Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   DynamicHealthBarCreate: 1
   Player: 0
   _health: 0
