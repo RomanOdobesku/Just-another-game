@@ -6,12 +6,13 @@ using Boo.Lang.Runtime.DynamicDispatching;
 public class HealthHelper : MonoBehaviour
 {
 
-    public float MaxHealth = 100;
+    public float MaxHealth = 100f;
+    public float ValueRepairKit = 50f;
     public float DamagePerSecond = 0.1f;
     public float DamageRobotSensivity = 0.1f;
     public float DamagePerSecondInLava = 0.1f;
     public int Group = 0;
-    public float HeightOffset = 3;
+    public float HeightOffset = 3f;
     public Camera Camera;
     public GameObject Explosion;
     public bool DynamicHealthBarCreate = true;
@@ -74,6 +75,13 @@ public class HealthHelper : MonoBehaviour
         enemy *= enemy;
         GetDamage(enemy / (me + enemy) * relVel * DamageRobotSensivity, null);
         print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageRobotSensivity);
+    }
+
+    public void GetRepairKit()
+    {
+        _health += ValueRepairKit;
+        _health = Math.Min(MaxHealth, _health);
+        _UIHealthBarHelper.Health = _health;
     }
 
     public void GetDamage(float damage, HealthHelper killer)

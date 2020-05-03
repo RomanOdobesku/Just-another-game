@@ -25,6 +25,15 @@ public class CollisionObserver : MonoBehaviour
             _healthHelper.Lava = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Repair kit"))
+        {
+            _healthHelper.GetRepairKit();
+            Destroy(other.gameObject);
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Lava"))
