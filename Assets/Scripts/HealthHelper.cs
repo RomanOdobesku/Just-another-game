@@ -69,7 +69,7 @@ public class HealthHelper : MonoBehaviour
         float relVel = collision.relativeVelocity.magnitude;
         if (me < enemy)
         {
-            _rigidbody.AddForce(collision.GetContact(0).normal * relVel, ForceMode.Impulse);
+            _rigidbody.AddForce(collision.GetContact(0).normal * relVel * 0.1f, ForceMode.Impulse);
         }
         me *= me;
         enemy *= enemy;

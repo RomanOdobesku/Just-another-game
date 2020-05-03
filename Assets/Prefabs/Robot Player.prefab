@@ -159,11 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bed900116e1176449b15a1346745403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovePower: 50
+  MovePower: 100
+  AddForceCoefficient: 10
   MaxAngularVelocity: 25
   JumpPower: 10
   AccelerationCoefficient: 2
+  Dust: {fileID: 1344314377593938, guid: 588bc10e60199ad4eb04ad17b0526e9f, type: 3}
   UseAddForce: 1
+  UseDust: 0
   Velocity: 0
 --- !u!114 &7362775608671600153
 MonoBehaviour:
@@ -191,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  ValueRepairKit: 1
   DamagePerSecond: 0.1
   DamageRobotSensivity: 0.1
   DamagePerSecondInLava: 10
