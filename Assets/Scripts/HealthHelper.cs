@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Boo.Lang.Runtime.DynamicDispatching;
 
 public class HealthHelper : MonoBehaviour
 {
@@ -63,10 +64,14 @@ public class HealthHelper : MonoBehaviour
     public void GetRobotHit(Collision collision)
     {
         float me = _rigidbody.velocity.magnitude;
-        me *= me;
         float enemy = collision.rigidbody.velocity.magnitude;
-        enemy *= enemy;
         float relVel = collision.relativeVelocity.magnitude;
+        if (me < enemy)
+        {
+            _rigidbody.AddForce(collision.GetContact(0).normal * relVel, ForceMode.Impulse);
+        }
+        me *= me;
+        enemy *= enemy;
         GetDamage(enemy / (me + enemy) * relVel * DamageRobotSensivity, null);
         print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageRobotSensivity);
     }
