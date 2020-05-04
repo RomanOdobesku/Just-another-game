@@ -94,9 +94,9 @@ MonoBehaviour:
   MaxAngularVelocity: 25
   JumpPower: 25
   AccelerationCoefficient: 2
-  Dust: {fileID: 0}
+  Dust: {fileID: 1344314377593938, guid: 588bc10e60199ad4eb04ad17b0526e9f, type: 3}
   UseAddForce: 0
-  UseDust: 0
+  UseDust: 1
   Velocity: 0
 --- !u!114 &1275533566
 MonoBehaviour:

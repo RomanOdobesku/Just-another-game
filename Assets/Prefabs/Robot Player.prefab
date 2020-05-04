@@ -166,7 +166,7 @@ MonoBehaviour:
   AccelerationCoefficient: 2
   Dust: {fileID: 1344314377593938, guid: 588bc10e60199ad4eb04ad17b0526e9f, type: 3}
   UseAddForce: 1
-  UseDust: 0
+  UseDust: 1
   Velocity: 0
 --- !u!114 &7362775608671600153
 MonoBehaviour:
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  ValueRepairKit: 1
+  ValueRepairKit: 25
   DamagePerSecond: 0.1
   DamageRobotSensivity: 0.1
   DamagePerSecondInLava: 10
