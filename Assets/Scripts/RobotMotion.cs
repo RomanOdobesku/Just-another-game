@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -25,11 +27,33 @@ public class RobotMotion : MonoBehaviour
 
     private Transform _robot;
 
+    private bool _onGround = true;
+    public bool OnGround
+    {
+        set
+        {
+            _onGround = value;
+        }
+    }
+
+    private ContactPoint _touchPoint;
+    public ContactPoint TouchPoint
+    {
+        set
+        {
+            _touchPoint = value;
+        }
+    }
+
+    private GameObject _dust;
+    private CustomParticalController _dustController;
     void Start()
     {
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         _rigidbody.maxAngularVelocity = MaxAngularVelocity;
         _robot = _rigidbody.transform;
+        _dust = Instantiate(Dust, Vector3.zero, Quaternion.identity);
+        _dustController = _dust.GetComponent<CustomParticalController>();
     }
 
     private void Update()
@@ -39,11 +63,18 @@ public class RobotMotion : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (UseDust && _rigidbody.velocity.magnitude > 5)
+
+        if (UseDust && _onGround && _rigidbody.velocity.magnitude > 5)
         {
-            Quaternion rotation = Quaternion.FromToRotation(transform.forward, _rigidbody.velocity.normalized);
-            GameObject dust = Instantiate(Dust, _rigidbody.position, rotation);
-            Destroy(dust, 0.1f);
+            _dustController.Enabled = true;
+            Quaternion rotation = Quaternion.LookRotation(_rigidbody.velocity.normalized, _touchPoint.normal);
+            rotation *= Quaternion.AngleAxis(90, Vector3.right);
+            rotation *= Quaternion.AngleAxis(-90, Vector3.forward);
+            _dust.transform.position = _touchPoint.point + Vector3.up;
+            _dust.transform.rotation = rotation;
+        } else
+        {
+            _dustController.Enabled = false;
         }
     }
 
@@ -69,7 +100,13 @@ public class RobotMotion : MonoBehaviour
 
     public void Jump()
     {
+        /*
         if (Physics.Raycast(_robot.position, -Vector3.up, _groundRayLength))
+        {
+            _rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+        }
+        */
+        if (_onGround)
         {
             _rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
         }
