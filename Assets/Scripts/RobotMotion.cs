@@ -45,14 +45,14 @@ public class RobotMotion : MonoBehaviour
         }
     }
 
-    private GameObject _dust;
+    private Transform _dust;
     private CustomParticalController _dustController;
     void Start()
     {
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         _rigidbody.maxAngularVelocity = MaxAngularVelocity;
         _robot = _rigidbody.transform;
-        _dust = Instantiate(Dust, Vector3.zero, Quaternion.identity);
+        _dust = transform.Find("DustStorm");
         _dustController = _dust.GetComponent<CustomParticalController>();
     }
 
@@ -66,15 +66,17 @@ public class RobotMotion : MonoBehaviour
 
         if (UseDust && _onGround && _rigidbody.velocity.magnitude > 5)
         {
-            _dustController.Enabled = true;
+            
             Quaternion rotation = Quaternion.LookRotation(_rigidbody.velocity.normalized, _touchPoint.normal);
             rotation *= Quaternion.AngleAxis(90, Vector3.right);
             rotation *= Quaternion.AngleAxis(-90, Vector3.forward);
             _dust.transform.position = _touchPoint.point + Vector3.up;
             _dust.transform.rotation = rotation;
+            _dustController.Enabled = true;
         } else
         {
             _dustController.Enabled = false;
+            _dust.transform.position = _robot.position;
         }
     }
 
