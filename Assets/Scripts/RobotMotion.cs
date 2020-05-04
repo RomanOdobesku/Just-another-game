@@ -70,7 +70,7 @@ public class RobotMotion : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(_rigidbody.velocity.normalized, _touchPoint.normal);
             rotation *= Quaternion.AngleAxis(90, Vector3.right);
             rotation *= Quaternion.AngleAxis(-90, Vector3.forward);
-            _dust.transform.position = _touchPoint.point + Vector3.up;
+            _dust.transform.position = _touchPoint.point + _touchPoint.normal;
             _dust.transform.rotation = rotation;
             _dustController.Enabled = true;
         } else
