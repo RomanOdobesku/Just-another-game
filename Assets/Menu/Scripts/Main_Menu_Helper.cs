@@ -22,7 +22,7 @@ public class Main_Menu_Helper : MonoBehaviour
     }
     public void Start_fight()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Improvement_Menu");
     }
     public void Exit()
     {

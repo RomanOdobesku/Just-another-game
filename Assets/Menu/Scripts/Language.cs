@@ -33,7 +33,7 @@ public class Language : MonoBehaviour
         if (dropdown.captionText.text == "English")
         {
            // _Main_menu_T.text = "Main menu";
-            _Start_campany_T.text = "Campania";
+            _Start_campany_T.text = "Сompany";
             _Start_campany_T_Help.text= "Start fighting \nwith the Absolute";
             _Start_fight_T.text = "Team play";
             _Start_fight_T_Help.text = "Start commanding team\nup and defeat the RQ";

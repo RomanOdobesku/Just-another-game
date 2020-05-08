@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;// Required when using Event data.
 public class Color_Button : MonoBehaviour
 {
     public Text text;
-    Vector4 color_beg;
-    Vector4 color_end;
+    Color color_beg;
+    Color color_end;
     private Color_Text_Button Color_Text_Buttons;
     private int Size;
     GameObject canvas;
@@ -19,7 +19,7 @@ public class Color_Button : MonoBehaviour
         color_beg = Color_Text_Buttons.color_beg;
         color_end = Color_Text_Buttons.color_end;
         text.fontSize = Size;
-        text.color = new Color(color_beg.x, color_beg.y, color_beg.z, color_beg.w);
+        text.color = color_beg;
     }
 
     
@@ -29,18 +29,18 @@ public class Color_Button : MonoBehaviour
     }
     public void OnPointerEnter()
     {
-        text.color = new Color(color_end.x, color_end.y, color_end.z, color_end.w);
+        text.color = color_end;
     }
     public void OnPointerEnter(BaseEventData data)
     {
-        text.color = new Color(color_end.x, color_end.y, color_end.z, color_end.w);
+        text.color = color_end;
     }
     public void OnPointerExit()
     {
-        text.color = new Color(color_beg.x, color_beg.y, color_beg.z, color_beg.w);
+        text.color = color_beg;
     }
     public void OnPointerExit(BaseEventData data)
     {
-        text.color = new Color(color_beg.x, color_beg.y, color_beg.z, color_beg.w);
+        text.color = color_beg;
     }
 }
