@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CameraController : MonoBehaviour
 {
     public Camera Camera;
     public GameObject CameraFollowObject;
+    public GameObject NPCFollowObject;
     public float CameraFollowSpeed = 100.0f;
     public float HorizontalSensivity = 150;
     public float VerticalSensivity = 150;
@@ -19,6 +21,7 @@ public class CameraController : MonoBehaviour
     public float SmoothCameraRotation = 10.0f;
 
     public bool LockCursor = true;
+    public bool NPCControl = true;
 
     private Vector2 _mouseMove;
     private float _mouseWheel;
@@ -26,6 +29,8 @@ public class CameraController : MonoBehaviour
     private float _cameraOffset;
     private bool _cursorIsLocked = true;
     private float _targetCameraOffset = 25.0f;
+
+    private bool _followMe = false;
 
     private Transform _cameraBase;
 
@@ -45,6 +50,8 @@ public class CameraController : MonoBehaviour
         _rotation.y = startRotation.y;
 
         Camera.transform.localRotation = Quaternion.identity;
+
+        _followMe = NPCControl;
     }
 
     void Update()
@@ -68,6 +75,37 @@ public class CameraController : MonoBehaviour
 
 
         UpdateCursorLock();
+
+        if (NPCControl)
+        {
+            if (_followMe)
+            {
+                NPCFollowObject.transform.position = CameraFollowObject.transform.position;
+            }
+
+            if (!_cursorIsLocked)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    int layerMask = 1 << 1;
+                    layerMask = ~layerMask;
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+                    {
+                        Debug.DrawLine(hit.point, hit.point + Vector3.up * 100, Color.red, 5);
+                        NPCFollowObject.transform.position = hit.point;
+                        _followMe = false;
+                    }
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _followMe = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -104,11 +142,11 @@ public class CameraController : MonoBehaviour
 
     private void InternalLockUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftControl))
         {
             _cursorIsLocked = false;
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) && !Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             _cursorIsLocked = true;
         }

@@ -3,26 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionObserver : MonoBehaviour
-{ 
+{
 
     private HealthHelper _healthHelper;
+    private RobotMotion _robotMotion;
 
     void Start()
     {
         _healthHelper = transform.parent.GetComponent<HealthHelper>() as HealthHelper;
-    }
-
-    void Update()
-    {
-        
+        _robotMotion = transform.parent.GetComponent<RobotMotion>() as RobotMotion;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Robot"))
+        GameObject other = collision.gameObject;
+        GameObject parent = other.transform.parent.gameObject;
+        if (other.CompareTag("Robot"))
             _healthHelper.GetRobotHit(collision);
-        else if (collision.gameObject.CompareTag("Lava"))
+        else if (other.CompareTag("Lava"))
             _healthHelper.Lava = true;
+        else if (other.CompareTag("Terrain") || parent && parent.CompareTag("Terrain"))
+        {
+            _robotMotion.OnGround = true;
+            _robotMotion.TouchPoint = collision.GetContact(0);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        GameObject other = collision.gameObject;
+        GameObject parent = other.transform.parent.gameObject;
+        if (other.CompareTag("Terrain") || parent && parent.CompareTag("Terrain"))
+        {
+            _robotMotion.TouchPoint = collision.GetContact(0);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        GameObject other = collision.gameObject;
+        GameObject parent = other.transform.parent.gameObject;
+        if (other.CompareTag("Lava"))
+            _healthHelper.Lava = false;
+        else if (other.CompareTag("Terrain") || parent && parent.CompareTag("Terrain"))
+            _robotMotion.OnGround = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,11 +55,5 @@ public class CollisionObserver : MonoBehaviour
         {
             _healthHelper.GetRepairKit();
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Lava"))
-            _healthHelper.Lava = false;
     }
 }

@@ -12,6 +12,8 @@ TagManager:
   - Medicine cabinet
   - Next_Level
   - Easter egg
+  - Terrain
+  - Lava
   layers:
   - Default
   - TransparentFX

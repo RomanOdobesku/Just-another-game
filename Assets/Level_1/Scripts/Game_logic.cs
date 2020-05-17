@@ -21,6 +21,8 @@ public class Game_logic : MonoBehaviour
     public GameObject Wall;
     public GameObject[] batterгies;
 
+    private HealthHelper _healthHelper;
+
 
     int count_Collect_Battery=0;
     
@@ -41,6 +43,8 @@ public class Game_logic : MonoBehaviour
             batterгies[j].SetActive(true);
         }
         j = 15;
+
+        _healthHelper = transform.parent.GetComponent<HealthHelper>() as HealthHelper;
     }
  
     void Update()
@@ -96,12 +100,14 @@ public class Game_logic : MonoBehaviour
 
         }
 
+        
         if (other.gameObject.CompareTag("Repair kit"))
         {
             other.gameObject.SetActive(false);
             Const_and_other.count_Bonus++;
             text_Bonus_Info.text = Const_and_other.count_Bonus.ToString();
         }
+        
 
         if (other.gameObject.CompareTag("Battery"))
         {
@@ -126,6 +132,7 @@ public class Game_logic : MonoBehaviour
 
         if (other.gameObject.CompareTag("Medicine cabinet"))
         {
+            //_healthHelper.GetRepairKit();
             for (int i = 0; i < Medicime_Cabinets.Length; i++)
             {
                 if (other.name == Medicime_Cabinets[i].name)
