@@ -60,36 +60,6 @@ Transform:
   m_Father: {fileID: 8558010810476357162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &710737752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710737753}
-  m_Layer: 0
-  m_Name: NPC follow object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710737753
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710737752}
-  m_LocalRotation: {x: -0, y: 0.6353223, z: -0, w: 0.7722472}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.024999999, y: 0.025, z: 0.024999999}
-  m_Children: []
-  m_Father: {fileID: 6878445445048400782}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &106123752
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -162,7 +132,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &1670220414567540575
+--- !u!114 &117554114567421272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,50 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4aa4f7cc467dda45afc50f123c0faee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1861867277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6881488368413611638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e77a5b49b4dc6f41922e5cd3a67471e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Medicime_Cabinets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _Time: 30
-  text_Info: {fileID: 0}
-  text_Bonus_Info: {fileID: 0}
-  text_No_Next_Level: {fileID: 0}
-  collect: 15
-  Battery_Ch: {fileID: 0}
-  Task_Ch: {fileID: 0}
-  Wall: {fileID: 0}
-  "batter\u0433ies":
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &8558010810476357160
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,9 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   ValueRepairKit: 50
-  DamagePerSecond: 0
-  DamageRobotSensivity: 0
-  DamagePerSecondInLava: 0
+  DamagePerSecond: 0.1
+  DamageRobotSensivity: 0.1
+  DamagePerSecondInLava: 0.1
   Group: 0
   HeightOffset: 3
   Camera: {fileID: 0}

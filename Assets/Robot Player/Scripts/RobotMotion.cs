@@ -54,7 +54,7 @@ public class RobotMotion : MonoBehaviour
         _rigidbody.maxAngularVelocity = MaxAngularVelocity;
         _robot = _rigidbody.transform;
         _dust = transform.Find("DustStorm");
-        Debug.Log(_dust);
+
         _dustController = _dust.GetComponent<CustomParticalController>();
     }
 

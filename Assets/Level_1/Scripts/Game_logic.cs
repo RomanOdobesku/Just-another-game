@@ -44,7 +44,7 @@ public class Game_logic : MonoBehaviour
         }
         j = 15;
 
-        _healthHelper = transform.parent.GetComponent<HealthHelper>() as HealthHelper;
+        //_healthHelper = transform.parent.GetComponent<HealthHelper>() as HealthHelper;
     }
  
     void Update()
@@ -114,11 +114,13 @@ public class Game_logic : MonoBehaviour
             other.gameObject.SetActive(false);
             if (j < 30)
             {
-                batterгies[j].SetActive(true);
+                if (batterгies[j])
+                    batterгies[j].SetActive(true);
                 j++;
             }
            
             count_Collect_Battery++;
+            Debug.Log(count_Collect_Battery);
             if (count_Collect_Battery == collect)
             {
                 Battery_Ch.SetActive(true);
