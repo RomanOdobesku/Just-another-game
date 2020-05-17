@@ -7,6 +7,7 @@ public class NPCFollow : MonoBehaviour
     public Transform FollowObject;
     public bool Attack = true;
     public float StopRadius = 25;
+    public float ActivateRadius = Mathf.Infinity;
 
     private RobotMotion _robotMotion;
     private Transform _robot;
@@ -27,22 +28,28 @@ public class NPCFollow : MonoBehaviour
         Vector3 direction = FollowObject.position - _robot.position;
         float distance = direction.magnitude;
         direction = direction.normalized;
-
-        if (Attack)
+        if (distance < ActivateRadius)
         {
-            if (!_moveToRobot)
-                direction *= -1;
-            _robotMotion.Move(direction, _moveToRobot);
-            if (_moveToRobot && distance < 5)
-                _moveToRobot = false;
-            else if (!_moveToRobot && distance > 100)
-                _moveToRobot = true;
+            if (Attack)
+            {
+                if (!_moveToRobot)
+                    direction *= -1;
+                _robotMotion.Move(direction, _moveToRobot);
+                if (_moveToRobot && distance < 5)
+                    _moveToRobot = false;
+                else if (!_moveToRobot && distance > 100)
+                    _moveToRobot = true;
+            }
+            else
+            {
+                if (distance > StopRadius)
+                    _robotMotion.Move(direction * Mathf.Lerp(0, 1, distance / 200), true);
+                else
+                    _robotMotion.Stop();
+            }
         } else
         {
-            if (distance > StopRadius)
-                _robotMotion.Move(direction * Mathf.Lerp(0, 1, distance / 200), true);
-            else
-                _robotMotion.Stop();
+            _robotMotion.Stop();
         }
     }
 }

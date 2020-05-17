@@ -476,6 +476,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot NPC 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3542830194177032351, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12632,6 +12637,18 @@ PrefabInstance:
       propertyPath: MinAngleY
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: HeightOffset
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: SmoothCameraRotation
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 408697063, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: UseDust
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 408697065, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: DamagePerSecondInLava
       value: 0.1
@@ -12643,6 +12660,10 @@ PrefabInstance:
     - target: {fileID: 408697065, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: DamagePerSecond
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408697065, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: Player
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1084994678, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: Medicime_Cabinets.Array.data[0]
@@ -12818,7 +12839,82 @@ PrefabInstance:
       objectReference: {fileID: 2112645196}
     - target: {fileID: 1084994678, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: collect
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619926881732108942, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619926881732108942, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351977279793597437, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351977279793597437, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351977279793597437, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.radial.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.radial.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.minCurve.m_Curve.Array.data[1].value
+      value: -0.046150208
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.minCurve.m_Curve.Array.data[0].value
+      value: 0.015380859
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.minCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.maxCurve.m_Curve.Array.data[0].value
+      value: 0.046154022
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.maxCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554461161990328723, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: VelocityModule.y.maxCurve.m_Curve.Array.data[1].value
+      value: 0.20000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878445445048400782, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878445445048400782, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357160, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
@@ -12828,17 +12924,17 @@ PrefabInstance:
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.5
+      value: -121
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.7
+      value: 22.4
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -90.9
+      value: -63.4
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
@@ -12878,6 +12974,21 @@ PrefabInstance:
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749319056492670165, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915222865880448623, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915222865880448623, guid: b8ddfe67794995342b2780bd097f663a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13053,6 +13164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot NPC 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3542830194177032351, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13131,6 +13247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robot NPC 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3542830194177032351, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
@@ -13636,6 +13757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robot NPC 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3542830194177032351, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
@@ -16715,14 +16841,33 @@ PrefabInstance:
       propertyPath: UseDust
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
       objectReference: {fileID: 912070062}
+    - target: {fileID: 483046587664062280, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 483046587664062280, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_Name
       value: Robot NPC 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3542830194177032351, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
