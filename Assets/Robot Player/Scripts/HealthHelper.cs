@@ -8,6 +8,7 @@ public class HealthHelper : MonoBehaviour
 
     public float MaxHealth = 100f;
     public float ValueRepairKit = 50f;
+	public float ValueDamagRedField = 50f;
     public float DamagePerSecond = 0.1f;
     public float DamageRobotSensivity = 0.1f;
     public float DamagePerSecondInLava = 0.1f;
@@ -81,6 +82,13 @@ public class HealthHelper : MonoBehaviour
     {
         _health += ValueRepairKit;
         _health = Math.Min(MaxHealth, _health);
+        _UIHealthBarHelper.Health = _health;
+    }
+	
+	public void EnterField()
+    {
+        _health -= ValueDamagRedField;
+        _health = Math.Max(0, _health);
         _UIHealthBarHelper.Health = _health;
     }
 

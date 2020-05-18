@@ -2183,7 +2183,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1243869890215507490}
   - component: {fileID: 1246550552342955951}
-  - component: {fileID: -1503504717056154121}
+  - component: {fileID: 1245752813848140763}
+  - component: {fileID: 8419839699834434017}
+  - component: {fileID: 7101533755119802874}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -2222,7 +2224,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1503504717056154121
+--- !u!114 &1245752813848140763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2231,9 +2233,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245752813848140762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4aa4f7cc467dda45afc50f123c0faee, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aa074ee7e8d19543b88d31ff34bddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _MaxHealth: 100
+  _Health: 100
+  _Group: 0
+  _Height: 0
+  _DamagePerSecond: 0.1
+  _DynamicHealthBarCreate: 1
+  _DamageSensivity: 0.1
+  hit: 0
+--- !u!114 &8419839699834434017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245752813848140762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec749b5fe73b3041954feda70aa92bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovePower: 25
+  m_UseTorque: 1
+  m_MaxAngularVelocity: 25
+  m_JumpPower: 5
+--- !u!114 &7101533755119802874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245752813848140762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3c813d131c5b348a052ef8ecde246e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &1245757005148670228
 GameObject:
   m_ObjectHideFlags: 0
