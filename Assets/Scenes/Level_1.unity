@@ -10591,7 +10591,7 @@ MonoBehaviour:
   text_Info: {fileID: 1681443569}
   text_Bonus_Info: {fileID: 2005514088}
   text_No_Next_Level: {fileID: 1934576147}
-  collect: 1
+  collect: 20
   Battery_Ch: {fileID: 702675833}
   Task_Ch: {fileID: 267763444}
   Wall: {fileID: 1135379619}
