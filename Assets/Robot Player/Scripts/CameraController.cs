@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -57,8 +58,19 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // rotate camera base
-        _mouseMove.x = Input.GetAxis("Mouse X");
-        _mouseMove.y = Input.GetAxis("Mouse Y");
+        if (_cursorIsLocked)
+        {
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            _mouseMove.x = Input.GetAxis("Mouse X");
+            _mouseMove.y = Input.GetAxis("Mouse Y");
+        } else
+        {
+            Time.timeScale = 0.1f;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            _mouseMove.x = 0;
+            _mouseMove.y = 0;
+        }
 
         _rotation.x -= _mouseMove.y * VerticalSensivity * Time.deltaTime;
         _rotation.y += _mouseMove.x * HorizontalSensivity * Time.deltaTime;
@@ -142,14 +154,15 @@ public class CameraController : MonoBehaviour
 
     private void InternalLockUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftControl) && NPCControl)
         {
             _cursorIsLocked = false;
         }
-        else if (Input.GetMouseButtonUp(0) && !Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetMouseButtonUp(0) && (!Input.GetKey(KeyCode.LeftControl) || !NPCControl) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             _cursorIsLocked = true;
         }
+
 
         if (_cursorIsLocked)
         {
