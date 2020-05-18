@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9544c5dba58ba8148b77ea3c5ed493f7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9112891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9112892}
+  m_Layer: 8
+  m_Name: NPC follow object (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9112892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112891}
+  m_LocalRotation: {x: -0, y: -0.6353223, z: -0, w: 0.7722472}
+  m_LocalPosition: {x: -121, y: 22.4, z: -63.4}
+  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &12099946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -470,7 +500,7 @@ PrefabInstance:
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
-      objectReference: {fileID: 912070062}
+      objectReference: {fileID: 9112892}
     - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_Name
@@ -3520,7 +3550,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.92941177, b: 0.76862746, a: 1}
   m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
@@ -8257,12 +8287,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
---- !u!4 &912070062 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 333624762, guid: b8ddfe67794995342b2780bd097f663a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1353695437}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &923119302
 GameObject:
   m_ObjectHideFlags: 0
@@ -12639,11 +12663,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: HeightOffset
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: SmoothCameraRotation
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: NPCFollowObject
+      value: 
+      objectReference: {fileID: 9112891}
+    - target: {fileID: 408697062, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
+      propertyPath: NPCControl
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408697063, guid: b8ddfe67794995342b2780bd097f663a, type: 3}
       propertyPath: UseDust
@@ -13158,7 +13190,7 @@ PrefabInstance:
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
-      objectReference: {fileID: 912070062}
+      objectReference: {fileID: 9112892}
     - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_Name
@@ -13242,7 +13274,7 @@ PrefabInstance:
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
-      objectReference: {fileID: 912070062}
+      objectReference: {fileID: 9112892}
     - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_Name
@@ -13752,7 +13784,7 @@ PrefabInstance:
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
-      objectReference: {fileID: 912070062}
+      objectReference: {fileID: 9112892}
     - target: {fileID: 1225575121225857205, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_Name
@@ -16848,7 +16880,7 @@ PrefabInstance:
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
       value: 
-      objectReference: {fileID: 912070062}
+      objectReference: {fileID: 9112892}
     - target: {fileID: 483046587664062280, guid: 771b3602986ac814b9e3fa924eadc1a8,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -19279,7 +19311,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.93123263, b: 0.7688679, a: 1}
   m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
