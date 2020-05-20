@@ -31,6 +31,7 @@ public class Game_logic_3 : MonoBehaviour
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info_main_crystal.text = "0/1";
         text_Info_add_crystal.text = count_Collect_add_Crystal.ToString() + "/" + collect_crystal.ToString();
+        text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
         for (int i = 0; i < Medicime_Cabinets.Length; i++)
         {
             Active_L.Add(true);

@@ -31,7 +31,6 @@ public class Message_Save : MonoBehaviour
         {
             _Timer -= Time.deltaTime;
             res = 1-(1+Mathf.Cos(Mathf.PI*_Timer))/2;
-            //res = (one - 1)* (one - 1)*(-1) + 1;
             
             image.color = new Color(color_I.r, color_I.g, color_I.b, res);
             text.color = new Color(color_T.r, color_T.g, color_T.b, res);

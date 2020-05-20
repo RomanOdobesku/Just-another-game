@@ -15,6 +15,7 @@ public class Game_logic_1 : MonoBehaviour
     public Text text_Info;
     public Text text_Bonus_Info;
     public Text text_No_Next_Level;
+    public Text text_Use_Game;
     public int collect;
     public GameObject Battery_Ch;
     public GameObject Task_Ch;
@@ -24,6 +25,7 @@ public class Game_logic_1 : MonoBehaviour
     int count_Bonus_this_scene = 0;
 
     int count_Collect_Battery=0;
+    bool InEasterEgg = false;
     
     int j = 0;
     // Start is called before the first frame update
@@ -47,6 +49,16 @@ public class Game_logic_1 : MonoBehaviour
 
     void Update()
     {
+        if (InEasterEgg)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Загружаем тетрис");
+                //возможно вместо перехода на другую сцену, повесим тетрис на UI
+               // SceneManager.LoadScene("Tetris");
+            }
+
+        }
         for (int i = 0; i < Medicime_Cabinets.Length; i++)
         {
             if (Active_L[i] == false)
@@ -74,6 +86,11 @@ public class Game_logic_1 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Check_Task"))
             text_No_Next_Level.gameObject.SetActive(false);
+        if (other.gameObject.CompareTag("Easter egg"))
+        {
+            text_Use_Game.gameObject.SetActive(false);
+            InEasterEgg = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +98,8 @@ public class Game_logic_1 : MonoBehaviour
         if (other.gameObject.CompareTag("Easter egg"))
         {
             Task_Ch.SetActive(true);
+            text_Use_Game.gameObject.SetActive(true);
+            InEasterEgg = true;
 
         }
         if (other.gameObject.CompareTag("Next_Level"))

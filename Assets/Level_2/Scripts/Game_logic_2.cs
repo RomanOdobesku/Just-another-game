@@ -43,6 +43,7 @@ public class Game_logic_2 : MonoBehaviour
         text_NPC_Dead_Info.text = "0/" + NPC.Length.ToString();
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
+        text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
 
     }
 
@@ -92,21 +93,18 @@ public class Game_logic_2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Check_Task"))
         {
-            text_No_Next_Level.gameObject.SetActive(false);
-            
+            text_No_Next_Level.gameObject.SetActive(false); 
         }
-        
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
         if (other.gameObject.CompareTag("Finish"))
         {
             other.gameObject.SetActive(false);
             Task_Cube.gameObject.SetActive(true);
             Next_Level_Cube.gameObject.SetActive(true);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject.CompareTag("Easter egg"))
         {
             Task_Ch.SetActive(true);
@@ -126,7 +124,7 @@ public class Game_logic_2 : MonoBehaviour
             text_No_Next_Level.text = "RS1, ты ещё не учичтожил всех членов отряда ОС!\nСначала уничтожь всех, потом возвращайся!";
             text_No_Next_Level.gameObject.SetActive(true);
             }
-            if (NPC_Dead_Ch.activeInHierarchy == true)
+            if (NPC_Dead_Ch.activeInHierarchy == true && Battery_Ch.activeInHierarchy == false)
             {
             text_No_Next_Level.text = "RS1, ты ещё не собрал необходимое количество батареек!\nВернись и собери хотя бы 20!";
             text_No_Next_Level.gameObject.SetActive(true);

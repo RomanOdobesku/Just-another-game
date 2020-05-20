@@ -10,6 +10,8 @@ public class SI2_Helper : MonoBehaviour
     bool ActiveBlueField=false;
     public GameObject RedField;
     bool ActiveRedField = false;
+    GameObject Field;
+    public float Timer=8;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,40 +21,36 @@ public class SI2_Helper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Timer > 0)
+        {
+            Timer -= Time.deltaTime;
+        }
+        if (Timer<=0 && Field != null)
+        {
+            SI2_Panel.SetActive(false);
+            Field.SetActive(false);
+            Field = null;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        GameObject obj = other.gameObject;
-        GameObject parent = obj.transform.parent.gameObject;
-        if (this.CompareTag("Field Blue Check") && ActiveBlueField == false && (obj.CompareTag("Robot Player") || parent.CompareTag("Robot Player")))
+        if (this.CompareTag("Field Blue Check") && ActiveBlueField == false && other.CompareTag("Robot Player"))
         {
             SI2_Panel.SetActive(true);
-            BlueField.SetActive(true);
+            Field = BlueField;
+            Field.SetActive(true);
             ActiveBlueField = true;
+            Timer = 8;
             
         }
-        if (this.CompareTag("Field Red Check") && ActiveRedField == false && (obj.CompareTag("Robot Player") || parent.CompareTag("Robot Player")))
+        if (this.CompareTag("Field Red Check") && ActiveRedField == false && other.CompareTag("Robot Player"))
         {
             SI2_Panel.SetActive(true);
-            RedField.SetActive(true);
+            Field = RedField;
+            Field.SetActive(true);
             ActiveRedField = true;
+            Timer = 8;
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject obj = other.gameObject;
-        GameObject parent = obj.transform.parent.gameObject;
-        if (this.CompareTag("Field Blue Check") && (obj.CompareTag("Robot Player") || parent.CompareTag("Robot Player")))
-        {
-            BlueField.SetActive(false);
-            SI2_Panel.SetActive(false);
-
-        }
-        if (this.CompareTag("Field Red Check") && (obj.CompareTag("Robot Player") || parent.CompareTag("Robot Player")))
-        {
-            RedField.SetActive(false);
-            SI2_Panel.SetActive(false);
-        }
-    }
+    
 }

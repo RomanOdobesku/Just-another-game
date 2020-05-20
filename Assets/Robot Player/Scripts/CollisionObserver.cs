@@ -18,7 +18,7 @@ public class CollisionObserver : MonoBehaviour
     {
         GameObject other = collision.gameObject;
         GameObject parent = other.transform.parent.gameObject;
-        if (other.CompareTag("Robot"))
+        if (other.CompareTag("Robot") || other.CompareTag("Robot Player"))
             _healthHelper.GetRobotHit(collision);
         else if (other.CompareTag("Lava"))
             _healthHelper.Lava = true;
@@ -54,6 +54,10 @@ public class CollisionObserver : MonoBehaviour
         if (other.gameObject.CompareTag("Medicine cabinet"))
         {
             _healthHelper.GetRepairKit();
+        }
+        if (other.gameObject.CompareTag("Field Red"))
+        {
+            _healthHelper.EnterField();
         }
     }
 }
