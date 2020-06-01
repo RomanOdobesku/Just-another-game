@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 2509206182016295423}
   m_Layer: 5
   m_Name: HealthBarSlider
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444392551a28f0e429a666db6fc614ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 3
+  Camera: {fileID: 0}
 --- !u!1 &7080892105732424100
 GameObject:
   m_ObjectHideFlags: 0

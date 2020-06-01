@@ -6,11 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Game_logic_2 : MonoBehaviour
 {
-    GameObject[] Medicime_Cabinets;
-    //List<bool> Active_L = new List<bool>();
-    List<float> Timer_L = new List<float>();
-    public float _Time;
-
     public Text text_Info;
     public Text text_Bonus_Info;
     public Text text_No_Next_Level;
@@ -24,23 +19,18 @@ public class Game_logic_2 : MonoBehaviour
     int count_Bonus_this_scene = 0;
     int count_Collect_Battery = 0;
 
-    GameObject[] NPC;
     bool Done_NPC = false;
     public GameObject NPC_Dead_Ch;
     public Text text_NPC_Dead_Info;
-
+    private int AllCountNPC;
+    private int oldcountnpc;
+    NPCHelper npcHelper;
     // Start is called before the first frame update
     void Start()
     {
-        NPC = GameObject.FindGameObjectsWithTag("Robot");
-        Medicime_Cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
-        for (int i = 0; i < Medicime_Cabinets.Length; i++)
-        {
-            //Active_L.Add(true);
-            Timer_L.Add(_Time);
-            Medicime_Cabinets[i].SetActive(true);
-        }
-        text_NPC_Dead_Info.text = "0/" + NPC.Length.ToString();
+        npcHelper = GameObject.Find("NPC").GetComponent<NPCHelper>();
+        AllCountNPC = npcHelper.countNPConScene;
+        text_NPC_Dead_Info.text = "0/" + AllCountNPC.ToString();
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
         text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
@@ -50,38 +40,19 @@ public class Game_logic_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < Medicime_Cabinets.Length; i++)
+        if (!Done_NPC)
         {
-            //if (Active_L[i] == false)
-            if (Medicime_Cabinets[i].activeSelf == false)
+            if(oldcountnpc!=npcHelper.countNPConScene)
             {
-                if (Timer_L[i] > 0)
-                    Timer_L[i] -= Time.deltaTime;
-                if (Timer_L[i] <= 0)
+                oldcountnpc = npcHelper.countNPConScene;
+                text_NPC_Dead_Info.text = (AllCountNPC - oldcountnpc).ToString() + "/" + AllCountNPC.ToString();
+                if (oldcountnpc == 0)
                 {
-                    Medicime_Cabinets[i].SetActive(true);
-                    //Active_L[i] = true;
-                    Timer_L[i] = _Time;
+                    NPC_Dead_Ch.SetActive(true);
+                    Done_NPC = true;
                 }
             }
         }
-        if (!Done_NPC)
-        {
-            int count_NPC = NPC.Length;
-            foreach (GameObject NPC_r in NPC)
-            {
-
-                if (NPC_r.gameObject == null)
-                    count_NPC--;
-            }
-            text_NPC_Dead_Info.text = (NPC.Length - count_NPC).ToString()+"/"+ NPC.Length.ToString() ;
-            if (count_NPC == 0)
-            {
-                NPC_Dead_Ch.SetActive(true);
-                Done_NPC = true;
-            }
-        }
-
     }
 
     private void goScene3()
@@ -153,18 +124,5 @@ public class Game_logic_2 : MonoBehaviour
             }
             text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
         }
-
-        /*if (other.gameObject.CompareTag("Medicine cabinet"))
-        {
-            for (int i = 0; i < Medicime_Cabinets.Length; i++)
-            {
-                if (other.name == Medicime_Cabinets[i].name)
-                {
-                    other.gameObject.SetActive(false);
-                    //Active_L[i] = false;
-                    break;
-                }
-            }
-        }*/
     }
 }

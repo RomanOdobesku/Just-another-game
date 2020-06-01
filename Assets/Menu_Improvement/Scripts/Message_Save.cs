@@ -19,35 +19,32 @@ public class Message_Save : MonoBehaviour
         color_I = image.color;
         color_T = text.color;
     }
-    float _Timer;
     // Update is called once per frame
     void Update()
     {
-        if (_Timer >= T_Vanish)
-        {
-            _Timer -= Time.deltaTime;
-        }
-        if (_Timer <= T_Vanish && _Timer>=0)
-        {
-            _Timer -= Time.deltaTime;
-            res = 1-(1+Mathf.Cos(Mathf.PI*_Timer))/2;
-            
-            image.color = new Color(color_I.r, color_I.g, color_I.b, res);
-            text.color = new Color(color_T.r, color_T.g, color_T.b, res);
-
-        }
-        if (_Timer < 0)
-        {
-            image.gameObject.SetActive(false);
-        }
     }
+
     public void Save()
     {
-
-        _Timer = T_Static;
+        StartCoroutine(GoOut());
+        
+    }
+    private IEnumerator GoOut()
+    {
         image.gameObject.SetActive(true);
         image.color = color_I;
         text.color = color_T;
+        yield return new WaitForSeconds(T_Static);
+        float t = 1;
+        while (t > 0)
+        {
+            t -= Time.deltaTime;
+            res = 1 - (1 + Mathf.Cos(Mathf.PI * t)) / 2;
+            image.color = new Color(color_I.r, color_I.g, color_I.b, res);
+            text.color = new Color(color_T.r, color_T.g, color_T.b, res);
+            yield return null;
+        }
+        image.gameObject.SetActive(false);
+        yield return null;
     }
-
 }

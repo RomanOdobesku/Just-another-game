@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7c4d1736a333be6419cce11167f7c186, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -507,7 +507,6 @@ MonoBehaviour:
   SI2_Panel: {fileID: 1699698130}
   BlueField: {fileID: 297344903}
   RedField: {fileID: 1596013313}
-  Timer: 8
 --- !u!65 &19852357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7257,7 +7256,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.55
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17195,7 +17194,6 @@ MonoBehaviour:
   SI2_Panel: {fileID: 1699698130}
   BlueField: {fileID: 297344903}
   RedField: {fileID: 1596013313}
-  Timer: 8
 --- !u!65 &421400803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26685,6 +26683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644942886}
+  - component: {fileID: 644942887}
   m_Layer: 0
   m_Name: Medicine cabinet
   m_TagString: Untagged
@@ -26714,6 +26713,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644942887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644942885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f0acbc701cc564bb1efb9d4385012d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeWait: 30
 --- !u!1 &645848160
 GameObject:
   m_ObjectHideFlags: 0
@@ -28427,6 +28439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathPanel: {fileID: 412821579}
+  camera: {fileID: 740077193}
 --- !u!1001 &691509340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57926,7 +57939,6 @@ MonoBehaviour:
   Crystal_add_Ch: {fileID: 148688736}
   Task_Ch: {fileID: 803077666}
   Wall: {fileID: 1933010726}
-  _Time: 10
 --- !u!1 &1478769184
 GameObject:
   m_ObjectHideFlags: 0
@@ -58824,7 +58836,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.55
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -77002,7 +77014,7 @@ PrefabInstance:
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}

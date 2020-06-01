@@ -7,9 +7,11 @@ public class CollisionObserver : MonoBehaviour
 
     private HealthHelper _healthHelper;
     private RobotMotion _robotMotion;
+    GameObject MedicineCab;
 
     void Start()
     {
+        MedicineCab = GameObject.Find("Medicine cabinet");
         _healthHelper = transform.parent.GetComponent<HealthHelper>() as HealthHelper;
         _robotMotion = transform.parent.GetComponent<RobotMotion>() as RobotMotion;
     }
@@ -54,7 +56,7 @@ public class CollisionObserver : MonoBehaviour
         if (other.gameObject.CompareTag("Medicine cabinet"))
         {
             _healthHelper.GetRepairKit();
-            other.gameObject.SetActive(false);
+            other.transform.parent.GetComponent<Medicine>().ToTackMedCab(other.gameObject);
         }
         if (other.gameObject.CompareTag("Field Red"))
         {

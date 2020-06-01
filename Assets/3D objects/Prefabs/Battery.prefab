@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5518465423082566979}
   - component: {fileID: 5518465423082566980}
   m_Layer: 0
-  m_Name: Battery (0)
+  m_Name: Battery
   m_TagString: Battery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.1, z: 0.04}
+  m_Size: {x: 0.04, y: 0.1, z: 0.08}
   m_Center: {x: 0.0000030216759, y: 0.00002365, z: -0.00014939715}
 --- !u!114 &5518465423082566979
 MonoBehaviour:
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e700afa02f8985847a7d93484755aa04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Height: 5
+  Height: 3
   Speed: 1.5
   Min_speed: 0.7
 --- !u!114 &5518465423082566980

@@ -19,7 +19,7 @@ public class HealthHelper : MonoBehaviour
     public bool DynamicHealthBarCreate = true;
     public bool Player = true;
 
-    [SerializeField] private float _health = 0;
+    public float _health = 0;
 
     private Rigidbody _rigidbody;
     private UIHealthBarHelper _UIHealthBarHelper;
@@ -33,6 +33,7 @@ public class HealthHelper : MonoBehaviour
     }
 
     //private CollisionObserver _collisionObserver;
+    
 
     void Start()
     {
@@ -78,11 +79,12 @@ public class HealthHelper : MonoBehaviour
         print(gameObject.name + " take damage: " + enemy / (me + enemy) * relVel * DamageRobotSensivity);
     }
 
-    public void GetRepairKit()
+    public void GetRepairKit() //правильнее GerMedicineCabinet
     {
         _health += ValueRepairKit;
         _health = Math.Min(MaxHealth, _health);
         _UIHealthBarHelper.Health = _health;
+        
     }
 	
 	public void EnterField()
@@ -103,14 +105,21 @@ public class HealthHelper : MonoBehaviour
             _UIHealthBarHelper.DisableSlider();
             if (Player)
                 Camera.transform.SetParent(null);
+            if (CompareTag("NPC Usual"))
+            {
+                GameObject.Find("NPC").GetComponent<NPCHelper>().DeadUsualNPC();
+            }
+            if (CompareTag("NPC Elite"))
+            {
+                GameObject.Find("NPC").GetComponent<NPCHelper>().DeadEliteNPC(transform.GetChild(0));
+            }
+            if (CompareTag("Robot Player") || CompareTag("NPC Allies"))
+            {
+                GameObject.Find("Canvas").GetComponent<Death>().ActiveDeathPanel();
+            }
             Destroy(gameObject);
             Destroy(explosion, explosionParticleSystem.main.duration);
         }
-    }
-
-    public float getHealth()
-    {
-        return _health;
     }
 }
 

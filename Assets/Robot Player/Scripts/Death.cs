@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class Death : MonoBehaviour
 {
     public GameObject DeathPanel;
-    GameObject BigExplosion;
     GameObject RoborPlayer;
     bool find=false;
     GameObject[] robots;
+    public Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +19,28 @@ public class Death : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BigExplosion = GameObject.Find("BigExplosion(Clone)");
-        if (BigExplosion!= null && !find)
-        {
-            find = true;
-        }
-        if (BigExplosion == null && find && RoborPlayer==null)
-        {
-            ActiveDeathPanel();
-        }
+        //BigExplosion = GameObject.Find("BigExplosion(Clone)");
+        //if (BigExplosion!= null && !find)
+        //{
+        //    find = true;
+        //}
+        //if (BigExplosion == null && find && RoborPlayer==null)
+        //{
+        //    ActiveDeathPanel();
+        //}
     }
-    private void ActiveDeathPanel()
+    public void ActiveDeathPanel()
     {
-        robots = GameObject.FindGameObjectsWithTag("Robot");
-        foreach (GameObject robot in robots)
+        Destroy(GameObject.Find("NPC"));
+        if (RoborPlayer != null)
         {
-            Destroy(robot);
+            camera.transform.SetParent(null);
+        }
+        Destroy(RoborPlayer);
+        robots = GameObject.FindGameObjectsWithTag("HealthBar");
+        foreach (GameObject item in robots)
+        {
+            Destroy(item);
         }
         DeathPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;

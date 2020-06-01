@@ -10,7 +10,6 @@ public class UserMotionController : MonoBehaviour
     private Vector3 _moveDirection;
     private bool _jump;
     private bool _speedUp;
-    private CameraController cameraController;
 
     void Start()
     {
@@ -20,7 +19,6 @@ public class UserMotionController : MonoBehaviour
         {
             Camera = Camera.main;
         }
-        cameraController = gameObject.GetComponent<CameraController>();
     }
 
     void Update()

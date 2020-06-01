@@ -11,7 +11,6 @@ public class SI2_Helper : MonoBehaviour
     public GameObject RedField;
     bool ActiveRedField = false;
     GameObject Field;
-    public float Timer=8;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,36 +20,32 @@ public class SI2_Helper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Timer > 0)
-        {
-            Timer -= Time.deltaTime;
-        }
-        if (Timer<=0 && Field != null)
-        {
-            SI2_Panel.SetActive(false);
-            Field.SetActive(false);
-            Field = null;
-        }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (this.CompareTag("Field Blue Check") && ActiveBlueField == false && other.CompareTag("Robot Player"))
         {
-            SI2_Panel.SetActive(true);
-            Field = BlueField;
-            Field.SetActive(true);
-            ActiveBlueField = true;
-            Timer = 8;
-            
+            StartCoroutine(CoroutineField(BlueField));
         }
         if (this.CompareTag("Field Red Check") && ActiveRedField == false && other.CompareTag("Robot Player"))
         {
-            SI2_Panel.SetActive(true);
-            Field = RedField;
-            Field.SetActive(true);
-            ActiveRedField = true;
-            Timer = 8;
+            StartCoroutine(CoroutineField(RedField));
         }
     }
-    
+    private IEnumerator CoroutineField(GameObject field)
+    {
+        SI2_Panel.SetActive(true);
+        Field = field;
+        Field.SetActive(true);
+        if (field == BlueField)
+            ActiveBlueField = true;
+        else
+            ActiveRedField = true;
+        yield return new WaitForSeconds(8);
+        SI2_Panel.SetActive(false);
+        Field.SetActive(false);
+        Field = null;
+        yield return null;
+    }
 }

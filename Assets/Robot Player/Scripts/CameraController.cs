@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.UNetWeaver;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,59 +21,23 @@ public class CameraController : MonoBehaviour
     public float HeightOffset = 0.0f;
     public float SmoothCameraRotation = 10.0f;
 
-    private bool _lockCursor = true;
-    private bool _slowdown = false;
-    private bool _rotateCamera = true;
+    public bool LockCursor = true;
+    public bool NPCControl = true;
 
     private Vector2 _mouseMove;
     private float _mouseWheel;
     private Vector2 _rotation;
     private float _cameraOffset;
+    private bool _cursorIsLocked = true;
     private float _targetCameraOffset = 25.0f;
 
+    private bool _followMe = false;
+
     private Transform _cameraBase;
-
-    public bool LockCursor
-    {
-        set
-        {
-            if (value)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            } else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-        }
-        get => _lockCursor;
-    }
-
-    public bool RotateCamera
-    {
-        set => _rotateCamera = value;
-        get => _rotateCamera;
-    }
-
-    public bool SlowDown
-    {
-        set
-        {
-            if (value)
-                Time.timeScale = 0.1f;
-            else
-                Time.timeScale = 1;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
-            _slowdown = value;
-        }
-        get => _slowdown;
-    }
 
 
     void Start()
     {
-        LockCursor = true;
         _cameraBase = transform.Find("Camera base");
         if (Camera == null)
         {
@@ -88,17 +51,23 @@ public class CameraController : MonoBehaviour
         _rotation.y = startRotation.y;
 
         Camera.transform.localRotation = Quaternion.identity;
+
+        _followMe = NPCControl;
     }
 
     void Update()
     {
         // rotate camera base
-        if (_rotateCamera)
+        if (_cursorIsLocked)
         {
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _mouseMove.x = Input.GetAxis("Mouse X");
             _mouseMove.y = Input.GetAxis("Mouse Y");
         } else
         {
+            Time.timeScale = 0.1f;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _mouseMove.x = 0;
             _mouseMove.y = 0;
         }
@@ -117,7 +86,6 @@ public class CameraController : MonoBehaviour
         _targetCameraOffset = Mathf.Clamp(_targetCameraOffset, MinCameraOffset, MaxCameraOffset);
 
 
-        /*
         UpdateCursorLock();
 
         if (NPCControl)
@@ -150,7 +118,6 @@ public class CameraController : MonoBehaviour
                 _followMe = true;
             }
         }
-        */
     }
 
     private void FixedUpdate()
@@ -177,5 +144,35 @@ public class CameraController : MonoBehaviour
         Camera.transform.localPosition = Vector3.Lerp(Camera.transform.localPosition
             , Vector3.back * _cameraOffset
             , Time.deltaTime * SmoothCameraRotation);
+    }
+
+    public void UpdateCursorLock()
+    {
+        if (LockCursor)
+            InternalLockUpdate();
+    }
+
+    private void InternalLockUpdate()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftControl) && NPCControl)
+        {
+            _cursorIsLocked = false;
+        }
+        else if (Input.GetMouseButtonUp(0) && (!Input.GetKey(KeyCode.LeftControl) || !NPCControl) || Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            _cursorIsLocked = true;
+        }
+
+
+        if (_cursorIsLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else if (!_cursorIsLocked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
