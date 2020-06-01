@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Game_logic_2 : MonoBehaviour
 {
     GameObject[] Medicime_Cabinets;
-    List<bool> Active_L = new List<bool>();
+    //List<bool> Active_L = new List<bool>();
     List<float> Timer_L = new List<float>();
     public float _Time;
 
@@ -36,7 +36,7 @@ public class Game_logic_2 : MonoBehaviour
         Medicime_Cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
         for (int i = 0; i < Medicime_Cabinets.Length; i++)
         {
-            Active_L.Add(true);
+            //Active_L.Add(true);
             Timer_L.Add(_Time);
             Medicime_Cabinets[i].SetActive(true);
         }
@@ -52,14 +52,15 @@ public class Game_logic_2 : MonoBehaviour
     {
         for (int i = 0; i < Medicime_Cabinets.Length; i++)
         {
-            if (Active_L[i] == false)
+            //if (Active_L[i] == false)
+            if (Medicime_Cabinets[i].activeSelf == false)
             {
                 if (Timer_L[i] > 0)
                     Timer_L[i] -= Time.deltaTime;
                 if (Timer_L[i] <= 0)
                 {
                     Medicime_Cabinets[i].SetActive(true);
-                    Active_L[i] = true;
+                    //Active_L[i] = true;
                     Timer_L[i] = _Time;
                 }
             }
@@ -153,17 +154,17 @@ public class Game_logic_2 : MonoBehaviour
             text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
         }
 
-        if (other.gameObject.CompareTag("Medicine cabinet"))
+        /*if (other.gameObject.CompareTag("Medicine cabinet"))
         {
             for (int i = 0; i < Medicime_Cabinets.Length; i++)
             {
                 if (other.name == Medicime_Cabinets[i].name)
                 {
                     other.gameObject.SetActive(false);
-                    Active_L[i] = false;
+                    //Active_L[i] = false;
                     break;
                 }
             }
-        }
+        }*/
     }
 }

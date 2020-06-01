@@ -54,6 +54,7 @@ public class CollisionObserver : MonoBehaviour
         if (other.gameObject.CompareTag("Medicine cabinet"))
         {
             _healthHelper.GetRepairKit();
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Field Red"))
         {

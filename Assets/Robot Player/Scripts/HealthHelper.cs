@@ -107,5 +107,10 @@ public class HealthHelper : MonoBehaviour
             Destroy(explosion, explosionParticleSystem.main.duration);
         }
     }
+
+    public float getHealth()
+    {
+        return _health;
+    }
 }
 
