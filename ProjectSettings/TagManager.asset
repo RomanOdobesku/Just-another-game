@@ -17,6 +17,8 @@ TagManager:
   - Crystal_small
   - Robot Player
   - Enemy
+  - NPC Allies
+  - NPC Elite
   layers:
   - Default
   - TransparentFX

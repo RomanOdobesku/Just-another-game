@@ -20,6 +20,25 @@ public class CollisionObserver : MonoBehaviour
     {
         GameObject other = collision.gameObject;
         GameObject parent = other.transform.parent.gameObject;
+
+        if (parent.CompareTag("Robot Player") || other.CompareTag("NPC Allies"))
+        {
+            if (transform.parent.gameObject.CompareTag("Enemy"))
+            {
+                transform.parent.GetComponent<Enemy>().need_charge = true;
+            }
+            else if (transform.parent.gameObject.CompareTag("NPC Elite"))
+            {
+                transform.parent.GetComponent<EliteEnemy>().need_charge = true;
+            }
+        }
+
+        /* (parent.CompareTag("Robot Player"))
+        {
+            transform.parent.GetComponent<EliteEnemy>().need_charge = true;
+            //transform.parent.GetComponent<Enemy>().CollisionDetected(this);
+        }
+        */
         if (other.CompareTag("Robot") || other.CompareTag("Robot Player"))
             _healthHelper.GetRobotHit(collision);
         else if (other.CompareTag("Lava"))

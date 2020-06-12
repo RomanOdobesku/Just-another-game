@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EliteEnemy : MonoBehaviour
 {
     //public Transform FollowObject;
     public bool need_charge = false;
@@ -13,7 +13,10 @@ public class Enemy : MonoBehaviour
     //public float StopRadius = 25;
     public float ActivateRadius = Mathf.Infinity;
 
+    float jump_cooldown = 100;
+
     float nitro_amount = 100;
+    private Rigidbody _rigidbody;
 
     private RobotMotion _robotMotion;
     private Transform _robot;
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         medicine_cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
         healthHelper = GetComponent<HealthHelper>() as HealthHelper;
         _robotMotion = GetComponent<RobotMotion>() as RobotMotion;
@@ -35,20 +39,42 @@ public class Enemy : MonoBehaviour
     {
         //Произошло столкновение с игроком
     }*/
+
+    public void AirCharge(Vector3 direction, Vector3 followObjectDirection)
+    {
+        float d = direction.magnitude;
+
+        RaycastHit hit;
+        if (Physics.Raycast(_robot.position, -Vector3.up, out hit, 100.0f))
+        {
+            print(hit.distance);
+            if (hit.distance >= 18 && d < 100)
+            {
+                _rigidbody.velocity = new Vector3(0, 0, 0);
+                _rigidbody.AddForce((direction + followObjectDirection * d / 200).normalized * 200, ForceMode.Impulse);
+            }
+        }
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
         int min_i = 0;
 
-        Vector3 direction = followObjects[0].position - _robot.position;
-        float distance = direction.magnitude;
-        direction = direction.normalized;
+        Vector3 notNormalizedDirection = followObjects[0].position - _robot.position;
+        float distance = notNormalizedDirection.magnitude;
+        Vector3 direction = notNormalizedDirection.normalized;
+        Rigidbody followObjectRB = followObjects[0].gameObject.GetComponentInChildren(typeof(Rigidbody)) as Rigidbody;
+        Vector3 followObjectDirection = followObjectRB.velocity;
 
         for (int i = 1; i < followObjects.Length; ++i)
         {
             Vector3 dir = (followObjects[i].position - _robot.position);
             if (dir.magnitude < distance)
             {
+                notNormalizedDirection = dir;
                 distance = dir.magnitude;
                 min_i = i;
                 direction = dir.normalized;
@@ -77,10 +103,21 @@ public class Enemy : MonoBehaviour
 
             if (Attack)
             {
+                jump_cooldown -= 1;
+                
                 if (need_charge)
                 {
                     _robotMotion.Move(-1 * direction, true);
                     if (distance > 30) need_charge = false;
+                }
+                else if (jump_cooldown <= 0 && _robotMotion.getOnGround() && notNormalizedDirection.magnitude < 100)
+                {
+                    _rigidbody.AddForce(Vector3.up * 15, ForceMode.Impulse);
+                }
+                else if(jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 20)))
+                {
+                    AirCharge(notNormalizedDirection, followObjectDirection);
+                    jump_cooldown = 500;
                 }
                 else
                 {
@@ -114,6 +151,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            print("STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             _robotMotion.Stop();
         }
     }

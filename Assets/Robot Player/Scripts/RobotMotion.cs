@@ -29,6 +29,12 @@ public class RobotMotion : MonoBehaviour
 
     private bool _onGround = false;
     private bool _stop = false;
+
+    public bool getOnGround()
+    {
+        return _onGround;
+    }
+
     public bool OnGround
     {
         set
