@@ -13,9 +13,11 @@ public class Password : MonoBehaviour
     public GameObject PasswordCamera;
     public GameObject PanelPassword;
     public GameObject MainPanel;
+    public GameObject kill_Ch;
 
     public GameObject MyDoor;
     public Text OpenDoor;
+    public GameObject killAllNPC;
     Door door;
     bool inTrigger;
     bool IsOpen = false;
@@ -33,19 +35,22 @@ public class Password : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                HealthBar = GameObject.FindGameObjectsWithTag("HealthBar");
-                foreach (GameObject item in HealthBar)
+                if (kill_Ch.activeInHierarchy == true)
                 {
-                    item.SetActive(false);
+                    HealthBar = GameObject.FindGameObjectsWithTag("HealthBar");
+                    foreach (GameObject item in HealthBar)
+                    {
+                        item.SetActive(false);
+                    }
+                    PanelPassword.SetActive(true);
+                    Player.SetActive(false);
+                    NPC.SetActive(false);
+                    MainPanel.SetActive(false);
+                    PasswordCamera.SetActive(true);
+                    OpenDoor.gameObject.SetActive(false);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
-                PanelPassword.SetActive(true);
-                Player.SetActive(false);
-                NPC.SetActive(false);
-                MainPanel.SetActive(false);
-                PasswordCamera.SetActive(true);
-                OpenDoor.gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
         }
     }
@@ -76,7 +81,10 @@ public class Password : MonoBehaviour
         GameObject obj = other.gameObject;
         if (other.CompareTag("Robot Player"))
         {
-            OpenDoor.gameObject.SetActive(false);
+            if (OpenDoor.gameObject.activeInHierarchy == true)
+                OpenDoor.gameObject.SetActive(false);
+            if (killAllNPC.activeInHierarchy == true)
+                killAllNPC.SetActive(false);
             inTrigger = false;
         };
     }
@@ -85,8 +93,15 @@ public class Password : MonoBehaviour
         GameObject obj = other.gameObject;
         if (obj.CompareTag("Robot Player") && !IsOpen)
         {
-            OpenDoor.gameObject.SetActive(true);
             inTrigger = true;
+            if (kill_Ch.activeInHierarchy==true)
+            {
+                OpenDoor.gameObject.SetActive(true);
+            }
+            else
+            {
+                killAllNPC.SetActive(true);
+            }
         };
     }
     public void ExitPassword()

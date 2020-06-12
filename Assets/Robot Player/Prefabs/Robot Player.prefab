@@ -206,6 +206,8 @@ MonoBehaviour:
   HeightOffset: 3
   Camera: {fileID: 0}
   Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  HeathBar: {fileID: 3144349125652295703, guid: bca82d9f463a52c47aecdb7b617275ad,
+    type: 3}
   DynamicHealthBarCreate: 1
   Player: 1
   _health: 100

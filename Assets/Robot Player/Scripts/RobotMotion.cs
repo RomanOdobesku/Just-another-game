@@ -15,7 +15,7 @@ public class RobotMotion : MonoBehaviour
     public float BrakingCoefficient = 0.01f;
     public bool UseAddForce = true;
     public bool UseDust;
-
+    
     [SerializeField] private float Velocity;
 
     private float _currentMaxAngularVelocity;
@@ -50,6 +50,12 @@ public class RobotMotion : MonoBehaviour
     private CustomParticalController _dustController;
     void Start()
     {
+        if (gameObject.CompareTag("Robot Player"))
+        {
+            float multiplier;
+            multiplier = PlayerPrefs.GetInt("Speed");
+            MaxAngularVelocity = MaxAngularVelocity * (1 + multiplier / 5);
+        }
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         _rigidbody.maxAngularVelocity = MaxAngularVelocity;
         _robot = _rigidbody.transform;

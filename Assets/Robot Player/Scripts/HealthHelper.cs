@@ -16,6 +16,7 @@ public class HealthHelper : MonoBehaviour
     public float HeightOffset = 3f;
     public Camera Camera;
     public GameObject Explosion;
+    public GameObject HeathBar;
     public bool DynamicHealthBarCreate = true;
     public bool Player = true;
 
@@ -37,16 +38,25 @@ public class HealthHelper : MonoBehaviour
 
     void Start()
     {
-        _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
+        if (gameObject.CompareTag("Robot Player"))
+        {
+            float multiplier;
+            multiplier = PlayerPrefs.GetInt("Health");
+            MaxHealth = MaxHealth * (1+multiplier/5);
+            multiplier = PlayerPrefs.GetInt("Damage");
+            DamageRobotSensivity = DamageRobotSensivity * (1 + multiplier / 5);
+        }
         _health = MaxHealth;
+        _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
+       
         if (!Camera)
             Camera = Camera.main;
 
         if (DynamicHealthBarCreate)
         {
-            GameObject healthBar = Instantiate(Resources.Load("HealthBarSlider"), Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject healthBar = Instantiate(HeathBar, Vector3.zero, Quaternion.identity);
             _UIHealthBarHelper = healthBar.GetComponent<UIHealthBarHelper>() as UIHealthBarHelper;
-            healthBar.transform.SetParent(GameObject.Find("Canvas").transform);
+            healthBar.transform.SetParent(GameObject.Find("HealthBars").transform);
             _UIHealthBarHelper.NPC = _rigidbody.transform;
             _UIHealthBarHelper.HeightOffset = HeightOffset;
             _UIHealthBarHelper.MaxHealth = MaxHealth;

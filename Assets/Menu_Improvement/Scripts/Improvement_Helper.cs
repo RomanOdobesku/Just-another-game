@@ -14,21 +14,29 @@ public class Improvement_Helper : MonoBehaviour
     int _Damage;
     public Text text;
     int _FreeBonus;
-   // Const_and_other.count_Bonus
+    public GameObject prefab;
+    int NextLevel;
+    // Const_and_other.count_Bonus
     //public int _free_improvement;
+    
     // Start is called before the first frame update
     void Start()
     {
-        _Speed = Const_and_other.speed;
-        _Health = Const_and_other.health;
-        _Damage = Const_and_other.damage;
-        _FreeBonus = Const_and_other.count_Bonus;
+        NextLevel = PlayerPrefs.GetInt("NextLevel");
+        _Speed = PlayerPrefs.GetInt("Speed");
+        _Health = PlayerPrefs.GetInt("Health");
+        _Damage = PlayerPrefs.GetInt("Damage");
+        _FreeBonus = PlayerPrefs.GetInt("CountBonus");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         _speed.fillAmount = 0.2f * _Speed;
         _health.fillAmount = 0.2f * _Health;
         _damage.fillAmount = 0.2f * _Damage;
         text.text = _FreeBonus.ToString();
+        if (NextLevel == 5)
+        {
+            GameObject pref=Instantiate(prefab,GameObject.Find("Canvas").transform);
+        }
     }
 
     // Update is called once per frame
@@ -36,12 +44,16 @@ public class Improvement_Helper : MonoBehaviour
     {
         
     }
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(NextLevel);
+    }
     public void Save()
     {
-        Const_and_other.count_Bonus = _FreeBonus;
-        Const_and_other.speed = _Speed;
-        Const_and_other.health = _Health;
-        Const_and_other.damage = _Damage;
+        PlayerPrefs.SetInt("CountBonus",_FreeBonus);
+        PlayerPrefs.SetInt("Speed", _Speed);
+        PlayerPrefs.SetInt("Health", _Health);
+        PlayerPrefs.SetInt("Damage", _Damage);
     }
     public void Plus_Speed()
     {
@@ -103,15 +115,5 @@ public class Improvement_Helper : MonoBehaviour
             _FreeBonus++;
             text.text = _FreeBonus.ToString();
         }
-    }
-
-    //временный переходы
-    public void lvl2()
-    {
-        SceneManager.LoadScene("Level_2");
-    }
-    public void lvl3()
-    {
-        SceneManager.LoadScene("Level_3");
     }
 }

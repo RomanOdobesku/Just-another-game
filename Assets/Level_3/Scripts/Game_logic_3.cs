@@ -14,7 +14,6 @@ public class Game_logic_3 : MonoBehaviour
     public int collect_crystal = 20;
     public GameObject Crystal_main_Ch;
     public GameObject Crystal_add_Ch;
-    public GameObject Task_Ch;
     public GameObject Wall;
 
     int count_Bonus_this_scene = 0;
@@ -26,14 +25,17 @@ public class Game_logic_3 : MonoBehaviour
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info_main_crystal.text = "0/1";
         text_Info_add_crystal.text = count_Collect_add_Crystal.ToString() + "/" + collect_crystal.ToString();
-        text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
+        text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
 
     }
-    private void goScene4()
+    public void goScene4()
     {
-        // Debug.Log("Перешли на 4 уровень");
-        Const_and_other.count_Bonus += count_Bonus_this_scene;
-        SceneManager.LoadScene("Improvement_Menu"); // Level_4
+        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene + PlayerPrefs.GetInt("CountBonus"));
+        int NextLevel = PlayerPrefs.GetInt("NextLevel");
+        NextLevel++;
+        PlayerPrefs.SetInt("NextLevel", NextLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(NextLevel);
     }
     // Update is called once per frame
    
@@ -42,16 +44,17 @@ public class Game_logic_3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Easter egg"))
-        {
-            Task_Ch.SetActive(true);
-            
-
-        }
         if (other.gameObject.CompareTag("Next_Level"))
         {
-            goScene4();
-
+            if (gameObject.GetComponent<EasterEgg3>().FindEA == true)
+            {
+                gameObject.GetComponent<EasterEgg3>().EndLevelMethod();
+                gameObject.GetComponent<EasterEgg3>().OpenPanel();
+            }
+            else
+            {
+                goScene4();
+            }
         }
 
         if (other.gameObject.CompareTag("Check_Task"))
@@ -67,7 +70,7 @@ public class Game_logic_3 : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count_Bonus_this_scene++;
-            text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
+            text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
         }
 
         if (other.gameObject.CompareTag("Crystal_small"))

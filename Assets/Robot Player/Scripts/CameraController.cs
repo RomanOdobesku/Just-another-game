@@ -35,9 +35,12 @@ public class CameraController : MonoBehaviour
 
     private Transform _cameraBase;
 
+    PauseGame _pauseGame;
 
     void Start()
     {
+        _pauseGame = GameObject.Find("Pause Panel").GetComponent<PauseGame>();
+
         _cameraBase = transform.Find("Camera base");
         if (Camera == null)
         {
@@ -53,6 +56,9 @@ public class CameraController : MonoBehaviour
         Camera.transform.localRotation = Quaternion.identity;
 
         _followMe = NPCControl;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -60,17 +66,19 @@ public class CameraController : MonoBehaviour
         // rotate camera base
         if (_cursorIsLocked)
         {
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            //Time.timeScale = 1;
+            //Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _mouseMove.x = Input.GetAxis("Mouse X");
             _mouseMove.y = Input.GetAxis("Mouse Y");
-        } else
+        }
+        else
         {
-            Time.timeScale = 0.1f;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            //Time.timeScale = 0.1f;
+            //Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _mouseMove.x = 0;
             _mouseMove.y = 0;
         }
+
 
         _rotation.x -= _mouseMove.y * VerticalSensivity * Time.deltaTime;
         _rotation.y += _mouseMove.x * HorizontalSensivity * Time.deltaTime;
@@ -84,8 +92,7 @@ public class CameraController : MonoBehaviour
         _mouseWheel = Input.GetAxis("Mouse ScrollWheel");
         _targetCameraOffset -= _mouseWheel * MouseWheelSensivity * Time.deltaTime;
         _targetCameraOffset = Mathf.Clamp(_targetCameraOffset, MinCameraOffset, MaxCameraOffset);
-
-
+        
         UpdateCursorLock();
 
         if (NPCControl)
@@ -118,6 +125,7 @@ public class CameraController : MonoBehaviour
                 _followMe = true;
             }
         }
+        
     }
 
     private void FixedUpdate()
@@ -154,25 +162,35 @@ public class CameraController : MonoBehaviour
 
     private void InternalLockUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.LeftControl) && NPCControl)
+        if (!_pauseGame.pause)
         {
-            _cursorIsLocked = false;
+            if (Input.GetKeyDown(KeyCode.LeftControl) && NPCControl)
+            {
+                Time.timeScale = 0.1f;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+                _cursorIsLocked = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else if (Input.GetMouseButtonUp(0) && (!Input.GetKey(KeyCode.LeftControl) || !NPCControl) || Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                _cursorIsLocked = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            }
         }
-        else if (Input.GetMouseButtonUp(0) && (!Input.GetKey(KeyCode.LeftControl) || !NPCControl) || Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            _cursorIsLocked = true;
-        }
-
-
-        if (_cursorIsLocked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else if (!_cursorIsLocked)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        //if (_cursorIsLocked)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //}
+        //else if (!_cursorIsLocked)
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+        //Debug.Log(_cursorIsLocked.ToString());
     }
 }

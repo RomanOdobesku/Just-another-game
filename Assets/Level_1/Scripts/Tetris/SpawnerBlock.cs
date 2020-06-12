@@ -112,7 +112,10 @@ public class SpawnerBlock : MonoBehaviour
     public void GoMainGame()
     {
         Again();
+        pauseMenu = false;
+        PauseMenuUi.SetActive(false);
         GameObject.Find("Check_Easter_Egg_Cube").GetComponent<Tetris_Helper>().LoadInGame();
+        
     }
 
     public void Again()

@@ -14,9 +14,19 @@ TagManager:
   - Easter egg
   - Terrain
   - Lava
+  - Field Red Check
+  - Field Blue Check
+  - Field Red
+  - Crystal_big
   - Crystal_small
+  - Field Blue
   - Robot Player
-  - Enemy
+  - Tetris_Block
+  - HealthBar
+  - NPC Elite
+  - NPC Usual
+  - NPC Allies
+  - Button
   layers:
   - Default
   - TransparentFX

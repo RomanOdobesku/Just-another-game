@@ -25,6 +25,8 @@ public class Game_logic_2 : MonoBehaviour
     private int AllCountNPC;
     private int oldcountnpc;
     NPCHelper npcHelper;
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class Game_logic_2 : MonoBehaviour
         text_NPC_Dead_Info.text = "0/" + AllCountNPC.ToString();
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
-        text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
+        text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
 
     }
 
@@ -57,8 +59,12 @@ public class Game_logic_2 : MonoBehaviour
 
     private void goScene3()
     {
-        Const_and_other.count_Bonus += count_Bonus_this_scene;
-        SceneManager.LoadScene("Improvement_Menu"); // Level_3
+        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene+PlayerPrefs.GetInt("CountBonus"));
+        int NextLevel = PlayerPrefs.GetInt("NextLevel");
+        NextLevel++;
+        PlayerPrefs.SetInt("NextLevel", NextLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(NextLevel);
     }
 
     private void OnTriggerExit(Collider other)
@@ -74,11 +80,12 @@ public class Game_logic_2 : MonoBehaviour
             Next_Level_Cube.gameObject.SetActive(true);
         }
     }
-
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Easter egg"))
         {
+            
             Task_Ch.SetActive(true);
 
         }
@@ -111,7 +118,7 @@ public class Game_logic_2 : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count_Bonus_this_scene++;
-            text_Bonus_Info.text = (Const_and_other.count_Bonus + count_Bonus_this_scene).ToString();
+            text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
         }
 
         if (other.gameObject.CompareTag("Battery"))

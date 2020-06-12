@@ -19,7 +19,7 @@ public class Game_logic_1 : MonoBehaviour
     int count_Collect_Battery=0;
 
     int j;
-
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +34,12 @@ public class Game_logic_1 : MonoBehaviour
 
     private void GoScene2()
     {
-        Const_and_other.count_Bonus+= count_Bonus_this_scene;
-        SceneManager.LoadScene("Improvement_Menu"); // Level_2
+        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene);
+        int NextLevel = PlayerPrefs.GetInt("NextLevel");
+        NextLevel++;
+        PlayerPrefs.SetInt("NextLevel", NextLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(NextLevel);
     }
 
     private void OnTriggerExit(Collider other)
@@ -64,7 +68,7 @@ public class Game_logic_1 : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count_Bonus_this_scene++;
-            text_Bonus_Info.text = (Const_and_other.count_Bonus+ count_Bonus_this_scene).ToString();
+            text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
         }
 
         if (other.gameObject.CompareTag("Battery"))

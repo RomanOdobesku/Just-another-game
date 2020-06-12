@@ -6,13 +6,17 @@ using UnityEngine;
 public class NPCHelper : MonoBehaviour
 {
     public int countNPConScene;
-    public int countNPCAlies;
-    
+    public int countNPCAlies=0;
+    public bool battery = true;
+
     public GameObject prefab=null;
     // Start is called before the first frame update
     void Start()
     {
-        countNPCAlies = GameObject.Find("NPC Allies").transform.childCount;
+        if (GameObject.Find("NPC Allies") != null)
+        {
+            countNPCAlies = GameObject.Find("NPC Allies").transform.childCount;
+        }
         countNPConScene = GameObject.FindGameObjectsWithTag("Robot").Length-countNPCAlies;
     }
 
@@ -28,8 +32,9 @@ public class NPCHelper : MonoBehaviour
     }
     public void DeadEliteNPC(Transform tr)
     {
-        countNPConScene--;
-        Instantiate(prefab, new Vector3(tr.position.x-3, tr.position.y, tr.position.z), Quaternion.Euler(90,0,0));
+        DeadUsualNPC();
+        if(!battery)
+            Instantiate(prefab, new Vector3(tr.position.x-3, tr.position.y, tr.position.z), Quaternion.Euler(90,0,0));
     }
     public void DeadAlies()
     {
