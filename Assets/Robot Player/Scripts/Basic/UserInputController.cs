@@ -27,8 +27,11 @@ public class UserInputController : MonoBehaviour
 
     private int _allyIndex = 0;
 
+    private PauseGame pauseGame;
+
     void Start()
     {
+        pauseGame = GameObject.Find("Pause Panel").GetComponent<PauseGame>();
         _robotMotion = GetComponent<RobotMotion>() as RobotMotion;
 
         if (Camera == null)
@@ -49,11 +52,13 @@ public class UserInputController : MonoBehaviour
 
         Vector3 cameraDirection = Vector3.Scale(Camera.transform.forward, new Vector3(1, 0, 1)).normalized;
         _moveDirection = (forward * cameraDirection + sideways * Camera.transform.right).normalized;
+        if (!pauseGame.pause)
+        {
+            UpdateState();
 
-        UpdateState();
-
-        UpdateAllyMenu();
-        CheckTarget();
+            UpdateAllyMenu();
+            CheckTarget();
+        }
     }
 
     private void FixedUpdate()

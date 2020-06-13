@@ -57,6 +57,7 @@ public class PauseGame : MonoBehaviour
             ExitPanel.SetActive(false);
             Buttons.SetActive(true);
         }
+
         PausePanel.SetActive(false);
         if (IsLevel)
         {
@@ -67,6 +68,7 @@ public class PauseGame : MonoBehaviour
     }
     public void Continue()
     {
+        Debug.Log("hgfhfgh");
         ClosePauseMenu();
     }
 
