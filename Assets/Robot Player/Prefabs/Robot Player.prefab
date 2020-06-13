@@ -148,8 +148,6 @@ MonoBehaviour:
   MaxCameraOffset: 50
   HeightOffset: 5
   SmoothCameraRotation: 1000
-  LockCursor: 1
-  NPCControl: 1
 --- !u!114 &5247411717321189980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bed900116e1176449b15a1346745403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovePower: 50
+  MovePower: 60
   AddForceCoefficient: 1
   MaxAngularVelocity: 25
   JumpPower: 15
@@ -171,6 +169,7 @@ MonoBehaviour:
   UseAddForce: 1
   UseDust: 1
   Velocity: 0
+  _onGround: 0
 --- !u!114 &8555396942760737741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +183,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
+  Allies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  controlAllies: 0
 --- !u!114 &3671960999783771126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +211,9 @@ MonoBehaviour:
   HeightOffset: 3
   Camera: {fileID: 0}
   Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  HeathBar: {fileID: 3144349125652295703, guid: bca82d9f463a52c47aecdb7b617275ad,
-    type: 3}
   DynamicHealthBarCreate: 1
   Player: 1
+  Enemy: 0
   _health: 100
 --- !u!1001 &719611439796564913
 PrefabInstance:

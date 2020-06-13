@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RobotMotion : MonoBehaviour
 {
@@ -57,11 +58,14 @@ public class RobotMotion : MonoBehaviour
     private CustomParticalController _dustController;
     void Start()
     {
-        if (gameObject.CompareTag("Robot Player"))
+        if (SceneManager.GetActiveScene().name != "Fight")
         {
-            float multiplier;
-            multiplier = PlayerPrefs.GetInt("Speed");
-            MaxAngularVelocity = MaxAngularVelocity * (1 + multiplier / 5);
+            if (gameObject.CompareTag("Robot Player"))
+            {
+                float multiplier;
+                multiplier = PlayerPrefs.GetInt("Speed");
+                MovePower = MovePower * (1 + multiplier / 5);
+            }
         }
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         _rigidbody.maxAngularVelocity = MaxAngularVelocity;

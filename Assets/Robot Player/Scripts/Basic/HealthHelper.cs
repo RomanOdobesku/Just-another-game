@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 using Boo.Lang.Runtime.DynamicDispatching;
@@ -39,13 +40,16 @@ public class HealthHelper : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
-        if (Player)
+        if (SceneManager.GetActiveScene().name != "Fight")
         {
-            float multiplier;
-            multiplier = PlayerPrefs.GetInt("Health");
-            MaxHealth = MaxHealth * (1 + multiplier / 5);
-            multiplier = PlayerPrefs.GetInt("Damage");
-            DamageRobotSensivity = DamageRobotSensivity * (1 + multiplier / 5);
+            if (Player)
+            {
+                float multiplier;
+                multiplier = PlayerPrefs.GetInt("Health");
+                MaxHealth = MaxHealth * (1 + multiplier / 5);
+                multiplier = PlayerPrefs.GetInt("Damage");
+                DamageRobotSensivity = DamageRobotSensivity * (1 + multiplier / 5);
+            }
         }
         _health = MaxHealth;
         if (!Camera)
@@ -128,7 +132,13 @@ public class HealthHelper : MonoBehaviour
             {
                 GameObject.Find("NPC").GetComponent<NPCHelper>().DeadEliteNPC(transform.GetChild(0));
             }
-            if (CompareTag("Robot Player") || CompareTag("NPC Allies"))
+            if (CompareTag("NPC Allies"))
+            {
+                GameObject.Find("NPC").GetComponent<NPCHelper>().DeadAlies();
+                if (SceneManager.GetActiveScene().name != "Fight")
+                    GameObject.Find("Death Panel").GetComponent<Death>().ActiveDeathPanel();
+            }
+            if (CompareTag("Robot Player"))
             {
                 GameObject.Find("Death Panel").GetComponent<Death>().ActiveDeathPanel();
             }

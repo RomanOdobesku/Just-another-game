@@ -25,11 +25,6 @@ public class Main_Menu_Helper : MonoBehaviour
         {
             buttonСontinue.SetActive(false);
         }
-        //else
-        //{
-        //    buttonСontinue.SetActive(true);
-        //}
-
         PlayerPrefs.Save();
     }
     // Update is called once per frame
@@ -39,10 +34,14 @@ public class Main_Menu_Helper : MonoBehaviour
     }
     public void Сontinue_campany()
     {
-        SceneManager.LoadScene(NextLevel);
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
     public void New_campany()
     {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         PlayerPrefs.SetInt("NextLevel", 2);
         PlayerPrefs.SetInt("Speed", 0);
         PlayerPrefs.SetInt("Health", 0);
@@ -51,12 +50,13 @@ public class Main_Menu_Helper : MonoBehaviour
         PlayerPrefs.SetInt("CountBonus", 0);
         NextLevel = PlayerPrefs.GetInt("NextLevel");
         PlayerPrefs.Save();
-        SceneManager.LoadScene(NextLevel);
-
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
     public void Start_fight()
     {
-        SceneManager.LoadScene("Improvement_Menu");
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(16);
     }
     public void Exit()
     {

@@ -8,12 +8,16 @@ public class Enemy : MonoBehaviour
     //public Transform FollowObject;
     public bool need_charge = false;
     private HealthHelper healthHelper;
-    private Transform[] followObjects = new Transform[5];
+    private Transform[] followObjects;
     bool Attack = true;
     //public float StopRadius = 25;
     public float ActivateRadius = Mathf.Infinity;
 
+    int prev_allies_count = 5;
+
     float nitro_amount = 100;
+
+    private NPCHelper npchelper;
 
     private RobotMotion _robotMotion;
     private Transform _robot;
@@ -23,14 +27,17 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        npchelper = GameObject.Find("NPC").GetComponent<NPCHelper>() as NPCHelper;
+
         GameObject[] temporary = GameObject.FindGameObjectsWithTag("NPC Allies"); 
 
-        for (int i = 0; i < 4; ++i)
+        followObjects = new Transform[1 + temporary.Length];
+        for (int i = 0; i < temporary.Length;  ++i)
         {
             followObjects[i] = temporary[i].transform.Find("Robot").transform;
         }
 
-        followObjects[4] = GameObject.Find("Robot Player").transform.Find("Robot").transform;
+        followObjects[temporary.Length] = GameObject.Find("Robot Player").transform.GetChild(0);
 
         medicine_cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
         healthHelper = GetComponent<HealthHelper>() as HealthHelper;
@@ -47,6 +54,21 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (prev_allies_count != npchelper.countNPCAlies)
+        {
+            GameObject NPC_Allies = GameObject.Find("NPC Allies");
+            int temporary = NPC_Allies.transform.childCount;
+            followObjects = new Transform[1 + temporary];
+            for (int i = 0; i < temporary; ++i)
+            {
+                followObjects[i] = NPC_Allies.transform.GetChild(i).GetChild(0);
+            }
+
+            followObjects[temporary] = GameObject.Find("Robot Player").transform.GetChild(0);
+            prev_allies_count = npchelper.countNPCAlies;
+        }
+
+
         int min_i = 0;
 
         Vector3 direction = followObjects[0].position - _robot.position;

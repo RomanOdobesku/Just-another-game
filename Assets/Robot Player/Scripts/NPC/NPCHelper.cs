@@ -38,7 +38,7 @@ public class NPCHelper : MonoBehaviour
     }
     public void DeadAlies()
     {
-
+        countNPCAlies--;
     }
     public void FindNPC()
     {

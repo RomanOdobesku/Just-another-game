@@ -1,53 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    GameObject DeathPanel;
-    GameObject RoborPlayer;
+    private GameObject RobotPlayer;
     bool find=false;
-    GameObject[] robots;
+    private GameObject[] robots;
     private Camera camera;
+    private bool ItsFightScene = false;
+
+    public GameObject MainText;
+    public GameObject SecText;
+
+    private bool ActivePanel = false;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         camera = null;
         camera = Camera.main;
-        Debug.Log(camera.name.ToString());
-        DeathPanel = GameObject.Find("Death Panel");
-        RoborPlayer = GameObject.FindGameObjectWithTag("Robot Player");
+        if (SceneManager.GetActiveScene().name == "Fight")
+            ItsFightScene = true;
+        RobotPlayer = GameObject.FindGameObjectWithTag("Robot Player");
+    }
+    private void Update()
+    {
+        if (ItsFightScene && !ActivePanel)
+        {
+            if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPConScene == 0)
+            {
+                ActiveDeathPanel();
+                
+            }    
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //BigExplosion = GameObject.Find("BigExplosion(Clone)");
-        //if (BigExplosion!= null && !find)
-        //{
-        //    find = true;
-        //}
-        //if (BigExplosion == null && find && RoborPlayer==null)
-        //{
-        //    ActiveDeathPanel();
-        //}
-    }
     public void ActiveDeathPanel()
     {
         Destroy(GameObject.Find("NPC"));
-        if (RoborPlayer != null)
+        if (RobotPlayer != null)
         {
             camera.transform.SetParent(null);
         }
-        RoborPlayer.SetActive(false);
-        //Destroy(RoborPlayer);
-        //robots = GameObject.FindGameObjectsWithTag("HealthBar");
-        //foreach (GameObject item in robots)
-        //{
-        //    Destroy(item);
-        //}
-        DeathPanel.transform.GetChild(0).gameObject.SetActive(true);
+        RobotPlayer.SetActive(false);
+        if (ItsFightScene)
+        {
+            ActivePanel = true;
+            if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPConScene == 0)
+            {
+                MainText.GetComponent<Text>().text = "Победа!";
+                SecText.GetComponent<Text>().text = "Отряд Спасения уничтожен!";
+            }
+            else
+            {
+                MainText.GetComponent<Text>().text = "Поражение!";
+                SecText.GetComponent<Text>().text = "Вы были уничтожены!";
+            }
+            SecText.SetActive(true);
+        }
+        else
+        {
+            Debug.Log(RobotPlayer.ToString());
+            if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPCAlies!=4)
+            {
+                SecText.GetComponent<Text>().text = "Ваш союзник был уничтожен!";
+            }
+            else
+            {
+                SecText.GetComponent<Text>().text = "Вы были уничтожены!";
+            }
+        }
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
