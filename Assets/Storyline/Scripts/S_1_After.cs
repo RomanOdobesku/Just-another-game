@@ -258,11 +258,12 @@ public class S_1_After : MonoBehaviour
     }
     private void Click24()
     {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
-        Debug.Log(NextLevel.ToString());
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene(1);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(1);
     }
 }

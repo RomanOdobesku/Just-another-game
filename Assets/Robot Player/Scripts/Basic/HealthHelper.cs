@@ -122,7 +122,7 @@ public class HealthHelper : MonoBehaviour
             }
             if (CompareTag("Robot Player") || CompareTag("NPC Allies"))
             {
-                GameObject.Find("Canvas").GetComponent<Death>().ActiveDeathPanel();
+                GameObject.Find("Death Panel").GetComponent<Death>().ActiveDeathPanel();
             }
             Destroy(gameObject);
             Destroy(explosion, explosionParticleSystem.main.duration);

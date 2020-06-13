@@ -34,12 +34,14 @@ public class Game_logic_1 : MonoBehaviour
 
     private void GoScene2()
     {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene(NextLevel);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
 
     private void OnTriggerExit(Collider other)

@@ -30,12 +30,14 @@ public class Game_logic_3 : MonoBehaviour
     }
     public void goScene4()
     {
-        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene + PlayerPrefs.GetInt("CountBonus"));
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene(NextLevel);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
     // Update is called once per frame
    

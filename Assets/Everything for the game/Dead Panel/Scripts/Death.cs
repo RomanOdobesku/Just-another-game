@@ -9,10 +9,13 @@ public class Death : MonoBehaviour
     GameObject RoborPlayer;
     bool find=false;
     GameObject[] robots;
-    public Camera camera;
+    private Camera camera;
     // Start is called before the first frame update
     void Start()
     {
+        camera = null;
+        camera = Camera.main;
+        Debug.Log(camera.name.ToString());
         DeathPanel = GameObject.Find("Death Panel");
         RoborPlayer = GameObject.FindGameObjectWithTag("Robot Player");
     }
@@ -49,10 +52,14 @@ public class Death : MonoBehaviour
     }
     public void GoMainMenu()
     {
-        SceneManager.LoadScene(0);
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(0);
     }
     public void Again()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

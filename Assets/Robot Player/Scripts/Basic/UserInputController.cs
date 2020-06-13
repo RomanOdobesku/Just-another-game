@@ -40,7 +40,8 @@ public class UserInputController : MonoBehaviour
         }
 
         _cameraController = gameObject.GetComponent<CameraController>();
-        _allyMenu = GameObject.Find("Canvas").transform.Find("Ally_Panel").GetComponent<AllyMenu>();
+        if (controlAllies)
+            _allyMenu = GameObject.Find("Canvas").transform.Find("Ally_Panel").GetComponent<AllyMenu>();
     }
 
     void Update()

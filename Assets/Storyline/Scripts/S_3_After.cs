@@ -43,18 +43,22 @@ public class S_3_After : MonoBehaviour
     }
     public void Yes()
     {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("Improvement_Menu");
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(1);
     }
     public void No()
     {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene(NextLevel);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
 }

@@ -320,7 +320,12 @@ public class S_1_Before : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Main_Menu");
+            GameObject LoadingPanel = GameObject.Find("Loading Panel");
+            int NextLevel = PlayerPrefs.GetInt("NextLevel");
+            NextLevel = 0;
+            PlayerPrefs.SetInt("NextLevel", NextLevel);
+            PlayerPrefs.Save();
+            LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
         }
     }
     private void Click30()
@@ -339,11 +344,12 @@ public class S_1_Before : MonoBehaviour
     }
     private void Click32()
     {
-        
-        int NextLevel=PlayerPrefs.GetInt("NextLevel");
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);
         PlayerPrefs.Save();
-        SceneManager.LoadScene(NextLevel);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
 }
