@@ -39,6 +39,14 @@ public class HealthHelper : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
+        if (Player)
+        {
+            float multiplier;
+            multiplier = PlayerPrefs.GetInt("Health");
+            MaxHealth = MaxHealth * (1 + multiplier / 5);
+            multiplier = PlayerPrefs.GetInt("Damage");
+            DamageRobotSensivity = DamageRobotSensivity * (1 + multiplier / 5);
+        }
         _health = MaxHealth;
         if (!Camera)
             Camera = Camera.main;

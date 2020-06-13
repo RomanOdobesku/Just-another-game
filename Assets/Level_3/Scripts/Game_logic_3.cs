@@ -32,7 +32,7 @@ public class Game_logic_3 : MonoBehaviour
     {
         GameObject LoadingPanel = GameObject.Find("Loading Panel");
         LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
-        PlayerPrefs.SetInt("CountBonus", count_Bonus_this_scene);
+        PlayerPrefs.SetInt("CountBonus", PlayerPrefs.GetInt("CountBonus")+count_Bonus_this_scene);
         int NextLevel = PlayerPrefs.GetInt("NextLevel");
         NextLevel++;
         PlayerPrefs.SetInt("NextLevel", NextLevel);

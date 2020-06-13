@@ -40,6 +40,7 @@ public class Death : MonoBehaviour
         {
             camera.transform.SetParent(null);
         }
+        RoborPlayer.SetActive(false);
         //Destroy(RoborPlayer);
         //robots = GameObject.FindGameObjectsWithTag("HealthBar");
         //foreach (GameObject item in robots)

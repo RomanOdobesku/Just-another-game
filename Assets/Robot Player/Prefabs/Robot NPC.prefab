@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   need_charge: 0
-  followObjects: []
   ActivateRadius: Infinity
 --- !u!1001 &118814516682715868
 PrefabInstance:
@@ -148,6 +147,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3542830194177032351}
     m_Modifications:
+    - target: {fileID: 1231737312732907482, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8e72d73288f3124c8dc57cda7e30ec6, type: 2}
+    - target: {fileID: 1231795957277138738, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8e72d73288f3124c8dc57cda7e30ec6, type: 2}
+    - target: {fileID: 1233251359756025612, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8e72d73288f3124c8dc57cda7e30ec6, type: 2}
+    - target: {fileID: 1233485174401170086, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8e72d73288f3124c8dc57cda7e30ec6, type: 2}
+    - target: {fileID: 1233811025182134580, guid: 3187e870239bdf54e88beb01bfd9cfad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8e72d73288f3124c8dc57cda7e30ec6, type: 2}
     - target: {fileID: 1243869890215507490, guid: 3187e870239bdf54e88beb01bfd9cfad,
         type: 3}
       propertyPath: m_LocalPosition.x

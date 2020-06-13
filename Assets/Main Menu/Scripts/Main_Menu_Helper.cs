@@ -48,6 +48,7 @@ public class Main_Menu_Helper : MonoBehaviour
         PlayerPrefs.SetInt("Health", 0);
         PlayerPrefs.SetInt("Damage", 0);
         PlayerPrefs.SetInt("MaterialPlayer", 0);
+        PlayerPrefs.SetInt("CountBonus", 0);
         NextLevel = PlayerPrefs.GetInt("NextLevel");
         PlayerPrefs.Save();
         SceneManager.LoadScene(NextLevel);

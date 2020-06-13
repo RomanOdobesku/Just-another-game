@@ -22,7 +22,7 @@ public class CollisionObserver : MonoBehaviour
         Transform parent = other.transform.parent;
         if (parent.CompareTag("Robot Player") || other.CompareTag("NPC Allies"))
         {
-            if (transform.parent.gameObject.CompareTag("Enemy"))
+            if (transform.parent.gameObject.CompareTag("NPC Usual"))
             {
                 transform.parent.GetComponent<Enemy>().need_charge = true;
             }

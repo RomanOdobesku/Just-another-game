@@ -8,7 +8,7 @@ public class EliteEnemy : MonoBehaviour
     //public Transform FollowObject;
     public bool need_charge = false;
     private HealthHelper healthHelper;
-    public Transform[] followObjects;
+    private Transform[] followObjects = new Transform[5];
     bool Attack = true;
     //public float StopRadius = 25;
     public float ActivateRadius = Mathf.Infinity;
@@ -26,6 +26,15 @@ public class EliteEnemy : MonoBehaviour
 
     void Start()
     {
+        GameObject[] temporary = GameObject.FindGameObjectsWithTag("NPC Allies");
+
+        for (int i = 0; i < 4; ++i)
+        {
+            followObjects[i] = temporary[i].transform.Find("Robot").transform;
+        }
+
+        followObjects[4] = GameObject.Find("Robot Player").transform.Find("Robot").transform;
+
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
         medicine_cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
         healthHelper = GetComponent<HealthHelper>() as HealthHelper;
