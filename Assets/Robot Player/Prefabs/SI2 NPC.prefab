@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4817455143440708935}
   - component: {fileID: 1275533565}
   - component: {fileID: 1275533566}
-  - component: {fileID: 1776141229}
+  - component: {fileID: 6544755640758913900}
   m_Layer: 0
   m_Name: SI2 NPC
   m_TagString: NPC Allies
@@ -99,6 +99,7 @@ MonoBehaviour:
   UseAddForce: 0
   UseDust: 1
   Velocity: 0
+  _onGround: 0
 --- !u!114 &1275533566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,12 +122,11 @@ MonoBehaviour:
   HeightOffset: 5
   Camera: {fileID: 0}
   Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  HeathBar: {fileID: 3144349125652295703, guid: bca82d9f463a52c47aecdb7b617275ad,
-    type: 3}
   DynamicHealthBarCreate: 1
   Player: 0
+  Enemy: 0
   _health: 0
---- !u!114 &1776141229
+--- !u!114 &6544755640758913900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,13 +135,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1225575121225857205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f26f65883f0164a8859606e4b07c71, type: 3}
+  m_Script: {fileID: 11500000, guid: fcac68fd0718f8e4ab479a9a0158593e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowObject: {fileID: 0}
-  Attack: 1
+  Player: {fileID: 0}
   StopRadius: 25
-  ActivateRadius: Infinity
 --- !u!1001 &118814516682715868
 PrefabInstance:
   m_ObjectHideFlags: 0

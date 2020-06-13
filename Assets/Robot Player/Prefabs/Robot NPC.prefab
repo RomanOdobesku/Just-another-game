@@ -37,10 +37,10 @@ GameObject:
   - component: {fileID: 4817455143440708935}
   - component: {fileID: 1275533565}
   - component: {fileID: 1275533566}
-  - component: {fileID: 1776141229}
+  - component: {fileID: 8414769499889442160}
   m_Layer: 0
   m_Name: Robot NPC
-  m_TagString: Untagged
+  m_TagString: NPC Usual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   UseAddForce: 0
   UseDust: 1
   Velocity: 0
+  _onGround: 0
 --- !u!114 &1275533566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +124,9 @@ MonoBehaviour:
   Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   DynamicHealthBarCreate: 1
   Player: 0
+  Enemy: 1
   _health: 0
---- !u!114 &1776141229
+--- !u!114 &8414769499889442160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,12 +135,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1225575121225857205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f26f65883f0164a8859606e4b07c71, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e35195e173d61a43b42edf89b96b0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowObject: {fileID: 0}
-  Attack: 1
-  StopRadius: 25
+  need_charge: 0
+  followObjects: []
   ActivateRadius: Infinity
 --- !u!1001 &118814516682715868
 PrefabInstance:

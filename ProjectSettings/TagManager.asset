@@ -27,6 +27,9 @@ TagManager:
   - NPC Usual
   - NPC Allies
   - Button
+  - Main enemy
+  - Keeper
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -37,7 +40,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - NPC
   - 
   - 
   - 
