@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class EasterEgg3 : MonoBehaviour
 {
+    private GameObject Player;
+    private GameObject camerabase;
+    public Camera camera;
+
     public GameObject Body;
     public GameObject LeftPlate;
     public GameObject RearPlate;
@@ -13,7 +17,7 @@ public class EasterEgg3 : MonoBehaviour
 
     public GameObject Task_Ch;
     public GameObject EasterEggPanel;
-    public GameObject MainPanel;
+    private GameObject MainPanel;
 
     public Material[] mat;
 
@@ -26,6 +30,8 @@ public class EasterEgg3 : MonoBehaviour
     private bool EndLevel = false;
     void Start()
     {
+        Player = GameObject.Find("Robot Player");
+        camerabase = Player.transform.GetChild(1).gameObject;
         MainPanel = GameObject.Find("Main_Panel");
     }
     public void OnTriggerEnter(Collider other)
@@ -39,6 +45,8 @@ public class EasterEgg3 : MonoBehaviour
     }
     public void OpenPanel()
     {
+        camera.transform.SetParent(null);
+        Player.SetActive(false);
         Task_Ch.SetActive(true);
         MainPanel.SetActive(false);
         EasterEggPanel.SetActive(true);
@@ -100,6 +108,8 @@ public class EasterEgg3 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
+        Player.SetActive(true);
+        camera.transform.SetParent(camerabase.transform);
         if (EndLevel)
         {
             gameObject.GetComponent<Game_logic_3>().goScene4();

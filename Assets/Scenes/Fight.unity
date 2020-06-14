@@ -12376,7 +12376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countNPConScene: 0
   countNPCAlies: 0
-  battery: 1
+  battery: 0
   prefab: {fileID: 4590410494787205939, guid: 83ecc04e62a91f64c9a553ccb4ecf443, type: 3}
 --- !u!4 &1256465090
 Transform:

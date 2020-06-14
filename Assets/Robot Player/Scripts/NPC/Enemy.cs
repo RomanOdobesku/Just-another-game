@@ -56,7 +56,25 @@ public class Enemy : MonoBehaviour
     {
         if (prev_allies_count != npchelper.countNPCAlies)
         {
-            GameObject NPC_Allies = GameObject.Find("NPC Allies");
+
+            prev_allies_count = npchelper.countNPCAlies;
+            GameObject[] temporary = GameObject.FindGameObjectsWithTag("NPC Allies");
+
+            followObjects = new Transform[1 + temporary.Length];
+            for (int i = 0; i < temporary.Length; ++i)
+            {
+                followObjects[i] = temporary[i].transform.Find("Robot").transform;
+            }
+
+            followObjects[temporary.Length] = GameObject.Find("Robot Player").transform.Find("Robot").transform;
+
+
+
+
+
+
+
+            /*GameObject NPC_Allies = GameObject.Find("NPC Allies");
             int temporary = NPC_Allies.transform.childCount;
             followObjects = new Transform[1 + temporary];
             for (int i = 0; i < temporary; ++i)
@@ -65,7 +83,7 @@ public class Enemy : MonoBehaviour
             }
 
             followObjects[temporary] = GameObject.Find("Robot Player").transform.GetChild(0);
-            prev_allies_count = npchelper.countNPCAlies;
+            prev_allies_count = npchelper.countNPCAlies;*/
         }
 
 
@@ -88,7 +106,7 @@ public class Enemy : MonoBehaviour
 
         if (distance < ActivateRadius)
         {
-            if (healthHelper.getHealth() < (0.5 * healthHelper.MaxHealth))
+            if (healthHelper.getHealth() < (0.25 * healthHelper.MaxHealth))
             {
                 Attack = false;
             }
@@ -97,13 +115,13 @@ public class Enemy : MonoBehaviour
             // если робот двигался с нитро (speedUp = true) и нитро ещё есть - тратим его, иначе выключаем его и копим до 50
             if (speedUp & nitro_amount > 0)
             {
-                nitro_amount -= (float)0.1;
+                nitro_amount -= (float)0.15;
             }
             else
             {
                 speedUp = false;
                 nitro_amount += (float)0.2;
-                if (nitro_amount > 50 || healthHelper.getHealth() < 20) speedUp = true;
+                if (nitro_amount > 50) speedUp = true;
             }
 
             if (Attack)

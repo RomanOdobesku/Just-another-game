@@ -74,6 +74,20 @@ public class EliteEnemy : MonoBehaviour
     {
         if (prev_allies_count != npchelper.countNPCAlies)
         {
+            prev_allies_count = npchelper.countNPCAlies;
+            GameObject[] temporary = GameObject.FindGameObjectsWithTag("NPC Allies");
+
+            followObjects = new Transform[1 + temporary.Length];
+            for (int i = 0; i < temporary.Length; ++i)
+            {
+                followObjects[i] = temporary[i].transform.Find("Robot").transform;
+            }
+
+            followObjects[temporary.Length] = GameObject.Find("Robot Player").transform.Find("Robot").transform;
+
+
+
+            /*
             GameObject NPC_Allies = GameObject.Find("NPC Allies");
             int temporary = NPC_Allies.transform.childCount;
             followObjects = new Transform[1 + temporary];
@@ -84,6 +98,8 @@ public class EliteEnemy : MonoBehaviour
 
             followObjects[temporary] = GameObject.Find("Robot Player").transform.GetChild(0);
             prev_allies_count = npchelper.countNPCAlies;
+
+            */
         }
     }
 

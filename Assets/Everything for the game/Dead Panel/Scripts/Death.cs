@@ -63,13 +63,13 @@ public class Death : MonoBehaviour
         else
         {
             Debug.Log(RobotPlayer.ToString());
-            if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPCAlies!=4)
+            if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPCAlies==4 || GameObject.Find("NPC").GetComponent<NPCHelper>().countNPCAlies == 0)
             {
-                SecText.GetComponent<Text>().text = "Ваш союзник был уничтожен!";
+                SecText.GetComponent<Text>().text = "Вы были уничтожены!";
             }
             else
             {
-                SecText.GetComponent<Text>().text = "Вы были уничтожены!";
+                SecText.GetComponent<Text>().text = "Ваш союзник был уничтожен!";
             }
         }
         gameObject.transform.GetChild(0).gameObject.SetActive(true);

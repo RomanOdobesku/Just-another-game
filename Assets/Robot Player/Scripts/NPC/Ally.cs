@@ -22,8 +22,15 @@ public class Ally : MonoBehaviour
 
     private bool _moveToRobot = true;
 
+    private HealthHelper healthHelper;
+    GameObject[] medicine_cabinets;
+
+
     private void Start()
     {
+        medicine_cabinets = GameObject.FindGameObjectsWithTag("Medicine cabinet");
+        healthHelper = GetComponent<HealthHelper>() as HealthHelper;
+
         _myRigidbody = GetComponentInChildren<Rigidbody>();
         _robotMotion = GetComponent<RobotMotion>();
         _robot = transform.Find("Robot");
@@ -31,7 +38,28 @@ public class Ally : MonoBehaviour
 
     private void Update()
     {
-        if (_attack)
+        if (healthHelper.getHealth() <= 20)
+        {
+            Vector3 direction;
+            float min_distance = 9999999999999;
+            int min_index = 0;
+
+            for (int i = 0; i < medicine_cabinets.Length; ++i)
+            {
+                float dist = (medicine_cabinets[i].transform.position - _robot.position).magnitude;
+                if (dist < min_distance && medicine_cabinets[i].activeSelf)
+                {
+                    min_distance = dist;
+                    min_index = i;
+                }
+            }
+
+            direction = medicine_cabinets[min_index].transform.position - _robot.position;
+            direction = direction.normalized;
+
+            _robotMotion.Move(direction, true);
+        }
+        else if (_attack)
         {
             if (_followObjectT && _followObjectT.gameObject.activeSelf)
             {

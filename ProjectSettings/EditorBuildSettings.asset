@@ -56,4 +56,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: 084a39d63b46f4a4196f20a10df9a69e
+  - enabled: 1
+    path: Assets/Scenes/Training 0.unity
+    guid: a894e4f142cdbd64397e2460be53fa55
+  - enabled: 1
+    path: Assets/Scenes/Training 1.unity
+    guid: 24e7027082821ec4497c922dedc97723
+  - enabled: 1
+    path: Assets/Scenes/Training 2.unity
+    guid: 1007eab8515031246bf41a8d9740e925
+  - enabled: 1
+    path: Assets/Scenes/Training 3.unity
+    guid: 82b06bf708a31874aaf3576519041a11
   m_configObjects: {}

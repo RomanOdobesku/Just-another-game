@@ -58,6 +58,12 @@ public class Main_Menu_Helper : MonoBehaviour
         LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(16);
     }
+    public void Start_training()
+    {
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(17);
+    }
     public void Exit()
     {
         Application.Quit();

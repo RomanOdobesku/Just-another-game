@@ -68,7 +68,6 @@ public class PauseGame : MonoBehaviour
     }
     public void Continue()
     {
-        Debug.Log("hgfhfgh");
         ClosePauseMenu();
     }
 

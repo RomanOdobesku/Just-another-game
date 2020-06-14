@@ -33,7 +33,7 @@ public class NPCHelper : MonoBehaviour
     public void DeadEliteNPC(Transform tr)
     {
         DeadUsualNPC();
-        if(!battery)
+        if(battery)
             Instantiate(prefab, new Vector3(tr.position.x-3, tr.position.y, tr.position.z), Quaternion.Euler(90,0,0));
     }
     public void DeadAlies()
@@ -42,6 +42,6 @@ public class NPCHelper : MonoBehaviour
     }
     public void FindNPC()
     {
-        countNPConScene = GameObject.FindGameObjectsWithTag("Robot").Length;
+        countNPConScene = GameObject.FindGameObjectsWithTag("Robot").Length - countNPCAlies;
     }
 }

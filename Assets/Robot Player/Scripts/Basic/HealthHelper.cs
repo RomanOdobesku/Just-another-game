@@ -47,6 +47,10 @@ public class HealthHelper : MonoBehaviour
                 float multiplier;
                 multiplier = PlayerPrefs.GetInt("Health");
                 MaxHealth = MaxHealth * (1 + multiplier / 5);
+            }
+            if (Enemy)
+            {
+                float multiplier;
                 multiplier = PlayerPrefs.GetInt("Damage");
                 DamageRobotSensivity = DamageRobotSensivity * (1 + multiplier / 5);
             }

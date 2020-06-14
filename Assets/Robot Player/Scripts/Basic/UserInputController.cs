@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UserInputController : MonoBehaviour
 {
@@ -131,8 +133,15 @@ public class UserInputController : MonoBehaviour
                     if (transform)
                     {
                         Debug.Log("attack");
+                        ////////////// обучение
                         
                         if (all)
+                            if (SceneManager.GetActiveScene().name == "Training 2")
+                            {
+                                GameObject.Find("Training Panel").GetComponent<Training_2>().DoTaskaAtack();
+                            }
+                        /////////////////////////
+                            if (all)
                             foreach (Ally i in Allies)
                                 i.GoAttack(transform);
                         else
@@ -154,6 +163,10 @@ public class UserInputController : MonoBehaviour
         {
             if (Input.GetMouseButton(1))
             {
+                if (SceneManager.GetActiveScene().name == "Training 2")
+                {
+                    GameObject.Find("Training Panel").GetComponent<Training_2>().DoTaskB();
+                }
                 foreach (Ally i in Allies)
                     i.GoBack();
             } else
