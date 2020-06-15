@@ -8267,7 +8267,7 @@ PrefabInstance:
     - target: {fileID: 8286707261645272261, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707261717151435, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
@@ -8337,22 +8337,22 @@ PrefabInstance:
     - target: {fileID: 8286707261717151439, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707262807842867, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707263233631979, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8288561639164936265, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a, type: 3}
@@ -15543,7 +15543,7 @@ PrefabInstance:
     - target: {fileID: 8286707261645272261, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707261717151435, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
@@ -15613,22 +15613,22 @@ PrefabInstance:
     - target: {fileID: 8286707261717151439, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707262807842867, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707263233631979, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8288561639164936265, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a, type: 3}

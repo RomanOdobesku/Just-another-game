@@ -2747,7 +2747,7 @@ PrefabInstance:
     - target: {fileID: 8286707261645272261, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707261717151435, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
@@ -2817,22 +2817,22 @@ PrefabInstance:
     - target: {fileID: 8286707261717151439, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707262807842867, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707263233631979, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8288561639164936265, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a, type: 3}
@@ -6018,6 +6018,10 @@ PrefabInstance:
     - target: {fileID: 1275533565, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
       propertyPath: MaxAngularVelocity
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
+      propertyPath: BrakingCoefficient
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
       propertyPath: Attack
@@ -16594,6 +16598,10 @@ PrefabInstance:
       propertyPath: MaxAngularVelocity
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 9a8fe76063341184e9b49ef06bf874f3, type: 3}
+      propertyPath: BrakingCoefficient
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 9a8fe76063341184e9b49ef06bf874f3, type: 3}
       propertyPath: Attack
       value: 0
@@ -18277,6 +18285,10 @@ PrefabInstance:
     - target: {fileID: 1275533565, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
       propertyPath: MaxAngularVelocity
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
+      propertyPath: BrakingCoefficient
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
       propertyPath: Attack
@@ -22293,6 +22305,10 @@ PrefabInstance:
       propertyPath: MaxAngularVelocity
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 4c8ab8420e53fd445ac7182a88c3cd12, type: 3}
+      propertyPath: BrakingCoefficient
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 4c8ab8420e53fd445ac7182a88c3cd12, type: 3}
       propertyPath: Attack
       value: 0
@@ -23167,7 +23183,7 @@ PrefabInstance:
     - target: {fileID: 8286707261645272261, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707261717151435, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
@@ -23237,22 +23253,22 @@ PrefabInstance:
     - target: {fileID: 8286707261717151439, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707262807842867, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8286707263233631979, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8288561639164936265, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d2d517c42d09d4bbcc5165cb9a6a7a, type: 3}
