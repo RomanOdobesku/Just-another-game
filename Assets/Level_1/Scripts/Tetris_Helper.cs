@@ -54,6 +54,7 @@ public class Tetris_Helper : MonoBehaviour
     }
     public void LoadInGame()
     {
+
         Tetris_Canvas.SetActive(false);
         Player.SetActive(true);
         NPC.SetActive(true);

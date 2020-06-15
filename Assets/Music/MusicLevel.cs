@@ -36,6 +36,7 @@ public class MusicLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(npcHelper.countNPConScene);
         if (npcHelper.countNPConScene==0)
             ActivePlaylistPeace = true;
         else

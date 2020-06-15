@@ -19,14 +19,25 @@ public class Game_logic_3 : MonoBehaviour
     int count_Bonus_this_scene = 0;
     int count_Collect_add_Crystal = 0;
 
+    private NPCHelper nPCHelper;
+    private bool AcriveCoroutine = false;
     // Start is called before the first frame update
     void Start()
     {
+        nPCHelper = GameObject.Find("NPC").GetComponent<NPCHelper>();
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info_main_crystal.text = "0/1";
         text_Info_add_crystal.text = count_Collect_add_Crystal.ToString() + "/" + collect_crystal.ToString();
         text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
 
+    }
+    private void Update()
+    {
+        if (!AcriveCoroutine && nPCHelper.countNPConScene == 0)
+        {
+            AcriveCoroutine = true;
+            StartCoroutine(FindNPC());
+        }
     }
     public void goScene4()
     {
@@ -98,5 +109,15 @@ public class Game_logic_3 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Check_Task"))
             text_No_Next_Level.gameObject.SetActive(false);
+    }
+    IEnumerator FindNPC()
+    {
+        while (nPCHelper.countNPConScene == 0)
+        {
+            nPCHelper.FindNPC();
+            yield return new WaitForSeconds(0.2f);
+        }
+        AcriveCoroutine = false;
+        yield return null;
     }
 }
