@@ -322,7 +322,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -1687,11 +1687,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275533565, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
       propertyPath: MovePower
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1275533565, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
       propertyPath: AccelerationCoefficient
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: d139ae1b35b476a45b979b7a02ffc3e2, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1225575121225857205, guid: d139ae1b35b476a45b979b7a02ffc3e2,
         type: 3}
@@ -1911,6 +1915,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.27450982}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2864,7 +2869,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -4245,7 +4250,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
@@ -4567,6 +4572,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5093,6 +5099,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5807,7 +5814,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -9701,6 +9708,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11001,6 +11009,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11250,6 +11259,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12246,6 +12256,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12756,6 +12767,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13034,6 +13046,16 @@ PrefabInstance:
       propertyPath: followObjects.Array.data[4]
       value: 
       objectReference: {fileID: 835651314}
+    - target: {fileID: 6877241681055332100, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
+        type: 3}
+      propertyPath: MovePower
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877241681055332100, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
+        type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332102, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13093,6 +13115,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
+        type: 3}
+      propertyPath: DamageRobotSensivity
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -13392,7 +13424,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: eca90685bd7c0e14c985891ef5c0a3f3, type: 3}
@@ -13455,6 +13487,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13548,6 +13581,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14844,11 +14878,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275533565, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
       propertyPath: MovePower
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1275533565, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
       propertyPath: AccelerationCoefficient
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 774b8c77fac353f42be56dc65d471761, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1225575121225857205, guid: 774b8c77fac353f42be56dc65d471761,
         type: 3}
@@ -17545,7 +17583,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -17602,6 +17640,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18131,6 +18170,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18301,6 +18341,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18583,7 +18624,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -18842,11 +18883,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275533565, guid: 9a8fe76063341184e9b49ef06bf874f3, type: 3}
       propertyPath: MovePower
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1275533565, guid: 9a8fe76063341184e9b49ef06bf874f3, type: 3}
       propertyPath: AccelerationCoefficient
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 9a8fe76063341184e9b49ef06bf874f3, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1225575121225857205, guid: 9a8fe76063341184e9b49ef06bf874f3,
         type: 3}
@@ -19069,7 +19114,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -19499,11 +19544,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275533565, guid: 4c8ab8420e53fd445ac7182a88c3cd12, type: 3}
       propertyPath: MovePower
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1275533565, guid: 4c8ab8420e53fd445ac7182a88c3cd12, type: 3}
       propertyPath: AccelerationCoefficient
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 4c8ab8420e53fd445ac7182a88c3cd12, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1225575121225857205, guid: 4c8ab8420e53fd445ac7182a88c3cd12,
         type: 3}
@@ -20120,6 +20169,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20477,7 +20527,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -22093,7 +22143,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -22373,7 +22423,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: eca90685bd7c0e14c985891ef5c0a3f3, type: 3}
@@ -22847,6 +22897,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -25018,7 +25069,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -25683,7 +25734,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -26888,6 +26939,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27236,7 +27288,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -28134,7 +28186,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -28469,6 +28521,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.27450982}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -28764,6 +28817,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133844044}
     m_Modifications:
+    - target: {fileID: 1275533565, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: MovePower
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
       value: 1
@@ -28771,6 +28832,10 @@ PrefabInstance:
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: Enemy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: DamageRobotSensivity
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -29448,7 +29513,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -31761,6 +31826,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133844044}
     m_Modifications:
+    - target: {fileID: 1275533565, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: MovePower
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533565, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: MaxAngularVelocity
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
       value: 1
@@ -31768,6 +31841,10 @@ PrefabInstance:
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: Enemy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
+      propertyPath: DamageRobotSensivity
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -32173,6 +32250,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -33071,6 +33149,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -34098,7 +34177,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -34191,7 +34270,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: eca90685bd7c0e14c985891ef5c0a3f3, type: 3}
@@ -34269,6 +34348,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -35875,6 +35955,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -36321,6 +36402,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -36479,6 +36561,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -36815,7 +36898,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -38544,7 +38627,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -39800,6 +39883,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -40437,6 +40521,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -40525,7 +40610,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
@@ -41302,7 +41387,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -41448,7 +41533,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 4ef0955e484199642bd77ccd0ab592e1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bf8d317df722d644f99e8ff3926c99d9, type: 3}
@@ -41634,7 +41719,7 @@ PrefabInstance:
     - target: {fileID: 1590017677709007875, guid: 9c4938fbd84344141b3029881bbbf2d6,
         type: 3}
       propertyPath: MovePower
-      value: 750
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1590017677709007875, guid: 9c4938fbd84344141b3029881bbbf2d6,
         type: 3}

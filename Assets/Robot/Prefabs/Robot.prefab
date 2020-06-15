@@ -2184,6 +2184,7 @@ GameObject:
   - component: {fileID: 1243869890215507490}
   - component: {fileID: 1246550552342955951}
   - component: {fileID: 6139475086931287994}
+  - component: {fileID: -4675934508173017287}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -2237,6 +2238,20 @@ MonoBehaviour:
   Radius: 1.68
   Cam: {fileID: 0}
   Col: {fileID: 0}
+  _visible: 0
+--- !u!135 &-4675934508173017287
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245752813848140762}
+  m_Material: {fileID: 13400000, guid: 9997d1aa22bf86e4b822764e80c2f23f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.046
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1245757005148670228
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,7 +62,8 @@ public class RobotMotion : MonoBehaviour
             {
                 float multiplier;
                 multiplier = PlayerPrefs.GetInt("Speed");
-                MovePower = MovePower * (1 + multiplier / 5);
+                MovePower *= (1 + multiplier / 5);
+                MaxAngularVelocity *= (1 + multiplier / 5);
             }
         }
         _rigidbody = GetComponentInChildren<Rigidbody>() as Rigidbody;
