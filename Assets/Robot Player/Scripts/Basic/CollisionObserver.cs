@@ -20,7 +20,7 @@ public class CollisionObserver : MonoBehaviour
     {
         GameObject other = collision.gameObject;
         Transform parent = other.transform.parent;
-        if (parent.CompareTag("Robot Player") || other.CompareTag("NPC Allies"))
+        if (parent && (parent.CompareTag("Robot Player") || other.CompareTag("NPC Allies")))
         {
             if (transform.parent.gameObject.CompareTag("NPC Usual"))
             {

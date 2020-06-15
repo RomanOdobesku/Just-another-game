@@ -6,6 +6,8 @@ public class TV : MonoBehaviour
     public GameObject Loading;
     public GameObject[] Videos;
 
+    public bool VideoActive = false;
+
     void Start()
     {
         Loading.SetActive(true);
@@ -33,6 +35,7 @@ public class TV : MonoBehaviour
     }
     private void EndAllVideo()
     {
+        VideoActive = true;
         foreach (var item in Videos)
         {
             item.SetActive(false);

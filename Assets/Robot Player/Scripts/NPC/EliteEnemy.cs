@@ -61,11 +61,11 @@ public class EliteEnemy : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(_robot.position, -Vector3.up, out hit, 100.0f))
         {
-            print(hit.distance);
-            if (hit.distance >= 18 && d < 100)
+            //print(hit.distance);
+            if (hit.distance >= 15 && d < 100)
             {
                 _rigidbody.velocity = new Vector3(0, 0, 0);
-                _rigidbody.AddForce((direction + followObjectDirection * d / 200).normalized * 200, ForceMode.Impulse);
+                _rigidbody.AddForce((direction + followObjectDirection * d / 150).normalized * 150, ForceMode.Impulse);
             }
         }
     }
@@ -128,7 +128,7 @@ public class EliteEnemy : MonoBehaviour
 
         if (distance < ActivateRadius)
         {
-            if (healthHelper.getHealth() < (0.5 * healthHelper.MaxHealth))
+            if (healthHelper.getHealth() < (0.2 * healthHelper.MaxHealth))
             {
                 Attack = false;
             }
@@ -143,7 +143,7 @@ public class EliteEnemy : MonoBehaviour
             {
                 speedUp = false;
                 nitro_amount += (float)0.2;
-                if (nitro_amount > 50 || healthHelper.getHealth() < 20) speedUp = true;
+                if (nitro_amount > 50) speedUp = true;
             }
 
             if (Attack)
@@ -157,9 +157,9 @@ public class EliteEnemy : MonoBehaviour
                 }
                 else if (jump_cooldown <= 0 && _robotMotion.OnGround && notNormalizedDirection.magnitude < 100)
                 {
-                    _rigidbody.AddForce(Vector3.up * 15, ForceMode.Impulse);
+                    _rigidbody.AddForce(Vector3.up * 22, ForceMode.Impulse);
                 }
-                else if (jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 20)))
+                if (jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 16)) && notNormalizedDirection.magnitude < 100)
                 {
                     AirCharge(notNormalizedDirection, followObjectDirection);
                     jump_cooldown = 500;

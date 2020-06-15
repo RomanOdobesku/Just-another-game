@@ -27,6 +27,8 @@ public class Game_logic_4 : MonoBehaviour
     NPCHelper npcHelper;
     bool newpartNPC = false;
     GameObject EliteNPC;
+
+    public bool InEasterEgg = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +101,11 @@ public class Game_logic_4 : MonoBehaviour
         {
             text_No_Next_Level.gameObject.SetActive(false);
         }
-        
+        if (other.gameObject.CompareTag("Easter egg"))
+        {
+            InEasterEgg = false;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -107,7 +113,7 @@ public class Game_logic_4 : MonoBehaviour
         if (other.gameObject.CompareTag("Easter egg"))
         {
             Task_Ch.SetActive(true);
-
+            InEasterEgg = true;
         }
         if (other.gameObject.CompareTag("Next_Level"))
         {

@@ -19,6 +19,7 @@ public class Video : MonoBehaviour
     private void _videoPlayer_loopPointReached(VideoPlayer source)
     {
         Loading.SetActive(true);
+        GameObject.Find("TV").GetComponent<TV>().VideoActive = false;
         gameObject.SetActive(false);
     }
 }

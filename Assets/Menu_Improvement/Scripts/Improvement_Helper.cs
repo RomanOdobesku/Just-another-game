@@ -33,9 +33,18 @@ public class Improvement_Helper : MonoBehaviour
         _health.fillAmount = 0.2f * _Health;
         _damage.fillAmount = 0.2f * _Damage;
         text.text = _FreeBonus.ToString();
-        if (NextLevel == 5)
+        if (PlayerPrefs.GetInt("LoadingInMenu") == 1)
         {
-            GameObject pref=Instantiate(prefab,GameObject.Find("Canvas").transform);
+            GameObject.Find("Back_T").GetComponent<Text>().text = "Продолжить кампанию";
+            PlayerPrefs.SetInt("LoadingInMenu", 0);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            if (NextLevel == 5)
+            {
+                GameObject pref = Instantiate(prefab, GameObject.Find("Canvas").transform);
+            }
         }
     }
 
