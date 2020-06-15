@@ -21,10 +21,12 @@ public class Training_2 : MonoBehaviour
 
     private float[] prevHealthNPCAllies = new float[4];
 
-    GameObject Allies;
+    private GameObject Allies;
+    private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Robot Player");
         Allies = GameObject.Find("NPC Allies");
     }
     public void Click()
@@ -34,6 +36,13 @@ public class Training_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < Allies.transform.childCount; i++)
+        {
+            if (Allies.transform.GetChild(i).GetComponent<HealthHelper>()._health <= 10)
+                Allies.transform.GetChild(i).GetComponent<HealthHelper>()._health = 100;
+        }
+        if (Player.GetComponent<HealthHelper>()._health <= 10)
+            Player.GetComponent<HealthHelper>()._health = 100;
         Debug.Log(step);
         switch (step)
         {
@@ -95,9 +104,7 @@ public class Training_2 : MonoBehaviour
                     step++;
                     texts[3].SetActive(false);
                     texts[4].SetActive(true);
-                    NPC.GetComponent<HealthHelper>()._health = 100;
                     NPC.GetComponent<HealthHelper>().DamagePerSecond = 0;
-                    NPC.GetComponent<HealthHelper>().DamageRobotSensivity=0;
                 }
                 else
                 {
@@ -109,6 +116,7 @@ public class Training_2 : MonoBehaviour
                 }
                 break;
             case 4:
+                NPC.GetComponent<HealthHelper>().DamageRobotSensivity = 0;
                 if (TaskAtack)
                 {
                     texts[4].SetActive(false);
@@ -117,6 +125,9 @@ public class Training_2 : MonoBehaviour
                 }
                 break;
             case 5:
+                NPC.GetComponent<HealthHelper>().DamageRobotSensivity = 0.1f;
+                if (NPC.GetComponent<HealthHelper>()._health <= 10)
+                    NPC.GetComponent<HealthHelper>()._health = 100;
                 if (Input.GetKeyDown(KeyCode.B))
                 {
                     texts[5].SetActive(false);

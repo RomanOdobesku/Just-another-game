@@ -30,22 +30,32 @@ public class Training_0 : MonoBehaviour
                 button.SetActive(false);
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    texts[1].SetActive(false);
+                    texts[2].SetActive(true);
                     step++;
                 }
                 break;
             case 2:
-                texts[1].SetActive(false);
-                texts[2].SetActive(true);
+                
                 if (pauseGame.pause == false)
                 {
+                    texts[2].SetActive(false);
+                    texts[3].SetActive(true);
                     step++;
                 }
                 break;
             case 3:
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    step++;
+                }
+                break;
+            case 4:
                 GameObject LoadingPanel = GameObject.Find("Loading Panel");
                 LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
                 LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(18);
                 step++;
+                break;
                 break;
             
             default:

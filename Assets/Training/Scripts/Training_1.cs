@@ -94,26 +94,13 @@ public class Training_1 : MonoBehaviour
                 if (prevHealthNPC - Player.GetComponent<HealthHelper>()._health < -1)
                 {
                     step++;
-                    camera.transform.SetParent(null);
-                    Destroy(Player);
-                    GameObject.Find("HealthBarSliderAlly(Clone)").SetActive(false);
-                    texts[4].SetActive(false);
-                    texts[5].SetActive(true);
-                    button.SetActive(true);
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    Time.timeScale = 0;
+                    GameObject LoadingPanel = GameObject.Find("Loading Panel");
+                    LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+                    LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(19);
+                    step++;
                 }
                 else
                     prevHealthNPC = Player.GetComponent<HealthHelper>()._health;
-                break;
-            case 5:
-                break;
-            case 6:
-                GameObject LoadingPanel = GameObject.Find("Loading Panel");
-                LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
-                LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(19);
-                step++;
                 break;
             default:
                 break;

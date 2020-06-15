@@ -1464,9 +1464,9 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1656,13 +1656,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04519db8bd38b6d498188d5c4b63413a, type: 3}
+  m_Script: {fileID: 11500000, guid: eb14214954a48814e8ed334738d0f3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 3
   audioClips:
-  - {fileID: 8300000, guid: 7114785313aba3946a4476948a8116b9, type: 3}
   - {fileID: 8300000, guid: 79a0e493754ea234eb833210ac5badd9, type: 3}
+  - {fileID: 8300000, guid: 7114785313aba3946a4476948a8116b9, type: 3}
+  MainMenu: 1
 --- !u!1 &974959795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,7 +3083,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227987872}
-        m_MethodName: OnMouseDown
+        m_MethodName: OnValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4927,7 +4927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Main_Panel: {fileID: 1924560985}
   Begin_Panel: {fileID: 1018078030}
-  ClearAfterStart: 1
+  ClearAfterStart: 0
 --- !u!1 &1955619417
 GameObject:
   m_ObjectHideFlags: 0
