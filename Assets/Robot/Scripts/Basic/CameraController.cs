@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.UNetWeaver;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -33,6 +32,8 @@ public class CameraController : MonoBehaviour
     private float _targetCameraOffset = 25.0f;
 
     private Transform _cameraBase;
+
+    private int _layerMask;
 
     public bool LockCursor
     {
@@ -89,6 +90,9 @@ public class CameraController : MonoBehaviour
         _rotation.y = startRotation.y;
 
         Camera.transform.localRotation = Quaternion.identity;
+
+        _layerMask = 1 << 10;
+        _layerMask = ~_layerMask;
     }
 
     void Update()
@@ -162,8 +166,9 @@ public class CameraController : MonoBehaviour
 
         // current move camera
         Vector3 targetCameraPosition = _cameraBase.position - _cameraBase.forward * _targetCameraOffset;
+
         RaycastHit hit;
-        if (Physics.Linecast(_cameraBase.position, targetCameraPosition, out hit))
+        if (Physics.Linecast(_cameraBase.position, targetCameraPosition, out hit, _layerMask))
         {
             _cameraOffset = Mathf.Clamp(hit.distance * 0.85f, MinCameraOffset, _targetCameraOffset);
         }

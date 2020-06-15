@@ -2,7 +2,6 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
-using Boo.Lang.Runtime.DynamicDispatching;
 
 public class HealthHelper : MonoBehaviour
 {
@@ -70,11 +69,10 @@ public class HealthHelper : MonoBehaviour
             _UIHealthBarHelper = healthBar.GetComponent<UIHealthBarHelper>() as UIHealthBarHelper;
             healthBar.transform.SetParent(GameObject.Find("Canvas").transform);
             healthBar.transform.SetAsFirstSibling();
-            _UIHealthBarHelper.NPC = _rigidbody.transform;
+            _UIHealthBarHelper.VisibleChecker = GetComponentInChildren<VisibleChecker>();
             _UIHealthBarHelper.HeightOffset = HeightOffset;
             _UIHealthBarHelper.MaxHealth = MaxHealth;
             _UIHealthBarHelper.Health = _health;
-            _UIHealthBarHelper.RobotCollider = GetComponentInChildren<SphereCollider>() as Collider;
             _UIHealthBarHelper._Camera = Camera;
         }
         //_collisionObserver = GetComponent<CollisionObserver>() as CollisionObserver;
