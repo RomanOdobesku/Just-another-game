@@ -7,19 +7,21 @@ using UnityEngine.Assertions.Must;
 public class KepperFollow : MonoBehaviour
 {
     public Transform[] followObjects;
-    private Rigidbody[] rigidbodiesFollowObjects;
-
     public float ActivateRadius = Mathf.Infinity;
-    float nitro_amount = 100;
+    public int _state;
+    public float jump_cooldown = 100;
+    public float speed;
+
+    private Rigidbody[] rigidbodiesFollowObjects;
     private RobotMotion _robotMotion;
     private Transform _robot;
-    public int _state;
     private HealthHelperMainEnemy _health;
     private Rigidbody _mRigidbody;
     private bool _moveToRobot = true;
+    [SerializeField]
     private bool _isWasHit = false;
-    public float jump_cooldown = 100;
-    public float speed;
+    [SerializeField]
+    private int indexTarget;
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class KepperFollow : MonoBehaviour
                 rigidbodiesFollowObjects[i] = null;
             }
         }
+        indexTarget = 0;
     }
 
     public void AirCharge(Vector3 direction, Vector3 followObjectDirection)
@@ -54,7 +57,7 @@ public class KepperFollow : MonoBehaviour
             if (hit.distance >= 18 && d < 100)
             {
                 _mRigidbody.velocity = new Vector3(0, 0, 0);
-                _mRigidbody.AddForce((direction + followObjectDirection * d / 750).normalized * 750, ForceMode.Impulse);
+                _mRigidbody.AddForce((direction + followObjectDirection * d / 150).normalized * 150, ForceMode.Impulse);
             }
         }
     }
@@ -69,8 +72,11 @@ public class KepperFollow : MonoBehaviour
         if (followT)
         {
             jump_cooldown -= 1;
-            if (_robotMotion.TransformCollision == followT)
+            if (_robotMotion.TransformCollision == followT) 
+            {
                 _moveToRobot = false;
+                _isWasHit = true;
+            }
             Vector3 targetPosition = followT.position;
             Vector3 myPosition = _robot.position;
             Vector3 direction = targetPosition - myPosition;
@@ -107,7 +113,7 @@ public class KepperFollow : MonoBehaviour
 
                 }
                 else if (jump_cooldown <= 0 && _robotMotion.OnGround && distance < 100 && _state > 1)
-                    _mRigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
+                    _mRigidbody.AddForce(Vector3.up * 20, ForceMode.Impulse);
                 else if (jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 50)) && _state > 1)
                 {
                     AirCharge(notNormalizedDirection, followR.velocity);
@@ -127,11 +133,22 @@ public class KepperFollow : MonoBehaviour
 
     private int GetFollowObjectIndex()
     {
-        for (int i = 0; i < followObjects.Length; ++i)
+        if (_isWasHit && UnityEngine.Random.Range(0, 100) > 95 || !followObjects[indexTarget])
         {
-            if (followObjects[i])
-                return i;
+            _isWasHit = false;
+            float minDistance = float.MaxValue;
+            int tmpIndex = indexTarget;
+            for (int i = 0; i < followObjects.Length; ++i)
+            {
+                float distance = (followObjects[i].position - transform.position).magnitude;
+                if (followObjects[i] && distance < minDistance && i != indexTarget)
+                {
+                    minDistance = distance;
+                    tmpIndex = i;
+                }
+            }
+            indexTarget = tmpIndex;
         }
-        return 0;
+        return indexTarget;
     }
 }
