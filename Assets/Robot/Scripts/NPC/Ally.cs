@@ -23,7 +23,9 @@ public class Ally : MonoBehaviour
     private bool _moveToRobot = true;
 
     private HealthHelper healthHelper;
+    private CollisionObserver _collisionObserver;
     GameObject[] medicine_cabinets;
+
 
 
     private void Start()
@@ -34,6 +36,7 @@ public class Ally : MonoBehaviour
         _myRigidbody = GetComponentInChildren<Rigidbody>();
         _robotMotion = GetComponent<RobotMotion>();
         _robot = transform.Find("Robot");
+        _collisionObserver = GetComponentInChildren<CollisionObserver>();
     }
 
     private void Update()
@@ -89,7 +92,7 @@ public class Ally : MonoBehaviour
                 if (!_moveToRobot)
                     direction *= -1;
                 _robotMotion.Move(direction, _moveToRobot);
-                if (_moveToRobot && distance < 5)
+                if (_moveToRobot && _followObjectT == _collisionObserver.LastCollision)
                     _moveToRobot = false;
                 else if (!_moveToRobot && distance > 100)
                     _moveToRobot = true;

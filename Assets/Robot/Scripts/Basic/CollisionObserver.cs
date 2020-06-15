@@ -7,7 +7,13 @@ public class CollisionObserver : MonoBehaviour
 
     private HealthHelper _healthHelper;
     private RobotMotion _robotMotion;
+    private Transform _lastCollisionTransform;
     GameObject MedicineCab;
+
+    public Transform LastCollision
+    {
+        get => _lastCollisionTransform;
+    }
 
     void Start()
     {
@@ -18,6 +24,7 @@ public class CollisionObserver : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        _lastCollisionTransform = collision.transform;
         GameObject other = collision.gameObject;
         Transform parent = other.transform.parent;
         if (parent && (parent.CompareTag("Robot Player") || other.CompareTag("NPC Allies")))
