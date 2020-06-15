@@ -47,7 +47,10 @@ public class PauseGame : MonoBehaviour
    
     public void Exit()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(0);
     }
     private void ClosePauseMenu()
     {

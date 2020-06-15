@@ -321,6 +321,7 @@ public class S_1_Before : MonoBehaviour
         else
         {
             GameObject LoadingPanel = GameObject.Find("Loading Panel");
+            LoadingPanel.SetActive(true);
             int NextLevel = PlayerPrefs.GetInt("NextLevel");
             NextLevel = 0;
             PlayerPrefs.SetInt("NextLevel", NextLevel);

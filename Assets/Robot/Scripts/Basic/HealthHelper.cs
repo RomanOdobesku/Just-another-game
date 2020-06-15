@@ -24,6 +24,7 @@ public class HealthHelper : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private UIHealthBarHelper _UIHealthBarHelper;
+    private bool _death;
 
     private bool _lava = false;
 
@@ -116,11 +117,12 @@ public class HealthHelper : MonoBehaviour
 
     public void GetDamage(float damage, HealthHelper killer)
     {
-        print(gameObject.name + " take damage: " + damage);
+        //print(gameObject.name + " take damage: " + damage);
         _health -= damage;
         _UIHealthBarHelper.Health = _health;
-        if (_health <= 0)
+        if (_health <= 0 && !_death)
         {
+            _death = true;
             GameObject explosion = Instantiate(Explosion, _rigidbody.transform.position, Quaternion.identity);
             ParticleSystem explosionParticleSystem = explosion.GetComponent<ParticleSystem>() as ParticleSystem;
             _UIHealthBarHelper.DisableSlider();
@@ -129,6 +131,7 @@ public class HealthHelper : MonoBehaviour
             if (CompareTag("NPC Usual"))
             {
                 GameObject.Find("NPC").GetComponent<NPCHelper>().DeadUsualNPC();
+                Debug.LogWarning("death npc");
             }
             if (CompareTag("NPC Elite"))
             {
