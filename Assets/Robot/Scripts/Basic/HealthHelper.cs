@@ -81,6 +81,8 @@ public class HealthHelper : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_rigidbody.transform.position.y < -100)
+            _health = 0;
         GetDamage(DamagePerSecond * Time.deltaTime, null);
         if (Lava)
             GetDamage(DamagePerSecondInLava * Time.deltaTime, null);
