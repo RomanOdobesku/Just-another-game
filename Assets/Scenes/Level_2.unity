@@ -2312,7 +2312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -6887,7 +6887,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226027831}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1001 &226475624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8834,7 +8834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -13805,7 +13805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -16310,7 +16310,7 @@ PrefabInstance:
     - target: {fileID: 1879619362676806585, guid: 4845dca75304d834f80a20bd10737b56,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1879619362676806585, guid: 4845dca75304d834f80a20bd10737b56,
         type: 3}
@@ -18863,8 +18863,8 @@ RectTransform:
   - {fileID: 1772077356}
   - {fileID: 51159317}
   - {fileID: 1399040144}
-  - {fileID: 620177928}
   - {fileID: 988477612}
+  - {fileID: 620177928}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19013,17 +19013,17 @@ PrefabInstance:
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1988.27
+      value: -1987.32
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.3
+      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 966.97
+      value: 961.7
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
@@ -22070,7 +22070,7 @@ PrefabInstance:
     - target: {fileID: 3707408103841059793, guid: 1a919d8d66cfdeb4dbdfbb7e9370ece1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3707408103841059793, guid: 1a919d8d66cfdeb4dbdfbb7e9370ece1,
         type: 3}
@@ -23569,7 +23569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -25365,7 +25365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -31898,7 +31898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -33470,7 +33470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -42922,7 +42922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -44968,7 +44968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -46777,7 +46777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject

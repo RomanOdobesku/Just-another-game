@@ -12,10 +12,12 @@ public class PauseGame : MonoBehaviour
     public GameObject ExitButton;
     public bool IsLevel=false;
     public bool pause = false;
-    
+
+    private Death DeathActive;
     // Start is called before the first frame update
     void Start()
     {
+
         float height = (Screen.height-60);
         ExitButton.transform.localPosition = new Vector3(ExitButton.transform.localPosition.x, 0 - height*0.25f);
         PauseText.transform.localPosition = new Vector3(PauseText.transform.localPosition.x, height*0.375f);
@@ -25,22 +27,19 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (!pause)
+            if (!DeathActive.ActivePanel)
             {
-                if (IsLevel)
+                if (!pause)
                 {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    Time.timeScale = 0;
+                    OpenPauseMenu();
                 }
-                pause = true;
-                PausePanel.SetActive(true);
-            }
-            else
-            {
-                ClosePauseMenu();
+                else
+                {
+                    ClosePauseMenu();
+                }
             }
         }
     }
@@ -51,6 +50,17 @@ public class PauseGame : MonoBehaviour
         GameObject LoadingPanel = GameObject.Find("Loading Panel");
         LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
         LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(0);
+    }
+    public void OpenPauseMenu()
+    {
+        if (IsLevel)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+        }
+        pause = true;
+        PausePanel.SetActive(true);
     }
     private void ClosePauseMenu()
     {

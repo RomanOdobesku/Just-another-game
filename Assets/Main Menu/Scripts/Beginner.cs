@@ -12,20 +12,23 @@ public class Beginner : MonoBehaviour
     {
         if (ClearAfterStart)
         {
-            PlayerPrefs.DeleteKey("Beginner");
-            ClearAfterStart = false;
-        }
-        if (!PlayerPrefs.HasKey("Beginner")){
+            PlayerPrefs.SetInt("Beginner", 0);
+            PlayerPrefs.Save();
+        } 
+        int begin = PlayerPrefs.GetInt("Beginner", 0);
+        if (begin==0)
+        {
             Main_Panel.SetActive(false);
             Begin_Panel.SetActive(true);
+            PlayerPrefs.SetInt("Beginner", 1);
+            PlayerPrefs.Save();
+        }
+        
+        if (ClearAfterStart)
+        {
             PlayerPrefs.SetInt("Beginner", 0);
             PlayerPrefs.Save();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
