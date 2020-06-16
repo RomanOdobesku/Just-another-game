@@ -15,7 +15,8 @@ public class Death : MonoBehaviour
     public GameObject MainText;
     public GameObject SecText;
 
-    private bool ActivePanel = false;
+    public bool ActivePanel = false;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,6 +32,7 @@ public class Death : MonoBehaviour
         {
             if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPConScene == 0)
             {
+                
                 ActiveDeathPanel();
                 
             }    
@@ -39,15 +41,17 @@ public class Death : MonoBehaviour
 
     public void ActiveDeathPanel()
     {
+        GameObject.Find("Pause Panel").GetComponent<PauseGame>().OpenPauseMenu();
         Destroy(GameObject.Find("NPC"));
         if (RobotPlayer != null)
         {
             camera.transform.SetParent(null);
         }
         RobotPlayer.SetActive(false);
+        ActivePanel = true;
         if (ItsFightScene)
         {
-            ActivePanel = true;
+            
             if (GameObject.Find("NPC").GetComponent<NPCHelper>().countNPConScene == 0)
             {
                 MainText.GetComponent<Text>().text = "Победа!";

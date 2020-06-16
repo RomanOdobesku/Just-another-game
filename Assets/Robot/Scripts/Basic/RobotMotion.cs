@@ -62,7 +62,7 @@ public class RobotMotion : MonoBehaviour
             {
                 float multiplier;
                 multiplier = PlayerPrefs.GetInt("Speed");
-                MovePower *= (1 + multiplier / 5);
+                MovePower *= (1 + multiplier*0.15f);
                 MaxAngularVelocity *= (1 + multiplier / 5);
             }
         }

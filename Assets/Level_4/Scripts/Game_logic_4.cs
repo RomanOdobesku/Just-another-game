@@ -29,10 +29,11 @@ public class Game_logic_4 : MonoBehaviour
     GameObject EliteNPC;
 
     public bool InEasterEgg = false;
+    private bool NPCEliteKill = false;
     // Start is called before the first frame update
     void Start()
     {
-        EliteNPC = GameObject.Find("Robot NPC 8 Elite");
+        EliteNPC = GameObject.FindGameObjectWithTag("NPC Elite");
         npcHelper = GameObject.Find("NPC").GetComponent<NPCHelper>();
         AllCountNPC = npcHelper.countNPConScene;
         oldcountnpc = AllCountNPC;
@@ -54,8 +55,9 @@ public class Game_logic_4 : MonoBehaviour
                     Done_NPC = true;
                     Invoke("StartNPCpart2",5);
                 }
-                if (EliteNPC == null)
+                if (EliteNPC == null&& !NPCEliteKill)
                 {
+                    NPCEliteKill = true;
                     adviceAG.SetActive(true);
                     Invoke("AdviceAG", 7);
                 }

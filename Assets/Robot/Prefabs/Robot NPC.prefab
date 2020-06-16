@@ -116,7 +116,7 @@ MonoBehaviour:
   ValueRepairKit: 50
   ValueDamagRedField: 50
   DamagePerSecond: 0.1
-  DamageRobotSensivity: 0.1
+  DamageRobotSensivity: 0.3
   DamagePerSecondInLava: 10
   Group: 0
   HeightOffset: 5

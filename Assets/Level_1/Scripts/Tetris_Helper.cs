@@ -54,7 +54,8 @@ public class Tetris_Helper : MonoBehaviour
     }
     public void LoadInGame()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Tetris_Canvas.SetActive(false);
         Player.SetActive(true);
         NPC.SetActive(true);

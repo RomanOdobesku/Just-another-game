@@ -25,6 +25,8 @@ public class EasterEgg3 : MonoBehaviour
     public Text Congratulations;
     public Text Сonvert;
 
+    private GameObject[] health;
+
     public bool FindEA=false;
 
     private bool EndLevel = false;
@@ -47,6 +49,11 @@ public class EasterEgg3 : MonoBehaviour
     {
         camera.transform.SetParent(null);
         Player.SetActive(false);
+        health = GameObject.FindGameObjectsWithTag("HealthBar");
+        foreach (var item in health)
+        {
+            item.SetActive(false);
+        }
         Task_Ch.SetActive(true);
         MainPanel.SetActive(false);
         EasterEggPanel.SetActive(true);
@@ -103,11 +110,16 @@ public class EasterEgg3 : MonoBehaviour
     }
     private void ClosePanel(int Mat)
     {
+        foreach (var item in health)
+        {
+            item.SetActive(true);
+        }
         EasterEggPanel.SetActive(false);
         MainPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
+        
         Player.SetActive(true);
         camera.transform.SetParent(camerabase.transform);
         if (EndLevel)

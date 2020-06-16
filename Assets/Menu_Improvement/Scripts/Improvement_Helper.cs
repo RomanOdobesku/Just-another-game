@@ -55,7 +55,9 @@ public class Improvement_Helper : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(NextLevel);
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(NextLevel);
     }
     public void Save()
     {

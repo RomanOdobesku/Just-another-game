@@ -16,13 +16,16 @@ public class ButtonPortal : MonoBehaviour
     private bool Say = false;
     private bool Help = false;
 
+    private AudioSource source;
+    private float volume;
     // Start is called before the first frame update
     void Start()
     {
+        volume = PlayerPrefs.GetFloat("Volume", 1);
         StartPos = gameObject.transform.position;
         EndPos= new Vector3(StartPos.x, StartPos.y-1f, StartPos.z);
         health = GameObject.Find("Robot Player").GetComponent<HealthHelper>();
-
+        source = GameObject.Find("Main Camera").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class ButtonPortal : MonoBehaviour
         {
             TextGlados[Glados].GetComponent<AudioSource>().Stop();
             CloseGlados();
+            StopAllCoroutines();
             Glados = 3;
             buttonActive = true;
             health._health = GameObject.Find("Robot Player").GetComponent<HealthHelper>().MaxHealth;
@@ -84,6 +88,7 @@ public class ButtonPortal : MonoBehaviour
             Say = true;
             GladosPanel.SetActive(true);
             TextGlados[Glados].SetActive(true);
+            StartCoroutine(volume_clip(TextGlados[Glados].GetComponent<AudioSource>().clip.length));
             Invoke("CloseGlados",5);
         }
     }
@@ -107,5 +112,12 @@ public class ButtonPortal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Robot Player"))
             OnButton = false;
+    }
+    IEnumerator volume_clip(float time)
+    {
+        source.mute = true;
+        yield return new WaitForSeconds(time);
+        source.mute = false;
+        yield return null;
     }
 }
