@@ -150,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -158,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -910,17 +910,17 @@ PrefabInstance:
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1278.96
+      value: -1278.73
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.13
+      value: 15.65
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 659.6
+      value: 664.02
       objectReference: {fileID: 0}
     - target: {fileID: 8558010810476357162, guid: b8ddfe67794995342b2780bd097f663a,
         type: 3}
@@ -1029,7 +1029,8 @@ MonoBehaviour:
   Wall: {fileID: 921588004}
   adviceAG: {fileID: 347620099}
   adviceSI2: {fileID: 1385411761}
-  NPCpart2: {fileID: 231153047}
+  EA_Help: {fileID: 239533157}
+  NPCPart2: {fileID: 231153047}
   NPC_Dead_Ch: {fileID: 1693410851}
   InEasterEgg: 0
 --- !u!1 &87174262 stripped
@@ -1117,7 +1118,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92565223}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -1289,7 +1290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92565223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52e1fbe1a6af7a346bb6fa1dba7dfa0c, type: 3}
   m_Name: 
@@ -1301,7 +1302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92565223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd0bc37980b6fa143b224bea779f3b6e, type: 3}
   m_Name: 
@@ -2002,6 +2003,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1444913068842366768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &133308818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133308811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929525639d0dbd644a78503e39e4e092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &133308819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133308811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10b2427f9fad469f4e7c73c038fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &135273539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,6 +3276,166 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d626b52dc7a9c24e95f55619a456158, type: 3}
+--- !u!1 &239533157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239533158}
+  - component: {fileID: 239533161}
+  - component: {fileID: 239533160}
+  - component: {fileID: 239533159}
+  m_Layer: 0
+  m_Name: EA Help
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &239533158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239533157}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000000014901161, w: 1}
+  m_LocalPosition: {x: -171.9537, y: 59.038723, z: -28.082888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1395981805}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &239533159
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239533157}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &239533160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239533157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e1fbe1a6af7a346bb6fa1dba7dfa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &239533161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239533157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18314a72a4b0d6b40abc37001f2ae0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  audioClips:
+  - {fileID: 8300000, guid: 8caf6e4101977fa4c9b55ec121d6bf94, type: 3}
+  - {fileID: 8300000, guid: b95dede99ceb24c4d8c21bc5361c5c5f, type: 3}
+  - {fileID: 8300000, guid: 79e89126e81b09e40a47b228bca9b19f, type: 3}
+  - {fileID: 8300000, guid: 212f4468f119fa342bf5615c5a947e0b, type: 3}
+  PlayOld: 0
 --- !u!1 &242841848
 GameObject:
   m_ObjectHideFlags: 0
@@ -5556,12 +5741,12 @@ PrefabInstance:
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -7629,11 +7814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -7825,11 +8010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -10005,6 +10190,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1444913068842366768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &644819797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644819790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929525639d0dbd644a78503e39e4e092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &644819798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644819790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10b2427f9fad469f4e7c73c038fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &648487439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15193,7 +15402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -16027,12 +16236,12 @@ PrefabInstance:
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -17502,12 +17711,12 @@ PrefabInstance:
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -18615,11 +18824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -18883,7 +19092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -19768,11 +19977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -20511,7 +20720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1776141229, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: FollowObject
@@ -22065,6 +22274,7 @@ Transform:
   - {fileID: 197550808}
   - {fileID: 982921817}
   - {fileID: 1946925688}
+  - {fileID: 239533158}
   m_Father: {fileID: 1258342113}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26468,11 +26678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -27444,11 +27654,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamagePerSecond
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1275533566, guid: 771b3602986ac814b9e3fa924eadc1a8, type: 3}
       propertyPath: MaxHealth
@@ -27940,6 +28150,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1444913068842366768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703751421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703751419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10b2427f9fad469f4e7c73c038fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1703751426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703751419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929525639d0dbd644a78503e39e4e092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1710244442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29305,12 +29539,12 @@ PrefabInstance:
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -30016,6 +30250,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1444913068842366768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1842658966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842658959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929525639d0dbd644a78503e39e4e092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1842658967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842658959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10b2427f9fad469f4e7c73c038fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1849551602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30680,12 +30938,12 @@ PrefabInstance:
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332107, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
       propertyPath: DamageRobotSensivity
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6877241681055332111, guid: 6166f4b0ef8c2374a8859e3b76400cb3,
         type: 3}
@@ -35007,11 +35265,11 @@ PrefabInstance:
     - target: {fileID: 52749808, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: b2296e814b8db9c4c820c4b72c37f55e,
+      objectReference: {fileID: 32900000, guid: 5a182d61bdfb6b546910905afc9de42b,
         type: 3}
     - target: {fileID: 52749808, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
       propertyPath: m_DirectAudioVolumes.Array.data[0]
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 52749808, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
       propertyPath: m_AudioOutputMode
@@ -35025,8 +35283,12 @@ PrefabInstance:
     - target: {fileID: 1435637082, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 1ee33f0c65b3d004fab303354038e597,
+      objectReference: {fileID: 32900000, guid: 4de5591012daeb946bc29519c9d4a376,
         type: 3}
+    - target: {fileID: 1435637082, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
+      propertyPath: m_DirectAudioVolumes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1558908528, guid: 7b282bf12db3a88488f5e834d64faf0e, type: 3}
       propertyPath: m_VideoClip
       value: 

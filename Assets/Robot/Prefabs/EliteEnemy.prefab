@@ -1518,11 +1518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa074ee7e8d19543b88d31ff34bddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 150
   ValueRepairKit: 50
   ValueDamagRedField: 50
   DamagePerSecond: 0.1
-  DamageRobotSensivity: 0.5
+  DamageRobotSensivity: 0.25
   DamagePerSecondInLava: 10
   Group: 0
   HeightOffset: 5

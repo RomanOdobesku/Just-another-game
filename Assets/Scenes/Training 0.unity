@@ -1920,7 +1920,7 @@ RectTransform:
   m_Children:
   - {fileID: 408905251}
   m_Father: {fileID: 412939573}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2572,6 +2572,7 @@ RectTransform:
   - {fileID: 1310390285}
   - {fileID: 1444910618}
   - {fileID: 1054390455}
+  - {fileID: 1102685821}
   - {fileID: 330985769}
   m_Father: {fileID: 1400747161}
   m_RootOrder: 1
@@ -2634,6 +2635,7 @@ MonoBehaviour:
   - {fileID: 1310390284}
   - {fileID: 1444910617}
   - {fileID: 1054390451}
+  - {fileID: 1102685820}
   button: {fileID: 330985768}
 --- !u!1001 &413939345
 PrefabInstance:
@@ -6501,11 +6503,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0425\u043E\u0440\u043E\u0448\u043E. \n\u0422\u0430\u043A\u0436\u0435
-    \u0442\u044B \u043C\u043E\u0433 \u0437\u0430\u043C\u0435\u0442\u0438\u0442\u044C,
-    \u0447\u0442\u043E \u0443 \u043D\u0430\u0441 \u0435\u0441\u0442\u044C \u043C\u0443\u0437\u044B\u043A\u0430.
-    \n\u0427\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0438\u0442\u044C
-    \u043D\u0430 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0442\u0440\u0435\u043A
+  m_Text: "\u0425\u043E\u0440\u043E\u0448\u043E. \n\u041D\u0430\u0432\u0435\u0440\u043D\u044F\u043A\u0430
+    \u0442\u044B \u0437\u0430\u043C\u0435\u0442\u0438\u043B, \u0447\u0442\u043E \u0443
+    \u043D\u0430\u0441 \u0435\u0441\u0442\u044C \u043C\u0443\u0437\u044B\u043A\u0430.\n\u0427\u0442\u043E\u0431\u044B
+    \u043F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043D\u0430
+    \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0442\u0440\u0435\u043A
     \u043D\u0430\u0436\u043C\u0438 Tab."
 --- !u!222 &1054390454
 CanvasRenderer:
@@ -6922,6 +6924,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e05ee61d6dad0e54eb51d1c8ec3becc6, type: 3}
+--- !u!1 &1102685820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1102685821}
+  - component: {fileID: 1102685824}
+  - component: {fileID: 1102685823}
+  - component: {fileID: 1102685822}
+  m_Layer: 5
+  m_Name: Text 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1102685821
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102685820}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 412939573}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 145, y: 0}
+  m_SizeDelta: {x: 270, y: 140}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1102685822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102685820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1102685823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102685820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u0422\u044B \u0440\u0430\u0437\u043E\u0431\u0440\u0430\u043B\u0441\u044F
+    \u0441 \u0432\u043D\u0443\u0442\u0440\u0438\u0438\u0433\u0440\u043E\u0432\u044B\u043C
+    \n\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043C. \n\u0422\u0435\u043F\u0435\u0440\u044C
+    \u043F\u0435\u0440\u0435\u0439\u0434\u0435\u043C \u043A\n\u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044E
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0435\u043C."
+--- !u!222 &1102685824
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102685820}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1111446561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8542,7 +8641,7 @@ MonoBehaviour:
   m_Text: "\u0414\u043B\u044F \u043D\u0430\u0447\u0430\u043B\u0430 \u0440\u0430\u0441\u0441\u043A\u0430\u0436\u0443,\n\u043A\u0430\u043A
     \u0443 \u043D\u0430\u0441 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043F\u0430\u0443\u0437\u0430
     \u0432 \u0438\u0433\u0440\u0435, \u0435\u0441\u043B\u0438 \u0442\u0435\u0431\u0435
-    \u043D\u0443\u043D\u043E \u043E\u0442\u043E\u0439\u0442\u0438.\n\u041D\u0430\u0436\u043C\u0438
+    \u043D\u0443\u0436\u043D\u043E \u043E\u0442\u043E\u0439\u0442\u0438.\n\u041D\u0430\u0436\u043C\u0438
     P (pause)"
 --- !u!222 &1310390288
 CanvasRenderer:

@@ -26,7 +26,8 @@ public class Game_logic_2 : MonoBehaviour
     private int oldcountnpc;
     NPCHelper npcHelper;
 
-   
+    public GameObject Si2Panel;
+    private bool Si2PanelIsActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,11 @@ public class Game_logic_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (NPC_Dead_Ch.activeInHierarchy&& Battery_Ch.activeInHierarchy && !Si2PanelIsActive)
+        {
+            StartCoroutine(Si2PanelStart());
+            Si2PanelIsActive = true;
+        }
         if (!Done_NPC)
         {
             if(oldcountnpc!=npcHelper.countNPConScene)
@@ -133,5 +139,12 @@ public class Game_logic_2 : MonoBehaviour
             }
             text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
         }
+    }
+    IEnumerator Si2PanelStart()
+    {
+        Si2Panel.SetActive(true);
+        yield return new WaitForSeconds(5);
+        Si2Panel.SetActive(false);
+        yield return null;
     }
 }

@@ -30,8 +30,11 @@ public class EasterEgg3 : MonoBehaviour
     public bool FindEA=false;
 
     private bool EndLevel = false;
+
+    private PauseGame pauseGame;
     void Start()
     {
+        pauseGame = GameObject.Find("Pause Panel").GetComponent<PauseGame>();
         Player = GameObject.Find("Robot Player");
         camerabase = Player.transform.GetChild(1).gameObject;
         MainPanel = GameObject.Find("Main_Panel");
@@ -50,6 +53,7 @@ public class EasterEgg3 : MonoBehaviour
         camera.transform.SetParent(null);
         Player.SetActive(false);
         health = GameObject.FindGameObjectsWithTag("HealthBar");
+        pauseGame.IsLevel = false;
         foreach (var item in health)
         {
             item.SetActive(false);
@@ -128,5 +132,6 @@ public class EasterEgg3 : MonoBehaviour
             PlayerPrefs.SetInt("MaterialPlayer", Mat);
             PlayerPrefs.Save();
         }
+        pauseGame.IsLevel = true;
     }
 }

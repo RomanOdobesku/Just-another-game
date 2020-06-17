@@ -9,7 +9,6 @@ public class MusicEA4 : MonoBehaviour
     public float time = 1;
     private float localTime;
 
-    private float k;
     public AudioClip[] audioClips;
     private int numberClip = 0;
     private AudioSource audioSource;
@@ -19,10 +18,12 @@ public class MusicEA4 : MonoBehaviour
     private Game_logic_4 game_Logic_4;
     private bool inEA = true;
     private TV tv;
-    
+    private float k;
+
     // Start is called before the first frame update
     void Start()
     {
+        k = PlayerPrefs.GetInt("Volume");
         tv = GameObject.Find("TV").GetComponent<TV>();
         audioSource = GetComponent<AudioSource>();
         game_Logic_4 = GameObject.Find("Robot Player").transform.GetChild(0).GetComponent<Game_logic_4>();

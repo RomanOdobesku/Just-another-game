@@ -54,12 +54,15 @@ public class Tetris_Helper : MonoBehaviour
     }
     public void LoadInGame()
     {
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Tetris_Canvas.SetActive(false);
         Player.SetActive(true);
         NPC.SetActive(true);
         Canvas_Game.SetActive(true);
+        GameObject.Find("Pause Panel").GetComponent<AudioSource>().Pause();
+        Tetris_Camera.GetComponent<AudioSource>().Pause();
         Tetris_Camera.SetActive(false);
         Tetris_Spawner.SetActive(false);
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Tetris_Block");

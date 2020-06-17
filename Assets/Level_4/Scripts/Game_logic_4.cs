@@ -15,15 +15,16 @@ public class Game_logic_4 : MonoBehaviour
     public GameObject Wall;
     public GameObject adviceAG;
     public GameObject adviceSI2;
+    public GameObject EA_Help;
 
     int count_Bonus_this_scene = 0;
     int count_Collect_Battery = 0;
 
     bool Done_NPC = false;
-    public GameObject NPCpart2;
+    public GameObject NPCPart2;
     public GameObject NPC_Dead_Ch;
     private int AllCountNPC;
-    private int oldcountnpc;
+    private int oldCountNPC;
     NPCHelper npcHelper;
     bool newpartNPC = false;
     GameObject EliteNPC;
@@ -36,7 +37,7 @@ public class Game_logic_4 : MonoBehaviour
         EliteNPC = GameObject.FindGameObjectWithTag("NPC Elite");
         npcHelper = GameObject.Find("NPC").GetComponent<NPCHelper>();
         AllCountNPC = npcHelper.countNPConScene;
-        oldcountnpc = AllCountNPC;
+        oldCountNPC = AllCountNPC;
         text_No_Next_Level.gameObject.SetActive(false);
         text_Info.text = count_Collect_Battery.ToString() + "/" + collect.ToString();
         text_Bonus_Info.text = (PlayerPrefs.GetInt("CountBonus") + count_Bonus_this_scene).ToString();
@@ -47,10 +48,10 @@ public class Game_logic_4 : MonoBehaviour
     {
         if (!Done_NPC)
         {
-            if (oldcountnpc != npcHelper.countNPConScene)
+            if (oldCountNPC != npcHelper.countNPConScene)
             {
-                oldcountnpc = npcHelper.countNPConScene;
-                if (oldcountnpc == 0)
+                oldCountNPC = npcHelper.countNPConScene;
+                if (oldCountNPC == 0)
                 {
                     Done_NPC = true;
                     Invoke("StartNPCpart2",5);
@@ -64,10 +65,10 @@ public class Game_logic_4 : MonoBehaviour
             }
         }
         if (Done_NPC && newpartNPC) { 
-            if (oldcountnpc != npcHelper.countNPConScene)
+            if (oldCountNPC != npcHelper.countNPConScene)
             {
-                oldcountnpc = npcHelper.countNPConScene;
-                if (oldcountnpc == 0)
+                oldCountNPC = npcHelper.countNPConScene;
+                if (oldCountNPC == 0)
                 {
                     NPC_Dead_Ch.SetActive(true);
                     if (Battery_Ch.activeInHierarchy)
@@ -106,6 +107,8 @@ public class Game_logic_4 : MonoBehaviour
         if (other.gameObject.CompareTag("Easter egg"))
         {
             InEasterEgg = false;
+            EA_Help.SetActive(false);
+            EA_Help.GetComponent<MusicDevsRoom>().PlayOld = true;
         }
 
     }
@@ -116,6 +119,7 @@ public class Game_logic_4 : MonoBehaviour
         {
             Task_Ch.SetActive(true);
             InEasterEgg = true;
+            EA_Help.SetActive(true);
         }
         if (other.gameObject.CompareTag("Next_Level"))
         {
@@ -162,10 +166,10 @@ public class Game_logic_4 : MonoBehaviour
     }
     private void StartNPCpart2()
     {
-        NPCpart2.SetActive(true);
+        NPCPart2.SetActive(true);
         npcHelper.FindNPC();
         AllCountNPC = npcHelper.countNPConScene;
-        oldcountnpc = AllCountNPC;
+        oldCountNPC = AllCountNPC;
         newpartNPC = true;
     }
     private void AdviceSI2()

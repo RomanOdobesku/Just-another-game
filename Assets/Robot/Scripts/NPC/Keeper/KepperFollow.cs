@@ -54,10 +54,10 @@ public class KepperFollow : MonoBehaviour
         if (Physics.Raycast(_robot.position, -Vector3.up, out hit, 100.0f))
         {
             print(hit.distance);
-            if (hit.distance >= 18 && d < 100)
+            if (hit.distance >= 33 && d < 100)
             {
                 _mRigidbody.velocity = new Vector3(0, 0, 0);
-                _mRigidbody.AddForce((direction + followObjectDirection * d / 150).normalized * 150, ForceMode.Impulse);
+                _mRigidbody.AddForce((direction + followObjectDirection * d / 200).normalized * 200, ForceMode.Impulse);
             }
         }
     }
@@ -113,8 +113,8 @@ public class KepperFollow : MonoBehaviour
 
                 }
                 else if (jump_cooldown <= 0 && _robotMotion.OnGround && distance < 100 && _state > 1)
-                    _mRigidbody.AddForce(Vector3.up * 20, ForceMode.Impulse);
-                else if (jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 50)) && _state > 1)
+                    _mRigidbody.AddForce(Vector3.up * 70, ForceMode.Impulse);
+                else if (jump_cooldown <= 0 && (!Physics.Raycast(_robot.position, -Vector3.up, 35)) && _state > 1)
                 {
                     AirCharge(notNormalizedDirection, followR.velocity);
                     jump_cooldown = 500;

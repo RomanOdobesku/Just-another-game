@@ -48,18 +48,21 @@ public class Training_0 : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     step++;
+                    texts[3].SetActive(false);
+                    texts[4].SetActive(true);
+                    StartCoroutine(NextTraining());
                 }
                 break;
-            case 4:
-                GameObject LoadingPanel = GameObject.Find("Loading Panel");
-                LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
-                LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(18);
-                step++;
-                break;
-                break;
-            
             default:
                 break;
         }
+    }
+    IEnumerator NextTraining()
+    {
+        yield return new WaitForSeconds(5);
+        GameObject LoadingPanel = GameObject.Find("Loading Panel");
+        LoadingPanel.transform.GetChild(0).gameObject.SetActive(true);
+        LoadingPanel.transform.GetChild(0).gameObject.GetComponent<Loading>().LoadScene(18);
+        yield return null;
     }
 }

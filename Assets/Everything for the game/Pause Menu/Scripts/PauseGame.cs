@@ -17,7 +17,7 @@ public class PauseGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DeathActive = GameObject.Find("Death Panel").GetComponent<Death>();
         float height = (Screen.height-60);
         ExitButton.transform.localPosition = new Vector3(ExitButton.transform.localPosition.x, 0 - height*0.25f);
         PauseText.transform.localPosition = new Vector3(PauseText.transform.localPosition.x, height*0.375f);

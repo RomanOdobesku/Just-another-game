@@ -21,6 +21,9 @@ public class Game_logic_3 : MonoBehaviour
 
     private NPCHelper nPCHelper;
     private bool AcriveCoroutine = false;
+
+    public GameObject Si2Panel;
+    private bool Si2PanelIsActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,11 @@ public class Game_logic_3 : MonoBehaviour
     }
     private void Update()
     {
+        if (Crystal_main_Ch.activeInHierarchy && Crystal_add_Ch.activeInHierarchy && !Si2PanelIsActive)
+        {
+            StartCoroutine(Si2PanelStart());
+            Si2PanelIsActive = true;
+        }
         if (!AcriveCoroutine && nPCHelper.countNPConScene == 0)
         {
             AcriveCoroutine = true;
@@ -118,6 +126,13 @@ public class Game_logic_3 : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         AcriveCoroutine = false;
+        yield return null;
+    }
+    IEnumerator Si2PanelStart()
+    {
+        Si2Panel.SetActive(true);
+        yield return new WaitForSeconds(5);
+        Si2Panel.SetActive(false);
         yield return null;
     }
 }

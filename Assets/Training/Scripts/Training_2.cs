@@ -125,7 +125,7 @@ public class Training_2 : MonoBehaviour
                 }
                 break;
             case 5:
-                NPC.GetComponent<HealthHelper>().DamageRobotSensivity = 0.1f;
+                NPC.GetComponent<HealthHelper>().DamageRobotSensivity = 0.05f;
                 if (NPC.GetComponent<HealthHelper>()._health <= 10)
                     NPC.GetComponent<HealthHelper>()._health = 100;
                 if (Input.GetKeyDown(KeyCode.B))
